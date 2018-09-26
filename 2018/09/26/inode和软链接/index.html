@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>inode和软链接 | xin&#39;s Blog</title>
+  <meta name="description" content="专注于linux运维" />
+  <meta name="keywords" content="" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" href="/">
+  <link rel="alternate" href="/atom.xml" title="xin's Blog">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <link rel="shortcut icon" href="" />
+  <link rel="icon" href="" />
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+  <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href='//cdn.bootcss.com/node-waves/0.7.5/waves.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="/style.css">
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+</head>
+
+<body>
+    <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+
+
+    <script>setLoadingBarProgress(20)</script>
+    <header class="l_header">
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+			<a class="logo flat-box" href='/' >
+				<!-- <i class="fa fa-home"></i> -->
+				xin's Blog
+			</a>
+
+				<div class='menu'>
+					<ul class='h-list'>
+                        
+    						
+    							<li>
+    								<a class='nav-about flat-box' href='/'>
+    									<i class='fa fa-home fa-'></i>&nbsp;主页
+    								</a>
+    							</li>
+    						
+    							<li>
+    								<a class='nav-category flat-box' href='/categories/shell/'>
+    									<i class='fa fa-cube fa-'></i>&nbsp;shell编程
+    								</a>
+    							</li>
+    						
+    							<li>
+    								<a class='nav-category flat-box' href='/categories/linux'>
+    									<i class='fa fa-rss fa-'></i>&nbsp;Linux基础
+    								</a>
+    							</li>
+    						
+    							<li>
+    								<a class='nav-category flat-box' href='/categories/linuxservice'>
+    									<i class='fa fa-rss fa-'></i>&nbsp;Linux服务
+    								</a>
+    							</li>
+    						
+    							<li>
+    								<a class='nav-category flat-box' href='/categories/itauto'>
+    									<i class='fa fa-rss fa-'></i>&nbsp;运维自动化
+    								</a>
+    							</li>
+    						
+    							<li>
+    								<a class='nav-archives flat-box' href='/archives'>
+    									<i class='fa fa-archive fa-'></i>&nbsp;归档
+    								</a>
+    							</li>
+    						
+        			 
+					</ul>
+					<div class='underline'></div>
+				</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search" />
+						<span class="icon"><i class="fa fa-search fa-fw"></i></span>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a class="fa fa-search fa-fw" href='javascript:void(0)'></span></a></li>
+				
+				<li class='s-menu'><a class="fa fa-navicon fa-fw" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo" class="flat-box" href='javascript:void(0)'>
+				xaoxuu
+			</a>
+
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a class="fa fa-comments fa-fw flat-box" href='javascript:void(0)'></a></li>
+				<li class='s-top'><a class="fa fa-arrow-up fa-fw flat-box" href='javascript:void(0)'></a></li>
+				<li class='s-toc'><a class="fa fa-list-ul fa-fw flat-box" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+        <div class="header">xin&#39;s Blog</div>
+		<nav>
+            <ul>
+                
+                    
+                        <li>
+                            <a class='nav-about flat-box nav flat-box' href='/'><i class='fa fa-home fa-fw'></i>&nbsp;主页</a>
+                        </li>
+                    
+                        <li>
+                            <a class='nav-category flat-box nav flat-box' href='/categories/shell/'><i class='fa fa-cube fa-fw'></i>&nbsp;shell编程</a>
+                        </li>
+                    
+                        <li>
+                            <a class='nav-category flat-box nav flat-box' href='/categories/linux'><i class='fa fa-rss fa-fw'></i>&nbsp;Linux基础</a>
+                        </li>
+                    
+                        <li>
+                            <a class='nav-category flat-box nav flat-box' href='/categories/linuxservice'><i class='fa fa-rss fa-fw'></i>&nbsp;Linux服务</a>
+                        </li>
+                    
+                        <li>
+                            <a class='nav-category flat-box nav flat-box' href='/categories/itauto'><i class='fa fa-rss fa-fw'></i>&nbsp;运维自动化</a>
+                        </li>
+                    
+                        <li>
+                            <a class='nav-archives flat-box nav flat-box' href='/archives'><i class='fa fa-archive fa-fw'></i>&nbsp;归档</a>
+                        </li>
+                    
+             
+            </ul>
+		</nav>
+	</aside>
+
+    <script>setLoadingBarProgress(40);</script>
+    <div class="l_body">
+    <div class='container clearfix'>
+        <div class='l_main'>
+            <article id="post-inode和软链接" class="post white-box article-type-post" itemscope itemprop="blogPost">
+    <section class='meta'>
+        <h1 class="title">
+            
+                inode和软链接
+            
+        </h1>
+        <time>
+            2018-09-26&nbsp;&nbsp;
+            <i class="fa fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+        </time>
+        
+    
+    <div class='cats'>
+        <a href="/categories/linux/">linux</a>
+    </div>
+
+
+    </section>
+
+    <section class="article typo">
+
+        <div class="article-entry" itemprop="articleBody">
+            <h2 id="inode介绍"><a href="#inode介绍" class="headerlink" title="inode介绍"></a>inode介绍</h2><p>inode（index node）表：用于存放磁盘上文件的元数据信息。</p>
+<p>文件的元数据信息包括如下几个部分：<a id="more"></a></p>
+<ul>
+<li>文件类型，权限，UID，GID</li>
+<li>链接数（指向这个文件名路径名称个数）</li>
+<li>该文件的大小和不同的时间戳</li>
+<li>数据块指针：指向磁盘上文件的真正数据的磁盘块block</li>
+<li>有关文件的其他数据</li>
+</ul>
+<p>系统通过inode表中的指针寻找文件的数据，而管理员通过文件名引用</p>
+<p><img src="http://i1.bvimg.com/662847/b49b431db820910f.png" alt="Markdown"></p>
+<p><img src="http://i1.bvimg.com/662847/6178bc9f18de3331.png" alt="Markdown"></p>
+<h3 id="cp和inode的关系："><a href="#cp和inode的关系：" class="headerlink" title="cp和inode的关系："></a>cp和inode的关系：</h3><p>cp命令做的事情实际上就是分配一个空闲的inode号，然后在inode表中生成一个新条目，然后在目录中创建一个目录项，然后将名称与inode编号关联，最后拷贝数据生成新的文件</p>
+<h3 id="rm和inode的关系："><a href="#rm和inode的关系：" class="headerlink" title="rm和inode的关系："></a>rm和inode的关系：</h3><p>删除文件时，实际上是释放文件的inode号，文件的block数据实际上并不会马上被删除，直到有另一个文件使用该block时才会删除。</p>
+<h3 id="mv和inode的关系："><a href="#mv和inode的关系：" class="headerlink" title="mv和inode的关系："></a>mv和inode的关系：</h3><p>mv和inode的关系：如果mv的目标文件和源文件在同一个分区内，那么move后的文件的inode号并不会改变，因为该文件实际的block位置并没有改变。但是如果目标和源在一个不同的分区中， 那么mv就相当于cp和rm了，mv后的文件的inode号将会被改变，因为文件的block变了。</p>
+<table>
+<thead>
+<tr>
+<th>ls -i</th>
+<th>显示文件的inode节点号，每个分区的inode节点编号都是独立分配的。因此不同分区中的文件的inode值可能会一样。</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>df -i</td>
+<td>显示每个分区的inode编号最大值，在同一分区mv文件，文件的inode值不变，inode值不变也就意味着磁盘块不变。因此同一分区移动文件特别快</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">[root@CentOS6 ~ ]#ll -i</span><br><span class="line">total 108</span><br><span class="line">2752725 -rw-------. 1 root root  1445 Sep 19  2018 anaconda-ks.cfg</span><br><span class="line">2752533 drwxr-xr-x. 2 root root  4096 Sep 14  2018 Desktop</span><br><span class="line">2752537 drwxr-xr-x. 2 root root  4096 Sep 14  2018 Documents</span><br><span class="line">2752534 drwxr-xr-x. 2 root root  4096 Sep 14  2018 Downloads</span><br><span class="line">2752514 -rw-r--r--. 1 root root 50968 Jul 18  2018 install.log</span><br><span class="line">2752515 -rw-r--r--. 1 root root 11698 Jul 18  2018 install.log.syslog</span><br><span class="line">2752724 -rw-r--r--. 1 root root  1445 Sep 19  2018 ks6.cfg</span><br><span class="line">2752538 drwxr-xr-x. 2 root root  4096 Sep 14  2018 Music</span><br><span class="line">2752539 drwxr-xr-x. 2 root root  4096 Sep 14  2018 Pictures</span><br><span class="line">2752536 drwxr-xr-x. 2 root root  4096 Sep 14  2018 Public</span><br><span class="line">2752535 drwxr-xr-x. 2 root root  4096 Sep 14  2018 Templates</span><br><span class="line">2752540 drwxr-xr-x. 2 root root  4096 Sep 14  2018 Videos</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[root@CentOS6 ~ ]#df -i</span><br><span class="line">Filesystem      Inodes  IUsed   IFree IUse% Mounted on</span><br><span class="line">/dev/sda2      3203072 104733 3098339    4% /</span><br><span class="line">tmpfs           125377      4  125373    1% /dev/shm</span><br><span class="line">/dev/sda1        65536     38   65498    1% /boot</span><br><span class="line">/dev/sda3      1921360     15 1921345    1% /data</span><br><span class="line">/dev/sr0             0      0       0     - /media/CentOS_6.10_Final</span><br></pre></td></tr></table></figure>
+<h2 id="硬链接和软链接"><a href="#硬链接和软链接" class="headerlink" title="硬链接和软链接"></a>硬链接和软链接</h2><h3 id="硬链接"><a href="#硬链接" class="headerlink" title="硬链接"></a>硬链接</h3><ul>
+<li><p>本质上是同一个文件，相当于起一个别名；</p>
+</li>
+<li><p>inode号相同；</p>
+</li>
+<li><p>创建时硬链接数递增</p>
+</li>
+<li><p>删除文件：</p>
+<ul>
+<li>硬链接数递减</li>
+<li>文件要存在，至少有一个链接数；</li>
+<li>当硬链接数为0时，该文件被删除；</li>
+<li>删除原文件后，依然可以通过硬链接访问；</li>
+</ul>
+</li>
+<li><p>不能跨越驱动器或分区</p>
+</li>
+<li><p>不能针对目录创建</p>
+</li>
+<li><p>语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln  filename  [linkname]</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="符号（软）链接"><a href="#符号（软）链接" class="headerlink" title="符号（软）链接"></a>符号（软）链接</h3><ul>
+<li><p>不同文件，想当于创建一个快捷方式；</p>
+</li>
+<li><p>一个符号链接的内容是它引用的源文件的内容；</p>
+</li>
+<li><p>inode节点号不同；</p>
+</li>
+<li><p>创建后硬链接数不增长；</p>
+</li>
+<li><p>可以对目录创建；</p>
+</li>
+<li><p>可以跨分区；</p>
+</li>
+<li><p>删除源文件后，软链接失效；</p>
+</li>
+<li><p>语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln  -s  filename  [linkname]</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="readlink命令"><a href="#readlink命令" class="headerlink" title="readlink命令"></a>readlink命令</h3><p>功能：读取软链接指向的真实路径<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">[root@centos7 / ]#ll</span><br><span class="line">total 32</span><br><span class="line">lrwxrwxrwx.   1 root root     7 Jul 18 17:25 bin -&gt; usr/bin</span><br><span class="line">dr-xr-xr-x.   5 root root  4096 Jul 18 17:44 boot</span><br><span class="line">drwxr-xr-x.   3 root root    22 Sep 21 15:48 data</span><br><span class="line">drwxr-xr-x   19 root root  3300 Sep 21 11:08 dev</span><br><span class="line">drwxr-xr-x. 138 root root 12288 Sep 21 14:05 etc</span><br><span class="line">drwxr-xr-x.   3 root root    17 Jul 18 17:43 home</span><br><span class="line">lrwxrwxrwx.   1 root root     7 Jul 18 17:25 lib -&gt; usr/lib</span><br><span class="line">lrwxrwxrwx.   1 root root     9 Jul 18 17:25 lib64 -&gt; usr/lib64</span><br><span class="line">drwxr-xr-x.   2 root root     6 Apr 11 12:59 media</span><br><span class="line">drwxr-xr-x.   2 root root     6 Apr 11 12:59 mnt</span><br><span class="line">drwxr-xr-x.   3 root root    16 Jul 18 17:35 opt</span><br><span class="line">dr-xr-xr-x  223 root root     0 Sep 21 11:07 proc</span><br><span class="line">dr-xr-x---.  17 root root  4096 Sep 21 15:48 root</span><br><span class="line">drwxr-xr-x   40 root root  1260 Sep 21 20:01 run</span><br><span class="line">lrwxrwxrwx.   1 root root     8 Jul 18 17:25 sbin -&gt; usr/sbin</span><br><span class="line">drwxr-xr-x.   2 root root     6 Apr 11 12:59 srv</span><br><span class="line">dr-xr-xr-x   13 root root     0 Sep 21 11:07 sys</span><br><span class="line">drwxrwxrwt.  14 root root  4096 Sep 21 16:11 tmp</span><br><span class="line">drwxr-xr-x.  13 root root   155 Jul 18 17:25 usr</span><br><span class="line">drwxr-xr-x.  21 root root  4096 Sep 20 20:42 var</span><br><span class="line">[root@centos7 / ]#readlink bin</span><br><span class="line">usr/bin</span><br><span class="line">[root@centos7 / ]#readlink lib</span><br><span class="line">usr/lib</span><br></pre></td></tr></table></figure></p>
+<h3 id="如何查找一个文件的硬链接文件？"><a href="#如何查找一个文件的硬链接文件？" class="headerlink" title="如何查找一个文件的硬链接文件？"></a>如何查找一个文件的硬链接文件？</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@centos7 data ]#ln f1 f4</span><br><span class="line">[root@centos7 data ]#ll f1</span><br><span class="line">-rw-r--r-- 2 root root 0 Sep 21 20:18 f1</span><br><span class="line">[root@centos7 data ]#find -samefile f1</span><br><span class="line">./f1</span><br><span class="line">./f4</span><br></pre></td></tr></table></figure>
+        </div>
+
+        
+            <div class="article-tags tags">
+                
+                    <a href="/tags/linux/"><i class="fa fa-tag fa-fw" aria-hidden="true"></i>&nbsp;linux</a>
+                
+            </div>
+        
+
+        
+            <div class="prev-next">
+                
+                    <section class="prev" >
+                        <span class="art-item-left">
+                            <h6><i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;上一篇</h6>
+                            <h4>
+                                <a href="/2018/09/26/I-O重定向/" rel="prev" title="I/O重定向">
+                                  
+                                      I/O重定向
+                                  
+                                </a>
+                            </h4>
+                            
+                                <h6 class="tags">
+                                    
+                                        <i class="fa fa-tag fa-fw"></i>linux
+                                    
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+                
+                    <section class="next">
+                        <span class="art-item-right" aria-hidden="true">
+                            <h6>下一篇&nbsp;<i class="fa fa-chevron-right" aria-hidden="true"></i></h6>
+                            <h4>
+                                <a href="/2018/09/26/文件类型和相关命令/" rel="prev" title="文件类型和相关命令">
+                                    
+                                        文件类型和相关命令
+                                    
+                                </a>
+                            </h4>
+                            
+                                <h6 class="tags">
+                                    
+                                        <i class="fa fa-tag fa-fw"></i>linux
+                                    
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+            </div>
+        
+
+    </section>
+
+</article>
+
+<br>
+
+<!-- 显示推荐文章和评论 -->
+
+
+<script>
+    window.subData = {
+        title: 'inode和软链接',
+        tools: true
+    }
+</script>
+
+
+        </div>
+        <aside class='l_side'>
+            
+    
+        
+    <section class='m_widget author'>
+        
+        <div class='content'>
+            
+                <h2>xin</h2>
+            
+            
+                <div>
+                    <i class="fa fa-quote-left fa-3x fa-pull-left" aria-hidden="true"></i>
+                    喜欢就去追啊，反正也追不到
+                </div>
+            
+        </div>
+        
+            <div class="social-wrapper">
+              
+                
+                    <a href="mailto:me@xaoxuu.com" class="social flat-box" target="_blank" rel="external"><i class="social fa fa-envelope" aria-hidden="true"></i></a>
+                
+              
+                
+                    <a href="https://github.com/xaoxuu" class="social flat-box" target="_blank" rel="external"><i class="social fa fa-github" aria-hidden="true"></i></a>
+                
+              
+            </div>
+        
+    </section>
+
+
+    
+    
+    
+        
+    <section class='m_widget tagcloud'>
+        <div class="header"><i class="fa fa-tags fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;标签</div>
+        <div class='content'>
+            <a href="/tags/linux/" style="font-size: 24px; color: #555">linux</a> <a href="/tags/shell-test/" style="font-size: 14px; color: #999">shell test</a>
+        </div>
+    </section>
+
+
+    
+    
+        <section class='m_widget music'>
+    <div class='header'><i class="fa fa-headphones fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;音乐</div>
+    <div class='content'>
+        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=100% height=450 src="//music.163.com/outchain/player?type=0&id=746319661&auto=0&height=450"></iframe>
+    </div>
+</section>
+
+    
+    
+        <section class='m_widget links'>
+    <div class='header'><i class="fa fa-handshake-o fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;友链</div>
+    <div class='content'>
+        <ul class="entry" id="links">
+            
+                <li><a class="flat-box" target="_blank" rel="external nofollow noopener noreferrer" href="https://xaoxuu.com">
+                    <div class='name'>
+                        <i class="fa fa-user-circle-o fa-fw" aria-hidden="true"></i>
+                        &nbsp;&nbsp;xaoxuu
+                    </div>
+                </a></li>
+            
+            
+
+        </ul>
+
+    </div>
+</section>
+
+    
+    
+        
+    <section class='m_widget toc-wrapper'>
+        <div class="header"><i class="fa fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;目录</div>
+        <div class='content'>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#inode介绍"><span class="toc-text">inode介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#cp和inode的关系："><span class="toc-text">cp和inode的关系：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#rm和inode的关系："><span class="toc-text">rm和inode的关系：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mv和inode的关系："><span class="toc-text">mv和inode的关系：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#硬链接和软链接"><span class="toc-text">硬链接和软链接</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#硬链接"><span class="toc-text">硬链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#符号（软）链接"><span class="toc-text">符号（软）链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#readlink命令"><span class="toc-text">readlink命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#如何查找一个文件的硬链接文件？"><span class="toc-text">如何查找一个文件的硬链接文件？</span></a></li></ol></li></ol>
+        </div>
+    </section>
+
+
+    
+
+
+        </aside>
+        <script>setLoadingBarProgress(60);</script>
+    </div>
+    </div>
+    <footer id="footer" class="clearfix">
+    
+        <div class="social-wrapper">
+          
+              
+                  <a href="mailto:me@xaoxuu.com" class="social fa fa-envelope flat-box" target="_blank" rel="external"></a>
+              
+          
+              
+                  <a href="https://github.com/xaoxuu" class="social fa fa-github flat-box" target="_blank" rel="external"></a>
+              
+          
+        </div>
+    
+    <br>
+    <div>博客内容遵循 <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="licenses">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></div>
+    <div>本站使用 <a href="https://github.com/xaoxuu/hexo-theme-material-x" target="_blank" class="codename">Material X</a> 作为主题，
+		总访问量为 <span id="busuanzi_value_site_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span> 次。
+    </div>
+</footer>
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+    <script>setLoadingBarProgress(80);</script>
+    <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src='//cdn.bootcss.com/node-waves/0.7.5/waves.min.js'></script>
+<script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script>
+<!-- 访问统计 -->
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<script src="/js/jquery.fitvids.js"></script>
+
+    <script>
+        var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+        var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+        var ALGOLIA_API_KEY = "";
+        var ALGOLIA_APP_ID = "";
+        var ALGOLIA_INDEX_NAME = "";
+        var AZURE_SERVICE_NAME = "";
+        var AZURE_INDEX_NAME = "";
+        var AZURE_QUERY_KEY = "";
+        var BAIDU_API_ID = "";
+        var SEARCH_SERVICE = "hexo" || "hexo";
+        var ROOT = "/"||"/";
+        if(!ROOT.endsWith('/'))ROOT += '/';
+    </script>
+
+<script src="/js/search.js"></script>
+<script src="/js/app.js"></script>
+
+
+    
+    
+    
+
+
+    <script>setLoadingBarProgress(100);</script>
+</body>

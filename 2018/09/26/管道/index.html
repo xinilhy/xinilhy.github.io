@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>xin&#39;s Blog</title>
+  <title>管道 | xin&#39;s Blog</title>
   <meta name="description" content="专注于linux运维" />
   <meta name="keywords" content="" />
   <meta name="HandheldFriendly" content="True" />
@@ -154,29 +154,94 @@
     <div class="l_body">
     <div class='container clearfix'>
         <div class='l_main'>
-            <article id="tags-" class="post white-box article-type-tags" itemscope itemprop="blogPost">
+            <article id="post-管道" class="post white-box article-type-post" itemscope itemprop="blogPost">
     <section class='meta'>
         <h1 class="title">
             
-                2017-02-24
+                管道
             
         </h1>
         <time>
-            2017-02-24&nbsp;&nbsp;
+            2018-09-26&nbsp;&nbsp;
             <i class="fa fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
         </time>
         
+    
+    <div class='cats'>
+        <a href="/categories/linux/">linux</a>
+    </div>
+
 
     </section>
 
     <section class="article typo">
 
         <div class="article-entry" itemprop="articleBody">
-            
+            <h2 id="管道：用符号”-”表示"><a href="#管道：用符号”-”表示" class="headerlink" title="管道：用符号”|”表示"></a>管道：用符号”|”表示</h2><p>功能：用来连接命令，即把前一个命令的标准输出作为下一个命令的处理对象</p>
+<blockquote>
+<p>注意：管道只处理标准输出，对于错误输出不进行处理，而显示在终端。<a id="more"></a></p>
+</blockquote>
+<p>格式：命令1 | 命令2 | 命令3 | …</p>
+<p>示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">## 只有标准输出会转换；</span><br><span class="line">[xin@centos7 ~ ]$ls /boot/ /error |tr &apos;a-z&apos; &apos;A-Z&apos;</span><br><span class="line">ls: cannot access /error: No such file or directory</span><br><span class="line">/BOOT/:</span><br><span class="line">CONFIG-3.10.0-862.EL7.X86_64</span><br><span class="line">EFI</span><br><span class="line">GRUB</span><br><span class="line">GRUB2</span><br><span class="line">INITRAMFS-0-RESCUE-EABA35925CD4470A8EA2B81643FD49A2.IMG</span><br><span class="line">INITRAMFS-3.10.0-862.EL7.X86_64.IMG</span><br><span class="line">SYMVERS-3.10.0-862.EL7.X86_64.GZ</span><br><span class="line">SYSTEM.MAP-3.10.0-862.EL7.X86_64</span><br><span class="line">VMLINUZ-0-RESCUE-EABA35925CD4470A8EA2B81643FD49A2</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## 计算1+2</span><br><span class="line">[root@centos7 data ]#echo 1+2|bc</span><br><span class="line">3</span><br><span class="line">## 计算1+2+3+..100的和</span><br><span class="line">方法1：输出1..100的值，然后tr替换空格为+，然后通过管道给bc</span><br><span class="line">[root@centos7 data ]#echo &#123;1..100&#125;|tr &apos; &apos; &apos;+&apos;|bc</span><br><span class="line">5050</span><br><span class="line">方法2：seq命令，-s指定分隔符</span><br><span class="line">[root@centos7 data ]#seq -s + 100|bc</span><br><span class="line">5050</span><br></pre></td></tr></table></figure>
+<p>错误输出默认不能通过管道进行处理，那么有没有什么办法可以处理呢？可以结合2&gt;&amp;1(将错误输出重定向到标准输出，相当于将错误的洗白)实现；</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[root@centos7 data ]#ls /error |tr &apos;a-z&apos; &quot;A-Z&quot;</span><br><span class="line">ls: cannot access /error: No such file or directory</span><br><span class="line">## 测试将错误的输出进行洗白</span><br><span class="line">[root@centos7 data ]#ls /error 2&gt;&amp;1 |tr &apos;a-z&apos; &quot;A-Z&quot;</span><br><span class="line">LS: CANNOT ACCESS /ERROR: NO SUCH FILE OR DIRECTORY</span><br><span class="line">ok，成功实现；</span><br><span class="line"></span><br><span class="line">##其实，还有另外一种方法可以实现，只不过是一项新功能，对于一些系统可能无法实现；</span><br><span class="line">## 测试使用|&amp;进行洗白</span><br><span class="line">[root@centos7 data ]#ls /error |&amp; tr &apos;a-z&apos; &quot;A-Z&quot;</span><br><span class="line">LS: CANNOT ACCESS /ERROR: NO SUCH FILE OR DIRECTORY</span><br></pre></td></tr></table></figure>
+
         </div>
 
         
+            <div class="article-tags tags">
+                
+                    <a href="/tags/linux/"><i class="fa fa-tag fa-fw" aria-hidden="true"></i>&nbsp;linux</a>
+                
+            </div>
+        
 
+        
+            <div class="prev-next">
+                
+                    <section class="prev" >
+                        <span class="art-item-left">
+                            <h6><i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;上一篇</h6>
+                            <h4>
+                                <a href="/2018/09/26/用户和组管理/" rel="prev" title="用户和组管理">
+                                  
+                                      用户和组管理
+                                  
+                                </a>
+                            </h4>
+                            
+                                <h6 class="tags">
+                                    
+                                        <i class="fa fa-tag fa-fw"></i>linux
+                                    
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+                
+                    <section class="next">
+                        <span class="art-item-right" aria-hidden="true">
+                            <h6>下一篇&nbsp;<i class="fa fa-chevron-right" aria-hidden="true"></i></h6>
+                            <h4>
+                                <a href="/2018/09/26/I-O重定向/" rel="prev" title="I/O重定向">
+                                    
+                                        I/O重定向
+                                    
+                                </a>
+                            </h4>
+                            
+                                <h6 class="tags">
+                                    
+                                        <i class="fa fa-tag fa-fw"></i>linux
+                                    
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+            </div>
         
 
     </section>
@@ -190,10 +255,11 @@
 
 <script>
     window.subData = {
-        title: '',
+        title: '管道',
         tools: true
     }
 </script>
+
 
         </div>
         <aside class='l_side'>
@@ -274,6 +340,13 @@
     
     
         
+    <section class='m_widget toc-wrapper'>
+        <div class="header"><i class="fa fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;目录</div>
+        <div class='content'>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#管道：用符号”-”表示"><span class="toc-text">管道：用符号”|”表示</span></a></li></ol>
+        </div>
+    </section>
+
 
     
 

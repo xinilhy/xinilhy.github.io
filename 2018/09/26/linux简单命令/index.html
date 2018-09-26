@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>linux简单命令 | xin&#39;s Blog</title>
+  <meta name="description" content="专注于linux运维" />
+  <meta name="keywords" content="" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" href="/">
+  <link rel="alternate" href="/atom.xml" title="xin's Blog">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <link rel="shortcut icon" href="" />
+  <link rel="icon" href="" />
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+  <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href='//cdn.bootcss.com/node-waves/0.7.5/waves.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="/style.css">
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+</head>
+
+<body>
+    <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+
+
+    <script>setLoadingBarProgress(20)</script>
+    <header class="l_header">
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+			<a class="logo flat-box" href='/' >
+				<!-- <i class="fa fa-home"></i> -->
+				xin's Blog
+			</a>
+
+				<div class='menu'>
+					<ul class='h-list'>
+                        
+    						
+    							<li>
+    								<a class='nav-about flat-box' href='/'>
+    									<i class='fa fa-home fa-'></i>&nbsp;主页
+    								</a>
+    							</li>
+    						
+    							<li>
+    								<a class='nav-category flat-box' href='/categories/shell/'>
+    									<i class='fa fa-cube fa-'></i>&nbsp;shell编程
+    								</a>
+    							</li>
+    						
+    							<li>
+    								<a class='nav-category flat-box' href='/categories/linux'>
+    									<i class='fa fa-rss fa-'></i>&nbsp;Linux基础
+    								</a>
+    							</li>
+    						
+    							<li>
+    								<a class='nav-category flat-box' href='/categories/linuxservice'>
+    									<i class='fa fa-rss fa-'></i>&nbsp;Linux服务
+    								</a>
+    							</li>
+    						
+    							<li>
+    								<a class='nav-category flat-box' href='/categories/itauto'>
+    									<i class='fa fa-rss fa-'></i>&nbsp;运维自动化
+    								</a>
+    							</li>
+    						
+    							<li>
+    								<a class='nav-archives flat-box' href='/archives'>
+    									<i class='fa fa-archive fa-'></i>&nbsp;归档
+    								</a>
+    							</li>
+    						
+        			 
+					</ul>
+					<div class='underline'></div>
+				</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search" />
+						<span class="icon"><i class="fa fa-search fa-fw"></i></span>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a class="fa fa-search fa-fw" href='javascript:void(0)'></span></a></li>
+				
+				<li class='s-menu'><a class="fa fa-navicon fa-fw" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo" class="flat-box" href='javascript:void(0)'>
+				xaoxuu
+			</a>
+
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a class="fa fa-comments fa-fw flat-box" href='javascript:void(0)'></a></li>
+				<li class='s-top'><a class="fa fa-arrow-up fa-fw flat-box" href='javascript:void(0)'></a></li>
+				<li class='s-toc'><a class="fa fa-list-ul fa-fw flat-box" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+        <div class="header">xin&#39;s Blog</div>
+		<nav>
+            <ul>
+                
+                    
+                        <li>
+                            <a class='nav-about flat-box nav flat-box' href='/'><i class='fa fa-home fa-fw'></i>&nbsp;主页</a>
+                        </li>
+                    
+                        <li>
+                            <a class='nav-category flat-box nav flat-box' href='/categories/shell/'><i class='fa fa-cube fa-fw'></i>&nbsp;shell编程</a>
+                        </li>
+                    
+                        <li>
+                            <a class='nav-category flat-box nav flat-box' href='/categories/linux'><i class='fa fa-rss fa-fw'></i>&nbsp;Linux基础</a>
+                        </li>
+                    
+                        <li>
+                            <a class='nav-category flat-box nav flat-box' href='/categories/linuxservice'><i class='fa fa-rss fa-fw'></i>&nbsp;Linux服务</a>
+                        </li>
+                    
+                        <li>
+                            <a class='nav-category flat-box nav flat-box' href='/categories/itauto'><i class='fa fa-rss fa-fw'></i>&nbsp;运维自动化</a>
+                        </li>
+                    
+                        <li>
+                            <a class='nav-archives flat-box nav flat-box' href='/archives'><i class='fa fa-archive fa-fw'></i>&nbsp;归档</a>
+                        </li>
+                    
+             
+            </ul>
+		</nav>
+	</aside>
+
+    <script>setLoadingBarProgress(40);</script>
+    <div class="l_body">
+    <div class='container clearfix'>
+        <div class='l_main'>
+            <article id="post-linux简单命令" class="post white-box article-type-post" itemscope itemprop="blogPost">
+    <section class='meta'>
+        <h1 class="title">
+            
+                linux简单命令
+            
+        </h1>
+        <time>
+            2018-09-26&nbsp;&nbsp;
+            <i class="fa fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+        </time>
+        
+    
+    <div class='cats'>
+        <a href="/categories/linux/">linux</a>
+    </div>
+
+
+    </section>
+
+    <section class="article typo">
+
+        <div class="article-entry" itemprop="articleBody">
+            <h2 id="linux终端"><a href="#linux终端" class="headerlink" title="linux终端"></a>linux终端</h2><p>设备终端：</p>
+<p>物理终端</p>
+<p>虚拟终端<a id="more"></a></p>
+<p>图形终端</p>
+<p>伪终端</p>
+<h2 id="什么是shell？"><a href="#什么是shell？" class="headerlink" title="什么是shell？"></a>什么是shell？</h2><p>Shell 是Linux系统的用户界面，提供了用户与内核进行交互操作的一种接口。 它接收用户输入的命令并把它送入内核去执行 。</p>
+<p>shell也是一种高级程序设计语言。</p>
+<h3 id="查看系统默认shell？"><a href="#查看系统默认shell？" class="headerlink" title="查看系统默认shell？"></a>查看系统默认shell？</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@centos7 data ]#echo $SHELL</span><br><span class="line">/bin/bash</span><br></pre></td></tr></table></figure>
+<h3 id="查看系统支持的所有shell？"><a href="#查看系统支持的所有shell？" class="headerlink" title="查看系统支持的所有shell？"></a>查看系统支持的所有shell？</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@centos7 data ]#cat /etc/shells</span><br><span class="line">/bin/sh</span><br><span class="line">/bin/bash</span><br><span class="line">/sbin/nologin</span><br><span class="line">/usr/bin/sh</span><br><span class="line">/usr/bin/bash</span><br><span class="line">/usr/sbin/nologin</span><br><span class="line">/bin/tcsh</span><br><span class="line">/bin/csh</span><br></pre></td></tr></table></figure>
+<h2 id="命令提示符"><a href="#命令提示符" class="headerlink" title="命令提示符"></a>命令提示符</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@centos7 data ]#</span><br><span class="line">其中，#为管理员；$为普通用户；</span><br></pre></td></tr></table></figure>
+<h3 id="查看提示符格式："><a href="#查看提示符格式：" class="headerlink" title="查看提示符格式："></a>查看提示符格式：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@centos7 data ]#echo $PS1</span><br><span class="line">\[\e[1;42;37m\][\u@\h \W ]\$\[\e[0m\]</span><br></pre></td></tr></table></figure>
+<h3 id="修改提示符格式："><a href="#修改提示符格式：" class="headerlink" title="修改提示符格式："></a>修改提示符格式：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">PS1=&quot;\[\e[1;5;41;33m\][\u@\h \W]\\$\[\e[0m\]&quot; </span><br><span class="line">\e \033 </span><br><span class="line">\u 当前用户 </span><br><span class="line">\h 主机名简称 </span><br><span class="line">\H 主机名 </span><br><span class="line">\w 当前工作目录 </span><br><span class="line">\W 当前工作目录基名 </span><br><span class="line">\t  24小时时间格式 </span><br><span class="line">\T  12小时时间格式 </span><br><span class="line">\! 命令历史数 </span><br><span class="line">\# 开机后命令历史数</span><br></pre></td></tr></table></figure>
+<h3 id="颜色配置：字体颜色和背景颜色"><a href="#颜色配置：字体颜色和背景颜色" class="headerlink" title="颜色配置：字体颜色和背景颜色"></a>颜色配置：字体颜色和背景颜色</h3><p>格式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">\e[F;Bm  \e[0m			</span><br><span class="line">## \e等同于\033,尾部以&apos;\e[0m&apos;关闭颜色输出</span><br><span class="line">##F是背景颜色，B是字体颜色</span><br><span class="line">F B</span><br><span class="line">30 40 黑色</span><br><span class="line">31 41 红色</span><br><span class="line">32 42 绿色</span><br><span class="line">33 43 黄色 </span><br><span class="line">34 44 蓝色</span><br><span class="line">35 45 紫红色</span><br><span class="line">36 46 青蓝色</span><br><span class="line">37 47 白色</span><br><span class="line">另外：1表示高亮显示；5表示闪烁</span><br></pre></td></tr></table></figure>
+<p>示例：</p>
+<p><img src="http://i1.bvimg.com/662847/512f365268b692f1.png" alt="Markdown"></p>
+<p><img src="http://i1.bvimg.com/662847/5b066a261e9c674c.png" alt="Markdown"></p>
+<blockquote>
+<p>查看帮助：man  bash——————/PROMPTING</p>
+</blockquote>
+<h2 id="linux命令介绍"><a href="#linux命令介绍" class="headerlink" title="linux命令介绍"></a>linux命令介绍</h2><h3 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h3><h4 id="内部命令"><a href="#内部命令" class="headerlink" title="内部命令"></a>内部命令</h4><p>shell集成的，当用户登录时，根据/etc/passwd进行加载shell，并把命令加载到内存中。</p>
+<p>查看:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">help</span><br><span class="line">enable</span><br></pre></td></tr></table></figure>
+<h4 id="外部命令"><a href="#外部命令" class="headerlink" title="外部命令"></a>外部命令</h4><p>在文件系统路径下有对应的可执行程序文件 </p>
+<p>查看：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">which  -a |--skip-alias ;  whereis</span><br></pre></td></tr></table></figure>
+<h4 id="判断内部或外部命令"><a href="#判断内部或外部命令" class="headerlink" title="判断内部或外部命令"></a>判断内部或外部命令</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">type  -a command</span><br></pre></td></tr></table></figure>
+<p>### </p>
+<h3 id="hash缓存表"><a href="#hash缓存表" class="headerlink" title="hash缓存表"></a>hash缓存表</h3><p>系统初始hash表为空，当外部命令执行时，默认会从PATH路径下寻找该命 令，找到后会将这条命令的路径记录到hash表中，当再次使用该命令时，shell解 释器首先会查看hash表，存在将执行之，如果不存在，将会去PATH路径下寻找。 利用hash缓存表可大大提高命令的调用速率 </p>
+<h4 id="hash常见用法"><a href="#hash常见用法" class="headerlink" title="hash常见用法"></a>hash常见用法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">## 显示hash缓存</span><br><span class="line">hash  -l</span><br><span class="line"></span><br><span class="line">## 清除name缓存</span><br><span class="line">hash  -d  name</span><br><span class="line"></span><br><span class="line">## 清除所有缓存</span><br><span class="line">hash -r</span><br></pre></td></tr></table></figure>
+<h3 id="命令别名"><a href="#命令别名" class="headerlink" title="命令别名"></a>命令别名</h3><h4 id="显示当前shell进程所有可用的命令别名"><a href="#显示当前shell进程所有可用的命令别名" class="headerlink" title="显示当前shell进程所有可用的命令别名"></a>显示当前shell进程所有可用的命令别名</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alias</span><br></pre></td></tr></table></figure>
+<h4 id="定义别名"><a href="#定义别名" class="headerlink" title="定义别名"></a>定义别名</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alias NAME=&apos;VALUE&apos;</span><br></pre></td></tr></table></figure>
+<p>注意：在命令行中定义的别名，仅对当前shell进程有效 </p>
+<h4 id="永久保存："><a href="#永久保存：" class="headerlink" title="永久保存："></a>永久保存：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">只有写入配置文件才能永久保存</span><br><span class="line">仅对当前用户：~/.bashrc </span><br><span class="line">对所有用户有效：/etc/bashrc</span><br><span class="line"></span><br><span class="line">默认写入文件后，不会立即生效，需要bash进程重新读取配置文件</span><br><span class="line">source /path/to/config_file</span><br><span class="line">.  /path/to/config_file</span><br></pre></td></tr></table></figure>
+<h4 id="撤销别名"><a href="#撤销别名" class="headerlink" title="撤销别名"></a>撤销别名</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">unalias [-a]  name</span><br><span class="line">-a:取消所有别名</span><br></pre></td></tr></table></figure>
+<h4 id="如何执行原命令"><a href="#如何执行原命令" class="headerlink" title="如何执行原命令"></a>如何执行原命令</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">\command</span><br><span class="line">&quot;command&quot;</span><br><span class="line">&apos;command&apos;</span><br><span class="line"></span><br><span class="line">##如果是外部命令，还可以使用绝对路径执行</span><br><span class="line">/path/command</span><br></pre></td></tr></table></figure>
+<h2 id="命令格式"><a href="#命令格式" class="headerlink" title="命令格式"></a>命令格式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">COMMAND [OPTIONS...] [ARGUMENTS...]</span><br></pre></td></tr></table></figure>
+<p>选项：实现特定的功能</p>
+<p>​    短选项：-c，例如：-h，-l</p>
+<p>​    长选项：–word 例如：–all, –human-readable </p>
+<p>参数：命令的作用对象，比如文件名，用户名等 </p>
+<h4 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h4><ul>
+<li>多个选项以及多参数和命令之间使用空白字符分隔 </li>
+<li>取消和结束命令执行：Ctrl+c，Ctrl+d </li>
+<li>多个命令可以用;符号分开</li>
+<li>一个命令可以用\分成多行</li>
+</ul>
+<h2 id="日期和时间"><a href="#日期和时间" class="headerlink" title="日期和时间"></a>日期和时间</h2><h3 id="linux的两种时钟"><a href="#linux的两种时钟" class="headerlink" title="linux的两种时钟"></a>linux的两种时钟</h3><p>​    系统时钟：由Linux内核通过CPU的工作频率进行的 </p>
+<p>​    硬件时钟：主板 </p>
+<p>命令：</p>
+<p>​    查看或设置系统时间：date</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">## 显示CST时间</span><br><span class="line">[root@centos7 data ]#date</span><br><span class="line">Fri Sep 21 16:45:17 CST 2018</span><br><span class="line">## 显示utc时间</span><br><span class="line">[root@CentOS6 ~ ]#date --utc</span><br><span class="line">Fri Sep 21 08:26:24 UTC 2018</span><br><span class="line">## 以年、月、date +%F：</span><br><span class="line">date +%Y-%m-%d或者date +%F</span><br><span class="line">## 以时、分、秒格式显示：</span><br><span class="line">date +%H:%M:%S或 date  +%T</span><br><span class="line">## 计算当前时间到1970-1-1（unix的诞生日）的秒</span><br><span class="line">date +%s</span><br><span class="line">## 转换为天数</span><br><span class="line">date  -d @+上面的秒</span><br><span class="line">## 显示昨天的时间</span><br><span class="line">date -d &apos;-1 day&apos;</span><br><span class="line">## 显示明天的时间</span><br><span class="line">date -d &apos;1 day&apos;</span><br><span class="line">## 支持：day、month、year</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">设置时间</span><br><span class="line">date -s &quot;2008-08-11 20:00:00&quot;</span><br></pre></td></tr></table></figure>
+<p>​    查看硬件时间：clock或hwclock</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@CentOS6 ~ ]#clock</span><br><span class="line">Fri 21 Sep 2018 05:28:57 PM CST  -0.125678 seconds</span><br><span class="line"></span><br><span class="line">选项：</span><br><span class="line">-s, --hctosys 设置系统时间，硬件时间覆盖系统时间。</span><br><span class="line">-w, --systohc 设置硬件时间，系统时间覆盖硬件时间。</span><br></pre></td></tr></table></figure>
+<h2 id="关机和重启命令"><a href="#关机和重启命令" class="headerlink" title="关机和重启命令"></a>关机和重启命令</h2><h3 id="关机：halt-poweroff"><a href="#关机：halt-poweroff" class="headerlink" title="关机：halt  poweroff"></a>关机：halt  poweroff</h3><h3 id="重启：reboot"><a href="#重启：reboot" class="headerlink" title="重启：reboot"></a>重启：reboot</h3><p>​    -f：强制，不调用shutdown</p>
+<p>​    -p：切断电源</p>
+<p>关机或重启：shutdown</p>
+<p>​    shutdown [OPTION]…  TIME [MESSAGE] </p>
+<p>​    -r: reboot </p>
+<p>​    -h: halt </p>
+<p>​    -c：cancel </p>
+<p>​    TIME:无指定，默认相当于 +1 </p>
+<p>​        now: 立刻,相当于+0 </p>
+<p>​        +m: 相对时间表示法，几分钟之后；例如 +3 </p>
+<p>​        hh:mm: 绝对时间表示，指明具体时间</p>
+<h2 id="screen命令"><a href="#screen命令" class="headerlink" title="screen命令"></a>screen命令</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">创建新screen会话 </span><br><span class="line">screen –S [SESSION] </span><br><span class="line">加入screen会话 </span><br><span class="line">screen –x [SESSION] </span><br><span class="line">退出并关闭screen会话</span><br><span class="line">exit </span><br><span class="line">剥离当前screen会话</span><br><span class="line">Ctrl+a,d </span><br><span class="line">显示所有已经打开的screen会话 </span><br><span class="line">screen -ls </span><br><span class="line">恢复某screen会话 </span><br><span class="line">screen -r [SESSION]</span><br></pre></td></tr></table></figure>
+<h2 id="echo命令"><a href="#echo命令" class="headerlink" title="echo命令"></a>echo命令</h2><h3 id="功能：显示字符"><a href="#功能：显示字符" class="headerlink" title="功能：显示字符"></a>功能：显示字符</h3><h3 id="语法：echo-neE-字符串"><a href="#语法：echo-neE-字符串" class="headerlink" title="语法：echo [-neE][字符串]"></a>语法：echo [-neE][字符串]</h3><p>说明：echo会将输入的字符串送往标准输出。输出的字符串间以空白字符隔开,并在最后加上换行号</p>
+<h3 id="选项："><a href="#选项：" class="headerlink" title="选项："></a>选项：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">-E （默认）不支持 \ 解释功能</span><br><span class="line"></span><br><span class="line">-n 不自动换行</span><br><span class="line"></span><br><span class="line"> -e 启用 \ 字符的解释功能</span><br><span class="line"></span><br><span class="line">显示变量:echo $变量名</span><br><span class="line"></span><br><span class="line">启用命令选项-e，若字符串中出现以下字符，则特别加以处理，而不会将它当成</span><br><span class="line"></span><br><span class="line">一般文字输出</span><br><span class="line"></span><br><span class="line">​      \a	alert (bell)————发出警告声</span><br><span class="line"></span><br><span class="line">​      \b	backspace————删除前一个字符</span><br><span class="line"></span><br><span class="line">​      \c	suppress further output——————最后不加上换行符号</span><br><span class="line"></span><br><span class="line">​      \e	escape character————————\033</span><br><span class="line"></span><br><span class="line">​      \f	form feed————————————换行但光标仍旧停留在原来的位置；</span><br><span class="line"></span><br><span class="line">​      \n	new line————————————换行且光标移至行首；</span><br><span class="line"></span><br><span class="line">​      \r	carriage return——————————光标移至行首，但不换行，即覆盖开始内容</span><br><span class="line"></span><br><span class="line">​      \t	horizontal tab——————————插入tab</span><br><span class="line"></span><br><span class="line">​      \v	vertical tab——————————	\v 与\f相同</span><br><span class="line"></span><br><span class="line">​      \\	backslash————————————插入一个“\”</span><br><span class="line"></span><br><span class="line">​      \0nnn  ，插入nnn（八进制）所代表的ASCII字符</span><br><span class="line"></span><br><span class="line">		echo -e &apos;\033[43;31;5mmagedu\033[0m&apos;</span><br><span class="line"></span><br><span class="line">​      \xHH	插入HH（十六进制）所代表的ASCII字符</span><br></pre></td></tr></table></figure>
+<h2 id="命令行扩展-或"><a href="#命令行扩展-或" class="headerlink" title="命令行扩展  $( ) 或 "></a>命令行扩展  $( ) 或 <code></code></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@CentOS6 ~ ]#echo &quot;This system&apos;s name is $(hostname)&quot; </span><br><span class="line">This system&apos;s name is CentOS6.10</span><br><span class="line">[root@CentOS6 ~ ]#echo &quot;i am `whoami` &quot;</span><br><span class="line">i am root</span><br></pre></td></tr></table></figure>
+<h2 id="括号扩展："><a href="#括号扩展：" class="headerlink" title="括号扩展：{}"></a>括号扩展：{}</h2><p>功能:打印重复 字符串的简化形式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[root@CentOS6 ~ ]#echo &#123;1..10&#125;</span><br><span class="line">1 2 3 4 5 6 7 8 9 10</span><br><span class="line">[root@CentOS6 ~ ]#echo &#123;1,3,5&#125;</span><br><span class="line">1 3 5</span><br><span class="line">[root@CentOS6 ~ ]#echo &#123;a..z&#125;</span><br><span class="line">a b c d e f g h i j k l m n o p q r s t u v w x y z</span><br><span class="line">[root@CentOS6 ~ ]#echo &#123;1..10..2&#125;</span><br><span class="line">1 3 5 7 9</span><br><span class="line">[root@CentOS6 ~ ]#echo file&#123;1,3,5&#125;</span><br><span class="line">file1 file3 file5</span><br><span class="line">[root@CentOS6 ~ ]#rm -f file&#123;1,3,5&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="命令行历史"><a href="#命令行历史" class="headerlink" title="命令行历史"></a>命令行历史</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">执行前一条命令（去除参数）：  !:0</span><br><span class="line">执行history命令输出对应序号n的命令： !n</span><br><span class="line">执行history历史中倒数第n个命令: !-n</span><br><span class="line">command !^ 利用上一个命令的第一个参数做cmd的参数</span><br><span class="line">command !$ 利用上一个命令的最后一个参数做cmd的参数</span><br><span class="line">command !* 利用上一个命令的全部参数做cmd的参数</span><br><span class="line">command !:n 利用上一个命令的第n个参数做cmd的参数</span><br></pre></td></tr></table></figure>
+<h3 id="history命令"><a href="#history命令" class="headerlink" title="history命令"></a>history命令</h3><p>语法:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">history [-c] [-d offset] [n]</span><br><span class="line">history -anrw [filename]</span><br><span class="line">history -ps arg [arg...]</span><br></pre></td></tr></table></figure>
+<p>选项：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">c: 清空命令历史</span><br><span class="line">-d offset: 删除历史中指定的第offset个命令</span><br><span class="line">n: 显示最近的n条历史</span><br><span class="line">-a: 追加本次会话新执行的命令历史列表至历史文件</span><br><span class="line">-r: 读历史文件附加到历史列表</span><br><span class="line">-w: 保存历史列表到指定的历史文件</span><br><span class="line">-n: 读历史文件中未读过的行到历史列表</span><br><span class="line">-p: 展开历史参数成多行，但不存在历史列表中</span><br><span class="line">-s: 展开历史参数成一行，附加在历史列表后</span><br></pre></td></tr></table></figure>
+<h2 id="bash快捷键"><a href="#bash快捷键" class="headerlink" title="bash快捷键"></a>bash快捷键</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Ctrl + l 清屏，相当于clear命令</span><br><span class="line">Ctrl + c 终止命令</span><br><span class="line">Ctrl + z 挂起命令</span><br><span class="line">Ctrl + c 终止命令</span><br><span class="line">Ctrl + z 挂起命令</span><br><span class="line">Ctrl + u 从光标处删除至命令行首Ctrl + k 从光标处删除至命令行尾</span><br><span class="line">Alt + r 删除当前整行</span><br><span class="line">Alt + N 提示输入指定字符后，重复显示该字符N次</span><br></pre></td></tr></table></figure>
+<h2 id="whatis命令"><a href="#whatis命令" class="headerlink" title="whatis命令"></a>whatis命令</h2><p>功能：显示命令的简短描述</p>
+<p>基于数据库进行查询</p>
+<p>刚安装后不可立即使用，需要makewhatis(Centos6)  mandb(Centos7)制作数据库</p>
+<p>示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">whatis cal 或 man –f cal</span><br></pre></td></tr></table></figure>
+<h2 id="如何获取命令帮助？"><a href="#如何获取命令帮助？" class="headerlink" title="如何获取命令帮助？"></a>如何获取命令帮助？</h2><h3 id="内部命令-1"><a href="#内部命令-1" class="headerlink" title="内部命令"></a>内部命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">help command</span><br><span class="line">man bash</span><br></pre></td></tr></table></figure>
+<h3 id="外部命令-1"><a href="#外部命令-1" class="headerlink" title="外部命令"></a>外部命令</h3><p>​    </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">方法1：command  --help</span><br><span class="line">方法2：使用man手册</span><br><span class="line">方法3：info  command</span><br><span class="line">方法4：程序自身的帮助文档</span><br><span class="line">	README</span><br><span class="line">	INSTALL</span><br><span class="line">	ChangeLog</span><br><span class="line">方法5：发行版的官方文档</span><br><span class="line">方法6：程序官方文档</span><br><span class="line"></span><br><span class="line">建议;先whatis command查看具体的章节，然后再man  章节  command；</span><br></pre></td></tr></table></figure>
+
+        </div>
+
+        
+            <div class="article-tags tags">
+                
+                    <a href="/tags/linux/"><i class="fa fa-tag fa-fw" aria-hidden="true"></i>&nbsp;linux</a>
+                
+            </div>
+        
+
+        
+            <div class="prev-next">
+                
+                    <section class="prev" >
+                        <span class="art-item-left">
+                            <h6><i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;上一篇</h6>
+                            <h4>
+                                <a href="/2018/09/26/文件类型和相关命令/" rel="prev" title="文件类型和相关命令">
+                                  
+                                      文件类型和相关命令
+                                  
+                                </a>
+                            </h4>
+                            
+                                <h6 class="tags">
+                                    
+                                        <i class="fa fa-tag fa-fw"></i>linux
+                                    
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+                
+                    <section class="next">
+                        <span class="art-item-right" aria-hidden="true">
+                            <h6>下一篇&nbsp;<i class="fa fa-chevron-right" aria-hidden="true"></i></h6>
+                            <h4>
+                                <a href="/2018/09/26/linux基础知识/" rel="prev" title="linux基础知识">
+                                    
+                                        linux基础知识
+                                    
+                                </a>
+                            </h4>
+                            
+                                <h6 class="tags">
+                                    
+                                        <i class="fa fa-tag fa-fw"></i>linux
+                                    
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+            </div>
+        
+
+    </section>
+
+</article>
+
+<br>
+
+<!-- 显示推荐文章和评论 -->
+
+
+<script>
+    window.subData = {
+        title: 'linux简单命令',
+        tools: true
+    }
+</script>
+
+
+        </div>
+        <aside class='l_side'>
+            
+    
+        
+    <section class='m_widget author'>
+        
+        <div class='content'>
+            
+                <h2>xin</h2>
+            
+            
+                <div>
+                    <i class="fa fa-quote-left fa-3x fa-pull-left" aria-hidden="true"></i>
+                    喜欢就去追啊，反正也追不到
+                </div>
+            
+        </div>
+        
+            <div class="social-wrapper">
+              
+                
+                    <a href="mailto:me@xaoxuu.com" class="social flat-box" target="_blank" rel="external"><i class="social fa fa-envelope" aria-hidden="true"></i></a>
+                
+              
+                
+                    <a href="https://github.com/xaoxuu" class="social flat-box" target="_blank" rel="external"><i class="social fa fa-github" aria-hidden="true"></i></a>
+                
+              
+            </div>
+        
+    </section>
+
+
+    
+    
+    
+        
+    <section class='m_widget tagcloud'>
+        <div class="header"><i class="fa fa-tags fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;标签</div>
+        <div class='content'>
+            <a href="/tags/linux/" style="font-size: 24px; color: #555">linux</a> <a href="/tags/shell-test/" style="font-size: 14px; color: #999">shell test</a>
+        </div>
+    </section>
+
+
+    
+    
+        <section class='m_widget music'>
+    <div class='header'><i class="fa fa-headphones fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;音乐</div>
+    <div class='content'>
+        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=100% height=450 src="//music.163.com/outchain/player?type=0&id=746319661&auto=0&height=450"></iframe>
+    </div>
+</section>
+
+    
+    
+        <section class='m_widget links'>
+    <div class='header'><i class="fa fa-handshake-o fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;友链</div>
+    <div class='content'>
+        <ul class="entry" id="links">
+            
+                <li><a class="flat-box" target="_blank" rel="external nofollow noopener noreferrer" href="https://xaoxuu.com">
+                    <div class='name'>
+                        <i class="fa fa-user-circle-o fa-fw" aria-hidden="true"></i>
+                        &nbsp;&nbsp;xaoxuu
+                    </div>
+                </a></li>
+            
+            
+
+        </ul>
+
+    </div>
+</section>
+
+    
+    
+        
+    <section class='m_widget toc-wrapper'>
+        <div class="header"><i class="fa fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;目录</div>
+        <div class='content'>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#linux终端"><span class="toc-text">linux终端</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是shell？"><span class="toc-text">什么是shell？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#查看系统默认shell？"><span class="toc-text">查看系统默认shell？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看系统支持的所有shell？"><span class="toc-text">查看系统支持的所有shell？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#命令提示符"><span class="toc-text">命令提示符</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#查看提示符格式："><span class="toc-text">查看提示符格式：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改提示符格式："><span class="toc-text">修改提示符格式：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#颜色配置：字体颜色和背景颜色"><span class="toc-text">颜色配置：字体颜色和背景颜色</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#linux命令介绍"><span class="toc-text">linux命令介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#分类"><span class="toc-text">分类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#内部命令"><span class="toc-text">内部命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#外部命令"><span class="toc-text">外部命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#判断内部或外部命令"><span class="toc-text">判断内部或外部命令</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hash缓存表"><span class="toc-text">hash缓存表</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#hash常见用法"><span class="toc-text">hash常见用法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#命令别名"><span class="toc-text">命令别名</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#显示当前shell进程所有可用的命令别名"><span class="toc-text">显示当前shell进程所有可用的命令别名</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#定义别名"><span class="toc-text">定义别名</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#永久保存："><span class="toc-text">永久保存：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#撤销别名"><span class="toc-text">撤销别名</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#如何执行原命令"><span class="toc-text">如何执行原命令</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#命令格式"><span class="toc-text">命令格式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#注意："><span class="toc-text">注意：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#日期和时间"><span class="toc-text">日期和时间</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#linux的两种时钟"><span class="toc-text">linux的两种时钟</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关机和重启命令"><span class="toc-text">关机和重启命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#关机：halt-poweroff"><span class="toc-text">关机：halt  poweroff</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#重启：reboot"><span class="toc-text">重启：reboot</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#screen命令"><span class="toc-text">screen命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#echo命令"><span class="toc-text">echo命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#功能：显示字符"><span class="toc-text">功能：显示字符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#语法：echo-neE-字符串"><span class="toc-text">语法：echo [-neE][字符串]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#选项："><span class="toc-text">选项：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#命令行扩展-或"><span class="toc-text">命令行扩展  $( ) 或 </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#括号扩展："><span class="toc-text">括号扩展：{}</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#命令行历史"><span class="toc-text">命令行历史</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#history命令"><span class="toc-text">history命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#bash快捷键"><span class="toc-text">bash快捷键</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#whatis命令"><span class="toc-text">whatis命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何获取命令帮助？"><span class="toc-text">如何获取命令帮助？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#内部命令-1"><span class="toc-text">内部命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#外部命令-1"><span class="toc-text">外部命令</span></a></li></ol></li></ol>
+        </div>
+    </section>
+
+
+    
+
+
+        </aside>
+        <script>setLoadingBarProgress(60);</script>
+    </div>
+    </div>
+    <footer id="footer" class="clearfix">
+    
+        <div class="social-wrapper">
+          
+              
+                  <a href="mailto:me@xaoxuu.com" class="social fa fa-envelope flat-box" target="_blank" rel="external"></a>
+              
+          
+              
+                  <a href="https://github.com/xaoxuu" class="social fa fa-github flat-box" target="_blank" rel="external"></a>
+              
+          
+        </div>
+    
+    <br>
+    <div>博客内容遵循 <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="licenses">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></div>
+    <div>本站使用 <a href="https://github.com/xaoxuu/hexo-theme-material-x" target="_blank" class="codename">Material X</a> 作为主题，
+		总访问量为 <span id="busuanzi_value_site_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span> 次。
+    </div>
+</footer>
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+    <script>setLoadingBarProgress(80);</script>
+    <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src='//cdn.bootcss.com/node-waves/0.7.5/waves.min.js'></script>
+<script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script>
+<!-- 访问统计 -->
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<script src="/js/jquery.fitvids.js"></script>
+
+    <script>
+        var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+        var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+        var ALGOLIA_API_KEY = "";
+        var ALGOLIA_APP_ID = "";
+        var ALGOLIA_INDEX_NAME = "";
+        var AZURE_SERVICE_NAME = "";
+        var AZURE_INDEX_NAME = "";
+        var AZURE_QUERY_KEY = "";
+        var BAIDU_API_ID = "";
+        var SEARCH_SERVICE = "hexo" || "hexo";
+        var ROOT = "/"||"/";
+        if(!ROOT.endsWith('/'))ROOT += '/';
+    </script>
+
+<script src="/js/search.js"></script>
+<script src="/js/app.js"></script>
+
+
+    
+    
+    
+
+
+    <script>setLoadingBarProgress(100);</script>
+</body>

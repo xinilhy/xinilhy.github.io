@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>文件权限 | xin&#39;s Blog</title>
+  <meta name="description" content="专注于linux运维" />
+  <meta name="keywords" content="" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" href="/">
+  <link rel="alternate" href="/atom.xml" title="xin's Blog">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <link rel="shortcut icon" href="" />
+  <link rel="icon" href="" />
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+  <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href='//cdn.bootcss.com/node-waves/0.7.5/waves.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="/style.css">
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+</head>
+
+<body>
+    <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+
+
+    <script>setLoadingBarProgress(20)</script>
+    <header class="l_header">
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+			<a class="logo flat-box" href='/' >
+				<!-- <i class="fa fa-home"></i> -->
+				xin's Blog
+			</a>
+
+				<div class='menu'>
+					<ul class='h-list'>
+                        
+    						
+    							<li>
+    								<a class='nav-about flat-box' href='/'>
+    									<i class='fa fa-home fa-'></i>&nbsp;主页
+    								</a>
+    							</li>
+    						
+    							<li>
+    								<a class='nav-category flat-box' href='/categories/shell/'>
+    									<i class='fa fa-cube fa-'></i>&nbsp;shell编程
+    								</a>
+    							</li>
+    						
+    							<li>
+    								<a class='nav-category flat-box' href='/categories/linux'>
+    									<i class='fa fa-rss fa-'></i>&nbsp;Linux基础
+    								</a>
+    							</li>
+    						
+    							<li>
+    								<a class='nav-category flat-box' href='/categories/linuxservice'>
+    									<i class='fa fa-rss fa-'></i>&nbsp;Linux服务
+    								</a>
+    							</li>
+    						
+    							<li>
+    								<a class='nav-category flat-box' href='/categories/itauto'>
+    									<i class='fa fa-rss fa-'></i>&nbsp;运维自动化
+    								</a>
+    							</li>
+    						
+    							<li>
+    								<a class='nav-archives flat-box' href='/archives'>
+    									<i class='fa fa-archive fa-'></i>&nbsp;归档
+    								</a>
+    							</li>
+    						
+        			 
+					</ul>
+					<div class='underline'></div>
+				</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search" />
+						<span class="icon"><i class="fa fa-search fa-fw"></i></span>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a class="fa fa-search fa-fw" href='javascript:void(0)'></span></a></li>
+				
+				<li class='s-menu'><a class="fa fa-navicon fa-fw" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo" class="flat-box" href='javascript:void(0)'>
+				xaoxuu
+			</a>
+
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a class="fa fa-comments fa-fw flat-box" href='javascript:void(0)'></a></li>
+				<li class='s-top'><a class="fa fa-arrow-up fa-fw flat-box" href='javascript:void(0)'></a></li>
+				<li class='s-toc'><a class="fa fa-list-ul fa-fw flat-box" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+        <div class="header">xin&#39;s Blog</div>
+		<nav>
+            <ul>
+                
+                    
+                        <li>
+                            <a class='nav-about flat-box nav flat-box' href='/'><i class='fa fa-home fa-fw'></i>&nbsp;主页</a>
+                        </li>
+                    
+                        <li>
+                            <a class='nav-category flat-box nav flat-box' href='/categories/shell/'><i class='fa fa-cube fa-fw'></i>&nbsp;shell编程</a>
+                        </li>
+                    
+                        <li>
+                            <a class='nav-category flat-box nav flat-box' href='/categories/linux'><i class='fa fa-rss fa-fw'></i>&nbsp;Linux基础</a>
+                        </li>
+                    
+                        <li>
+                            <a class='nav-category flat-box nav flat-box' href='/categories/linuxservice'><i class='fa fa-rss fa-fw'></i>&nbsp;Linux服务</a>
+                        </li>
+                    
+                        <li>
+                            <a class='nav-category flat-box nav flat-box' href='/categories/itauto'><i class='fa fa-rss fa-fw'></i>&nbsp;运维自动化</a>
+                        </li>
+                    
+                        <li>
+                            <a class='nav-archives flat-box nav flat-box' href='/archives'><i class='fa fa-archive fa-fw'></i>&nbsp;归档</a>
+                        </li>
+                    
+             
+            </ul>
+		</nav>
+	</aside>
+
+    <script>setLoadingBarProgress(40);</script>
+    <div class="l_body">
+    <div class='container clearfix'>
+        <div class='l_main'>
+            <article id="post-文件权限" class="post white-box article-type-post" itemscope itemprop="blogPost">
+    <section class='meta'>
+        <h1 class="title">
+            
+                文件权限
+            
+        </h1>
+        <time>
+            2018-09-26&nbsp;&nbsp;
+            <i class="fa fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+        </time>
+        
+    
+    <div class='cats'>
+        <a href="/categories/linux/">linux</a>
+    </div>
+
+
+    </section>
+
+    <section class="article typo">
+
+        <div class="article-entry" itemprop="articleBody">
+            <h2 id="文件属性"><a href="#文件属性" class="headerlink" title="文件属性"></a>文件属性</h2><p><img src="http://i2.bvimg.com/662847/5290b039d8086818.png" alt="Markdown"><br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; ls -l命令可以查看文件的详细信息</span><br><span class="line">[root@centos7 ~ ]#ll anaconda-ks.cfg </span><br><span class="line">-rw-------. 1 root root 1869 Jul 18 17:44 anaconda-ks.cfg</span><br></pre></td></tr></table></figure></p>
+<p>如图，一个文件的基本属性信息包含8列：文件类型、权限、硬链接数、属主、属组、大小、创建时间、文件名，通过-i选项还可以查看具体的inode值，这里主要介绍权限和归属的修改<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@centos7 ~ ]#ll -i anaconda-ks.cfg </span><br><span class="line">100663363 -rw-------. 1 root root 1869 Jul 18 17:44 anaconda-ks.cfg</span><br></pre></td></tr></table></figure></p>
+<h2 id="修改文件的属主和属组"><a href="#修改文件的属主和属组" class="headerlink" title="修改文件的属主和属组"></a>修改文件的属主和属组</h2><ul>
+<li>chown 修改属主、属组</li>
+<li>chgrp 修改属组</li>
+</ul>
+<h3 id="chown"><a href="#chown" class="headerlink" title="chown"></a>chown</h3><p>语法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chown [OPTION]... [OWNER][:[GROUP]] FILE...</span><br></pre></td></tr></table></figure></p>
+<p>选项：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-R:递归设置，用于目录下的所有文件</span><br><span class="line"> chown [OPTION]... --reference=RFILE FILE...：参考文件修改</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><p>仅修改属主</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">格式：chown  owner  file</span><br><span class="line"></span><br><span class="line">示例：</span><br><span class="line">[root@centos7 ~ ]#ll anaconda-ks.cfg </span><br><span class="line">-rw-------. 1 root root 1869 Jul 18 17:44 anaconda-ks.cfg</span><br><span class="line">[root@centos7 ~ ]#chown xin anaconda-ks.cfg </span><br><span class="line">[root@centos7 ~ ]#ll anaconda-ks.cfg </span><br><span class="line">-rw-------. 1 xin root 1869 Jul 18 17:44 anaconda-ks.cfg</span><br><span class="line">[root@centos7 ~ ]#</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>同时修改属主和属组</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">格式：chown  owner:group file</span><br><span class="line"></span><br><span class="line">示例：</span><br><span class="line">[root@centos7 ~ ]#ll anaconda-ks.cfg </span><br><span class="line">-rw-------. 1 xin root 1869 Jul 18 17:44 anaconda-ks.cfg</span><br><span class="line">[root@centos7 ~ ]#chown lhy:lhy anaconda-ks.cfg </span><br><span class="line">[root@centos7 ~ ]#ll anaconda-ks.cfg </span><br><span class="line">-rw-------. 1 lhy lhy 1869 Jul 18 17:44 anaconda-ks.cfg</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>仅修改属组</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@centos7 ~ ]#ll anaconda-ks.cfg </span><br><span class="line">-rw-------. 1 lhy lhy 1869 Jul 18 17:44 anaconda-ks.cfg</span><br><span class="line">[root@centos7 ~ ]#chown :root anaconda-ks.cfg </span><br><span class="line">[root@centos7 ~ ]#ll anaconda-ks.cfg </span><br><span class="line">-rw-------. 1 lhy root 1869 Jul 18 17:44 anaconda-ks.cfg</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>注意：冒号也可以用点.来代替。</p>
+<h3 id="chgrp"><a href="#chgrp" class="headerlink" title="chgrp"></a>chgrp</h3><p>其实一个chown就可以解决了，但还是的介绍一些chgrp这个命令。<br>语法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chgrp [OPTION]... GROUP FILE...</span><br></pre></td></tr></table></figure></p>
+<p>选项：同chown<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">--reference=RFILE :参考文件设置</span><br><span class="line">-R 递归设置目录下的所有文件的属组</span><br></pre></td></tr></table></figure></p>
+<p>示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@centos7 ~ ]#ll anaconda-ks.cfg </span><br><span class="line">-rw-------. 1 lhy root 1869 Jul 18 17:44 anaconda-ks.cfg</span><br><span class="line">[root@centos7 ~ ]#chgrp lhy anaconda-ks.cfg </span><br><span class="line">[root@centos7 ~ ]#ll anaconda-ks.cfg </span><br><span class="line">-rw-------. 1 lhy lhy 1869 Jul 18 17:44 anaconda-ks.cfg</span><br></pre></td></tr></table></figure></p>
+<h2 id="权限"><a href="#权限" class="headerlink" title="权限"></a>权限</h2><blockquote>
+<p>rwxrwrwx</p>
+</blockquote>
+<ul>
+<li><p>权限位共9位：<br>左三位：定义user（owner）的权限，属主权限<br>中三位：定义group的权限，属组权限<br>有三位：定义other的权限，其他的权限</p>
+</li>
+<li><p>r、w、x</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">r：readable，可读</span><br><span class="line">w：writable，可写</span><br><span class="line">x：executble，可执行</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>对于一个文件或目录来说，r、w、x分别具有不同的功能。</p>
+<ul>
+<li><p>对于文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">r: 可以查看文件内容</span><br><span class="line">w：可以修改文件内容</span><br><span class="line">x：为可执行文件，可启动为一个进程</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>对于目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">r：可以使用ls查看文件列表</span><br><span class="line">w：可以在目录中创建文件，也可以删除文件；</span><br><span class="line">x：可以ls 查看文件列表，可以cd进入该目录下</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="chmod"><a href="#chmod" class="headerlink" title="chmod"></a>chmod</h3><p>功能：设置文件或者目录的权限<br>语法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">chmod [OPTION]... OCTAL-MODE FILE..</span><br><span class="line">chmod [OPTION]... MODE[,MODE]... FILE...</span><br><span class="line"></span><br><span class="line">MODE：</span><br><span class="line"> 修改一类用户的所有权限：</span><br><span class="line"> u= g= o= ug= a= u=,g=</span><br><span class="line"> 修改一类用户某位或某些位权限</span><br><span class="line"> u+ u- g+ g- o+ o- a+ a- + -</span><br></pre></td></tr></table></figure></p>
+<p>选项：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-R: 递归修改权限</span><br><span class="line">--reference=RFILE :参考文件修改</span><br></pre></td></tr></table></figure></p>
+<p>示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&gt; 修改文件的权限为rwx--xr--</span><br><span class="line">[root@centos7 data ]#echo &quot;hello world&quot; &gt; f1</span><br><span class="line">[root@centos7 data ]#ll f1</span><br><span class="line">-rw-r--r-- 2 root root 12 Sep 24 19:52 f1</span><br><span class="line">[root@centos7 data ]#chmod u=rwx,g=x f1</span><br><span class="line">[root@centos7 data ]#ll f1</span><br><span class="line">-rwx--xr-- 2 root root 12 Sep 24 19:52 f1</span><br><span class="line"></span><br><span class="line">&gt; 也可以通过修改某位的权限实现</span><br><span class="line">[root@centos7 data ]#chmod u+x,g=x f1</span><br><span class="line">[root@centos7 data ]#ll f1</span><br><span class="line">-rwx--xr-- 2 root root 12 Sep 24 19:52 f1</span><br></pre></td></tr></table></figure></p>
+<p>不过这种方法还是有点麻烦，其实还有更加简单的方法，就是<br>用数字表示权限，看图：<br><img src="http://i4.bvimg.com/662847/f908980f45b81134.png" alt="Markdown"></p>
+<p>其实就是r用数字4表示，w用数字2表示，x用数字1表示；</p>
+<p>示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt; 修改file权限为rw-r--r--</span><br><span class="line">chmod  644  file</span><br><span class="line">&gt; 修改file权限为rwxrw-r--</span><br><span class="line">chmod  764  file</span><br><span class="line">&gt; 修改权限为rwx------</span><br><span class="line">chmod  400  file</span><br></pre></td></tr></table></figure></p>
+
+        </div>
+
+        
+            <div class="article-tags tags">
+                
+                    <a href="/tags/linux/"><i class="fa fa-tag fa-fw" aria-hidden="true"></i>&nbsp;linux</a>
+                
+            </div>
+        
+
+        
+            <div class="prev-next">
+                
+                
+                    <section class="next">
+                        <span class="art-item-right" aria-hidden="true">
+                            <h6>下一篇&nbsp;<i class="fa fa-chevron-right" aria-hidden="true"></i></h6>
+                            <h4>
+                                <a href="/2018/09/26/用户和组管理/" rel="prev" title="用户和组管理">
+                                    
+                                        用户和组管理
+                                    
+                                </a>
+                            </h4>
+                            
+                                <h6 class="tags">
+                                    
+                                        <i class="fa fa-tag fa-fw"></i>linux
+                                    
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+            </div>
+        
+
+    </section>
+
+</article>
+
+<br>
+
+<!-- 显示推荐文章和评论 -->
+
+
+<script>
+    window.subData = {
+        title: '文件权限',
+        tools: true
+    }
+</script>
+
+
+        </div>
+        <aside class='l_side'>
+            
+    
+        
+    <section class='m_widget author'>
+        
+        <div class='content'>
+            
+                <h2>xin</h2>
+            
+            
+                <div>
+                    <i class="fa fa-quote-left fa-3x fa-pull-left" aria-hidden="true"></i>
+                    喜欢就去追啊，反正也追不到
+                </div>
+            
+        </div>
+        
+            <div class="social-wrapper">
+              
+                
+                    <a href="mailto:me@xaoxuu.com" class="social flat-box" target="_blank" rel="external"><i class="social fa fa-envelope" aria-hidden="true"></i></a>
+                
+              
+                
+                    <a href="https://github.com/xaoxuu" class="social flat-box" target="_blank" rel="external"><i class="social fa fa-github" aria-hidden="true"></i></a>
+                
+              
+            </div>
+        
+    </section>
+
+
+    
+    
+    
+        
+    <section class='m_widget tagcloud'>
+        <div class="header"><i class="fa fa-tags fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;标签</div>
+        <div class='content'>
+            <a href="/tags/linux/" style="font-size: 24px; color: #555">linux</a> <a href="/tags/shell-test/" style="font-size: 14px; color: #999">shell test</a>
+        </div>
+    </section>
+
+
+    
+    
+        <section class='m_widget music'>
+    <div class='header'><i class="fa fa-headphones fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;音乐</div>
+    <div class='content'>
+        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=100% height=450 src="//music.163.com/outchain/player?type=0&id=746319661&auto=0&height=450"></iframe>
+    </div>
+</section>
+
+    
+    
+        <section class='m_widget links'>
+    <div class='header'><i class="fa fa-handshake-o fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;友链</div>
+    <div class='content'>
+        <ul class="entry" id="links">
+            
+                <li><a class="flat-box" target="_blank" rel="external nofollow noopener noreferrer" href="https://xaoxuu.com">
+                    <div class='name'>
+                        <i class="fa fa-user-circle-o fa-fw" aria-hidden="true"></i>
+                        &nbsp;&nbsp;xaoxuu
+                    </div>
+                </a></li>
+            
+            
+
+        </ul>
+
+    </div>
+</section>
+
+    
+    
+        
+    <section class='m_widget toc-wrapper'>
+        <div class="header"><i class="fa fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;目录</div>
+        <div class='content'>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#文件属性"><span class="toc-text">文件属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#修改文件的属主和属组"><span class="toc-text">修改文件的属主和属组</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#chown"><span class="toc-text">chown</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#chgrp"><span class="toc-text">chgrp</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#权限"><span class="toc-text">权限</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#chmod"><span class="toc-text">chmod</span></a></li></ol></li></ol>
+        </div>
+    </section>
+
+
+    
+
+
+        </aside>
+        <script>setLoadingBarProgress(60);</script>
+    </div>
+    </div>
+    <footer id="footer" class="clearfix">
+    
+        <div class="social-wrapper">
+          
+              
+                  <a href="mailto:me@xaoxuu.com" class="social fa fa-envelope flat-box" target="_blank" rel="external"></a>
+              
+          
+              
+                  <a href="https://github.com/xaoxuu" class="social fa fa-github flat-box" target="_blank" rel="external"></a>
+              
+          
+        </div>
+    
+    <br>
+    <div>博客内容遵循 <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="licenses">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></div>
+    <div>本站使用 <a href="https://github.com/xaoxuu/hexo-theme-material-x" target="_blank" class="codename">Material X</a> 作为主题，
+		总访问量为 <span id="busuanzi_value_site_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span> 次。
+    </div>
+</footer>
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+    <script>setLoadingBarProgress(80);</script>
+    <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src='//cdn.bootcss.com/node-waves/0.7.5/waves.min.js'></script>
+<script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script>
+<!-- 访问统计 -->
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<script src="/js/jquery.fitvids.js"></script>
+
+    <script>
+        var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+        var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+        var ALGOLIA_API_KEY = "";
+        var ALGOLIA_APP_ID = "";
+        var ALGOLIA_INDEX_NAME = "";
+        var AZURE_SERVICE_NAME = "";
+        var AZURE_INDEX_NAME = "";
+        var AZURE_QUERY_KEY = "";
+        var BAIDU_API_ID = "";
+        var SEARCH_SERVICE = "hexo" || "hexo";
+        var ROOT = "/"||"/";
+        if(!ROOT.endsWith('/'))ROOT += '/';
+    </script>
+
+<script src="/js/search.js"></script>
+<script src="/js/app.js"></script>
+
+
+    
+    
+    
+
+
+    <script>setLoadingBarProgress(100);</script>
+</body>

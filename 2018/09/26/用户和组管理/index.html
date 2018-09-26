@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>用户和组管理 | xin&#39;s Blog</title>
+  <meta name="description" content="专注于linux运维" />
+  <meta name="keywords" content="" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" href="/">
+  <link rel="alternate" href="/atom.xml" title="xin's Blog">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <link rel="shortcut icon" href="" />
+  <link rel="icon" href="" />
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+  <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href='//cdn.bootcss.com/node-waves/0.7.5/waves.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="/style.css">
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+</head>
+
+<body>
+    <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+
+
+    <script>setLoadingBarProgress(20)</script>
+    <header class="l_header">
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+			<a class="logo flat-box" href='/' >
+				<!-- <i class="fa fa-home"></i> -->
+				xin's Blog
+			</a>
+
+				<div class='menu'>
+					<ul class='h-list'>
+                        
+    						
+    							<li>
+    								<a class='nav-about flat-box' href='/'>
+    									<i class='fa fa-home fa-'></i>&nbsp;主页
+    								</a>
+    							</li>
+    						
+    							<li>
+    								<a class='nav-category flat-box' href='/categories/shell/'>
+    									<i class='fa fa-cube fa-'></i>&nbsp;shell编程
+    								</a>
+    							</li>
+    						
+    							<li>
+    								<a class='nav-category flat-box' href='/categories/linux'>
+    									<i class='fa fa-rss fa-'></i>&nbsp;Linux基础
+    								</a>
+    							</li>
+    						
+    							<li>
+    								<a class='nav-category flat-box' href='/categories/linuxservice'>
+    									<i class='fa fa-rss fa-'></i>&nbsp;Linux服务
+    								</a>
+    							</li>
+    						
+    							<li>
+    								<a class='nav-category flat-box' href='/categories/itauto'>
+    									<i class='fa fa-rss fa-'></i>&nbsp;运维自动化
+    								</a>
+    							</li>
+    						
+    							<li>
+    								<a class='nav-archives flat-box' href='/archives'>
+    									<i class='fa fa-archive fa-'></i>&nbsp;归档
+    								</a>
+    							</li>
+    						
+        			 
+					</ul>
+					<div class='underline'></div>
+				</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search" />
+						<span class="icon"><i class="fa fa-search fa-fw"></i></span>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a class="fa fa-search fa-fw" href='javascript:void(0)'></span></a></li>
+				
+				<li class='s-menu'><a class="fa fa-navicon fa-fw" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo" class="flat-box" href='javascript:void(0)'>
+				xaoxuu
+			</a>
+
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a class="fa fa-comments fa-fw flat-box" href='javascript:void(0)'></a></li>
+				<li class='s-top'><a class="fa fa-arrow-up fa-fw flat-box" href='javascript:void(0)'></a></li>
+				<li class='s-toc'><a class="fa fa-list-ul fa-fw flat-box" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+        <div class="header">xin&#39;s Blog</div>
+		<nav>
+            <ul>
+                
+                    
+                        <li>
+                            <a class='nav-about flat-box nav flat-box' href='/'><i class='fa fa-home fa-fw'></i>&nbsp;主页</a>
+                        </li>
+                    
+                        <li>
+                            <a class='nav-category flat-box nav flat-box' href='/categories/shell/'><i class='fa fa-cube fa-fw'></i>&nbsp;shell编程</a>
+                        </li>
+                    
+                        <li>
+                            <a class='nav-category flat-box nav flat-box' href='/categories/linux'><i class='fa fa-rss fa-fw'></i>&nbsp;Linux基础</a>
+                        </li>
+                    
+                        <li>
+                            <a class='nav-category flat-box nav flat-box' href='/categories/linuxservice'><i class='fa fa-rss fa-fw'></i>&nbsp;Linux服务</a>
+                        </li>
+                    
+                        <li>
+                            <a class='nav-category flat-box nav flat-box' href='/categories/itauto'><i class='fa fa-rss fa-fw'></i>&nbsp;运维自动化</a>
+                        </li>
+                    
+                        <li>
+                            <a class='nav-archives flat-box nav flat-box' href='/archives'><i class='fa fa-archive fa-fw'></i>&nbsp;归档</a>
+                        </li>
+                    
+             
+            </ul>
+		</nav>
+	</aside>
+
+    <script>setLoadingBarProgress(40);</script>
+    <div class="l_body">
+    <div class='container clearfix'>
+        <div class='l_main'>
+            <article id="post-用户和组管理" class="post white-box article-type-post" itemscope itemprop="blogPost">
+    <section class='meta'>
+        <h1 class="title">
+            
+                用户和组管理
+            
+        </h1>
+        <time>
+            2018-09-26&nbsp;&nbsp;
+            <i class="fa fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+        </time>
+        
+    
+    <div class='cats'>
+        <a href="/categories/linux/">linux</a>
+    </div>
+
+
+    </section>
+
+    <section class="article typo">
+
+        <div class="article-entry" itemprop="articleBody">
+            <h2 id="用户："><a href="#用户：" class="headerlink" title="用户："></a>用户：</h2><p>在Linux中，用户管理是基于用户和密码的方式进行资源的分配，而UID是用户的唯一标识；</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">用户</th>
+<th>UID</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">管理员：root</td>
+<td>0</td>
+</tr>
+<tr>
+<td style="text-align:left">登录用户</td>
+<td>500+(CentOS6)  1000+(CentOS7)</td>
+</tr>
+<tr>
+<td style="text-align:left">系统用户</td>
+<td>1-499（CentOS6)  1-999)(_CentOS7)</td>
+</tr>
+</tbody>
+</table>
+<a id="more"></a>
+<h2 id="组"><a href="#组" class="headerlink" title="组"></a>组</h2><p>同样，GID是组的标识；<br>| 组             | GID                               |<br>| :————- | ——————————— |<br>| 管理员组：root | 0                                 |<br>| 非系统组       | 500+(CentOS6)  1000+(CentOS7)     |<br>| 系统组         | 1-499（CentOS6)  1-999)(CentOS7)  |</p>
+<p>对组进行分类的话，可以分为主组(私有组)和附加组(公共组)，<br>所谓的主组就是创建用户的时候默认会创建一个与用户名同名的组，这个组内仅包含一个用户，即同名的用户；<br>一个用户可以位于多个组内，而用户除了主组之外所归属的组即用户的附加组。</p>
+<h2 id="用户和组的配置文件"><a href="#用户和组的配置文件" class="headerlink" title="用户和组的配置文件"></a>用户和组的配置文件</h2><table>
+<thead>
+<tr>
+<th>/etc/passwd</th>
+<th>用户及其属性信息</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/etc/shadow</td>
+<td>用户密码及其相关属性</td>
+</tr>
+<tr>
+<td>/etc/group</td>
+<td>组及其属性信息</td>
+</tr>
+<tr>
+<td>/etc/gshadow</td>
+<td>组密码及其相关属性</td>
+</tr>
+</tbody>
+</table>
+<h3 id="passwd文件格式"><a href="#passwd文件格式" class="headerlink" title="passwd文件格式"></a>passwd文件格式</h3><ul>
+<li>login name：登录用名（wang）</li>
+<li>passwd：密码 (x)</li>
+<li>UID：用户身份编号 (1000)</li>
+<li>GID：登录默认所在组编号 (1000)</li>
+<li>GECOS：用户全名或注释</li>
+<li>home directory：用户主目录 (/home/wang)</li>
+<li>shell：用户默认使用shell (/bin/bash)</li>
+</ul>
+<h3 id="shadow文件格式"><a href="#shadow文件格式" class="headerlink" title="shadow文件格式"></a>shadow文件格式</h3><ul>
+<li>登录用名</li>
+<li>用户密码:一般用sha512加密</li>
+<li>从1970年1月1日起到密码最近一次被更改的时间</li>
+<li>密码再过几天可以被变更（0表示随时可被变更）</li>
+<li>密码再过几天必须被变更（99999表示永不过期）</li>
+<li>密码过期前几天系统提醒用户（默认为一周）</li>
+<li>密码过期几天后帐号会被锁定</li>
+<li>从1970年1月1日算起，多少天后帐号失效</li>
+</ul>
+<h3 id="密码的复杂性策略"><a href="#密码的复杂性策略" class="headerlink" title="密码的复杂性策略"></a>密码的复杂性策略</h3><ul>
+<li><p>使用数字、大写字母、小写字母及特殊字符中至少3种</p>
+</li>
+<li><p>足够长</p>
+</li>
+<li><p>使用随机密码</p>
+</li>
+<li><p>定期更换,不要使用最近曾经使用过的密码</p>
+</li>
+</ul>
+<h3 id="group文件格式"><a href="#group文件格式" class="headerlink" title="group文件格式"></a>group文件格式</h3><ul>
+<li>群组名称：就是群组名称</li>
+<li>群组密码：通常不需要设定，密码是被记录在 /etc/gshadow</li>
+<li>GID：就是群组的 ID</li>
+<li>以当前组为附加组的用户列表(分隔符为逗号)</li>
+</ul>
+<h3 id="gshadow文件格式"><a href="#gshadow文件格式" class="headerlink" title="gshadow文件格式"></a>gshadow文件格式</h3><ul>
+<li>群组名称：就是群组名称</li>
+<li>群组密码：</li>
+<li>组管理员列表：组管理员的列表，更改组密码和成员</li>
+<li>以当前组为附加组的用户列表：(分隔符为逗号)</li>
+</ul>
+<h2 id="用户和组管理命令"><a href="#用户和组管理命令" class="headerlink" title="用户和组管理命令"></a>用户和组管理命令</h2><ul>
+<li><p>用户管理命令</p>
+<ul>
+<li>useradd</li>
+<li>usermod</li>
+<li>userdel</li>
+</ul>
+</li>
+<li><p>组管理命令</p>
+<ul>
+<li>groupadd</li>
+<li>roupmod</li>
+<li>groupdel</li>
+</ul>
+</li>
+</ul>
+<h3 id="用户创建：useradd"><a href="#用户创建：useradd" class="headerlink" title="用户创建：useradd"></a>用户创建：useradd</h3><p>语法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">useradd [options] LOGIN</span><br></pre></td></tr></table></figure></p>
+<p>选项：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">-u UID</span><br><span class="line">-o 配合-u 选项，不检查UID的唯一性</span><br><span class="line">-g GID：指明用户所属基本组，可为组名，也可以GID</span><br><span class="line">-c &quot;COMMENT&quot;：用户的注释信息</span><br><span class="line">-d HOME_DIR: 以指定的路径(不存在)为家目录</span><br><span class="line">-s SHELL: 指明用户的默认shell程序</span><br><span class="line">可用列表在/etc/shells文件中</span><br><span class="line">-G GROUP1[,GROUP2,...]：为用户指明附加组，组须事先存在</span><br><span class="line">-N 不创建私用组做主组，使用users组做主组</span><br><span class="line">-r: 创建系统用户 CentOS 6: ID&lt;500，CentOS 7: ID&lt;1000</span><br><span class="line">-m 创建家目录，用于系统用户</span><br><span class="line">-M 不创建家目录，用于非系统用户</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>默认值设定：/etc/default/useradd文件中</li>
+<li>显示或更改默认设置<br>useradd -D<br>useradd –D -s SHELL<br>useradd –D –b BASE_DIR<br>useradd –D –g GROUP</li>
+<li><p>练习：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1、创建用户gentoo，附加组为bin和root，默认shell为/bin/csh，注释信息为</span><br><span class="line">&quot;Gentoo Distribution&quot;</span><br><span class="line">2、创建下面的用户、组和组成员关系</span><br><span class="line">名字为webs 的组</span><br><span class="line">用户nginx 使用webs 作为附属组</span><br><span class="line">用户varnish，也使用webs 作为附属组</span><br><span class="line">用户mysql，不可交互登录系统，且不是webs 的成员，nginx，varnish，mysql密</span><br><span class="line">码都是magedu</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>新建用户的相关文件和命令</p>
+<ul>
+<li>/etc/default/useradd</li>
+<li>/etc/skel/*</li>
+<li>/etc/login.defs</li>
+<li>newusers passwd格式文件 批量创建用户</li>
+<li>chpasswd 批量修改用户口令</li>
+</ul>
+</li>
+</ul>
+<h3 id="用户属性修改：usermod"><a href="#用户属性修改：usermod" class="headerlink" title="用户属性修改：usermod"></a>用户属性修改：usermod</h3><p>语法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">usermod [OPTION] login</span><br></pre></td></tr></table></figure></p>
+<p>选项：基本同useradd<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">-u UID: 新UID</span><br><span class="line">-g GID: 新主组</span><br><span class="line">-G GROUP1[,GROUP2,...[,GROUPN]]]：新附加组，原来的附加组将会被覆盖；</span><br><span class="line">若保留原有，则要同时使用-a选项</span><br><span class="line">-s SHELL：新的默认SHELL</span><br><span class="line">-c &apos;COMMENT&apos;：新的注释信息</span><br><span class="line">-d HOME: 新家目录不会自动创建；若要创建新家目录并移动原家数据，同时使</span><br><span class="line">用-m选项</span><br><span class="line">-l login_name: 新的名字；</span><br><span class="line">-L: lock指定用户,在/etc/shadow 密码栏的增加 !</span><br><span class="line">-U: unlock指定用户,将 /etc/shadow 密码栏的 ! 拿掉</span><br><span class="line">-e YYYY-MM-DD: 指明用户账号过期日期</span><br><span class="line">-f INACTIVE: 设定非活动期限</span><br></pre></td></tr></table></figure></p>
+<h3 id="删除用户：userdel"><a href="#删除用户：userdel" class="headerlink" title="删除用户：userdel"></a>删除用户：userdel</h3><p>语法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">userdel [OPTION]... login</span><br></pre></td></tr></table></figure></p>
+<p>选项：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-r: 删除用户家目录</span><br></pre></td></tr></table></figure></p>
+<h3 id="查看用户相关信息"><a href="#查看用户相关信息" class="headerlink" title="查看用户相关信息"></a>查看用户相关信息</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">id [OPTION]... [USER]</span><br><span class="line"></span><br><span class="line">-u: 显示UID</span><br><span class="line">-g: 显示GID</span><br><span class="line">-G: 显示用户所属的组的ID</span><br><span class="line">-n: 显示名称，需配合ugG使用</span><br></pre></td></tr></table></figure>
+<h3 id="切换用户或以其他用户身份执行命令"><a href="#切换用户或以其他用户身份执行命令" class="headerlink" title="切换用户或以其他用户身份执行命令"></a>切换用户或以其他用户身份执行命令</h3><p>语法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su [options...] [-] [user [args...]]</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>切换用户的方式：<ul>
+<li>su UserName：非登录式切换，即不会读取目标用户的配置文件，不改变<br>当前工作目录</li>
+<li>su - UserName：登录式切换，会读取目标用户的配置文件，切换至家目<br>录，完全切换</li>
+</ul>
+</li>
+<li>root su至其他用户无须密码；非root用户切换时需要密码</li>
+<li>换个身份执行命令：su [-] UserName -c ‘COMMAND’</li>
+</ul>
+<h3 id="设置密码"><a href="#设置密码" class="headerlink" title="设置密码"></a>设置密码</h3><p>语法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">passwd [OPTIONS] UserName: 修改指定用户的密码</span><br></pre></td></tr></table></figure></p>
+<p>选项<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"> 常用选项：</span><br><span class="line">-d:删除指定用户密码</span><br><span class="line">-l:锁定指定用户</span><br><span class="line">-u:解锁指定用户</span><br><span class="line">-e:强制用户下次登录修改密码</span><br><span class="line">-f: 强制操作</span><br><span class="line">-n mindays: 指定最短使用期限</span><br><span class="line">-x maxdays：最大使用期限</span><br><span class="line">-w warndays：提前多少天开始警告</span><br><span class="line">-i inactivedays：非活动期限</span><br><span class="line">--stdin：从标准输入接收用户密码</span><br><span class="line">echo &quot;PASSWORD&quot; | passwd --stdin USERNAME</span><br></pre></td></tr></table></figure></p>
+<h3 id="修改用户密码策略"><a href="#修改用户密码策略" class="headerlink" title="修改用户密码策略"></a>修改用户密码策略</h3><p>语法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chage [OPTION]... LOGIN</span><br></pre></td></tr></table></figure></p>
+<p>选项：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">-d LAST_DAY</span><br><span class="line">-E --expiredate EXPIRE_DATE</span><br><span class="line">-I --inactive INACTIVE</span><br><span class="line">-m --mindays MIN_DAYS</span><br><span class="line">-M --maxdays MAX_DAYS</span><br><span class="line">-W --warndays WARN_DAYS</span><br><span class="line"> –l 显示密码策略</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>示例：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">chage -d 0 tom 下一次登录强制重设密码</span><br><span class="line">chage -m 0 –M 42 –W 14 –I 7 tom</span><br><span class="line">chage -E 2016-09-10 tom</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="用户相关的其它命令"><a href="#用户相关的其它命令" class="headerlink" title="用户相关的其它命令"></a>用户相关的其它命令</h3><ul>
+<li>chfn 指定个人信息</li>
+<li>chsh 指定shell</li>
+<li>finger 查看用户信息</li>
+</ul>
+<h3 id="创建组：groupadd"><a href="#创建组：groupadd" class="headerlink" title="创建组：groupadd"></a>创建组：groupadd</h3><p>语法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">groupadd [OPTION]... group_name</span><br></pre></td></tr></table></figure></p>
+<p>选项：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-g GID: 指明GID号；[GID_MIN, GID_MAX]</span><br><span class="line"> -r: 创建系统组</span><br><span class="line">    CentOS 6: ID&lt;500</span><br><span class="line">    CentOS 7: ID&lt;1000</span><br></pre></td></tr></table></figure></p>
+<h3 id="组属性修改：groupmod"><a href="#组属性修改：groupmod" class="headerlink" title="组属性修改：groupmod"></a>组属性修改：groupmod</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">groupmod [OPTION]... group</span><br><span class="line">-n group_name: 新名字</span><br><span class="line">-g GID: 新的GID</span><br></pre></td></tr></table></figure>
+<h3 id="组删除：groupdel"><a href="#组删除：groupdel" class="headerlink" title="组删除：groupdel"></a>组删除：groupdel</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">groupdel GROUP</span><br></pre></td></tr></table></figure>
+<h3 id="更改组密码-gpasswd"><a href="#更改组密码-gpasswd" class="headerlink" title="更改组密码:gpasswd"></a>更改组密码:gpasswd</h3><p>语法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gpasswd [OPTION] GROUP</span><br></pre></td></tr></table></figure></p>
+<p>选项：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-a user 将user添加至指定组中</span><br><span class="line">-d user 从指定组中移除用户user</span><br><span class="line">-A user1,user2,... 设置有管理权限的用户列表</span><br></pre></td></tr></table></figure></p>
+<h3 id="临时切换主组：newgrp"><a href="#临时切换主组：newgrp" class="headerlink" title="临时切换主组：newgrp"></a>临时切换主组：newgrp</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">默认创建一个文件的属组是当前用户的主组，可以临时切换主组，从而创建指定归属组的文件，如果切换的组是该用户的附加组，可以直接切换，否则如果用户本不属于此组，则需要组密码</span><br></pre></td></tr></table></figure>
+<h3 id="更改和查看组成员"><a href="#更改和查看组成员" class="headerlink" title="更改和查看组成员"></a>更改和查看组成员</h3><p>语法:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">groupmems [options] [action]</span><br></pre></td></tr></table></figure></p>
+<p>选项：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">options：</span><br><span class="line"> -g, --group groupname 更改为指定组 (只有root)</span><br><span class="line"> Actions:</span><br><span class="line"> -a, --add username 指定用户加入组</span><br><span class="line"> -d, --delete username 从组中删除用户</span><br><span class="line"> -p, --purge 从组中清除所有成员</span><br><span class="line"> -l, --list 显示组成员列表</span><br></pre></td></tr></table></figure></p>
+<h3 id="查看用户所属组列表：groups"><a href="#查看用户所属组列表：groups" class="headerlink" title="查看用户所属组列表：groups"></a>查看用户所属组列表：groups</h3>
+        </div>
+
+        
+            <div class="article-tags tags">
+                
+                    <a href="/tags/linux/"><i class="fa fa-tag fa-fw" aria-hidden="true"></i>&nbsp;linux</a>
+                
+            </div>
+        
+
+        
+            <div class="prev-next">
+                
+                    <section class="prev" >
+                        <span class="art-item-left">
+                            <h6><i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;上一篇</h6>
+                            <h4>
+                                <a href="/2018/09/26/文件权限/" rel="prev" title="文件权限">
+                                  
+                                      文件权限
+                                  
+                                </a>
+                            </h4>
+                            
+                                <h6 class="tags">
+                                    
+                                        <i class="fa fa-tag fa-fw"></i>linux
+                                    
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+                
+                    <section class="next">
+                        <span class="art-item-right" aria-hidden="true">
+                            <h6>下一篇&nbsp;<i class="fa fa-chevron-right" aria-hidden="true"></i></h6>
+                            <h4>
+                                <a href="/2018/09/26/管道/" rel="prev" title="管道">
+                                    
+                                        管道
+                                    
+                                </a>
+                            </h4>
+                            
+                                <h6 class="tags">
+                                    
+                                        <i class="fa fa-tag fa-fw"></i>linux
+                                    
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+            </div>
+        
+
+    </section>
+
+</article>
+
+<br>
+
+<!-- 显示推荐文章和评论 -->
+
+
+<script>
+    window.subData = {
+        title: '用户和组管理',
+        tools: true
+    }
+</script>
+
+
+        </div>
+        <aside class='l_side'>
+            
+    
+        
+    <section class='m_widget author'>
+        
+        <div class='content'>
+            
+                <h2>xin</h2>
+            
+            
+                <div>
+                    <i class="fa fa-quote-left fa-3x fa-pull-left" aria-hidden="true"></i>
+                    喜欢就去追啊，反正也追不到
+                </div>
+            
+        </div>
+        
+            <div class="social-wrapper">
+              
+                
+                    <a href="mailto:me@xaoxuu.com" class="social flat-box" target="_blank" rel="external"><i class="social fa fa-envelope" aria-hidden="true"></i></a>
+                
+              
+                
+                    <a href="https://github.com/xaoxuu" class="social flat-box" target="_blank" rel="external"><i class="social fa fa-github" aria-hidden="true"></i></a>
+                
+              
+            </div>
+        
+    </section>
+
+
+    
+    
+    
+        
+    <section class='m_widget tagcloud'>
+        <div class="header"><i class="fa fa-tags fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;标签</div>
+        <div class='content'>
+            <a href="/tags/linux/" style="font-size: 24px; color: #555">linux</a> <a href="/tags/shell-test/" style="font-size: 14px; color: #999">shell test</a>
+        </div>
+    </section>
+
+
+    
+    
+        <section class='m_widget music'>
+    <div class='header'><i class="fa fa-headphones fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;音乐</div>
+    <div class='content'>
+        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=100% height=450 src="//music.163.com/outchain/player?type=0&id=746319661&auto=0&height=450"></iframe>
+    </div>
+</section>
+
+    
+    
+        <section class='m_widget links'>
+    <div class='header'><i class="fa fa-handshake-o fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;友链</div>
+    <div class='content'>
+        <ul class="entry" id="links">
+            
+                <li><a class="flat-box" target="_blank" rel="external nofollow noopener noreferrer" href="https://xaoxuu.com">
+                    <div class='name'>
+                        <i class="fa fa-user-circle-o fa-fw" aria-hidden="true"></i>
+                        &nbsp;&nbsp;xaoxuu
+                    </div>
+                </a></li>
+            
+            
+
+        </ul>
+
+    </div>
+</section>
+
+    
+    
+        
+    <section class='m_widget toc-wrapper'>
+        <div class="header"><i class="fa fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;目录</div>
+        <div class='content'>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#用户："><span class="toc-text">用户：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#组"><span class="toc-text">组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用户和组的配置文件"><span class="toc-text">用户和组的配置文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#passwd文件格式"><span class="toc-text">passwd文件格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#shadow文件格式"><span class="toc-text">shadow文件格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#密码的复杂性策略"><span class="toc-text">密码的复杂性策略</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#group文件格式"><span class="toc-text">group文件格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gshadow文件格式"><span class="toc-text">gshadow文件格式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用户和组管理命令"><span class="toc-text">用户和组管理命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#用户创建：useradd"><span class="toc-text">用户创建：useradd</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#用户属性修改：usermod"><span class="toc-text">用户属性修改：usermod</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除用户：userdel"><span class="toc-text">删除用户：userdel</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看用户相关信息"><span class="toc-text">查看用户相关信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#切换用户或以其他用户身份执行命令"><span class="toc-text">切换用户或以其他用户身份执行命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置密码"><span class="toc-text">设置密码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改用户密码策略"><span class="toc-text">修改用户密码策略</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#用户相关的其它命令"><span class="toc-text">用户相关的其它命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建组：groupadd"><span class="toc-text">创建组：groupadd</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#组属性修改：groupmod"><span class="toc-text">组属性修改：groupmod</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#组删除：groupdel"><span class="toc-text">组删除：groupdel</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#更改组密码-gpasswd"><span class="toc-text">更改组密码:gpasswd</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#临时切换主组：newgrp"><span class="toc-text">临时切换主组：newgrp</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#更改和查看组成员"><span class="toc-text">更改和查看组成员</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看用户所属组列表：groups"><span class="toc-text">查看用户所属组列表：groups</span></a></li></ol></li></ol>
+        </div>
+    </section>
+
+
+    
+
+
+        </aside>
+        <script>setLoadingBarProgress(60);</script>
+    </div>
+    </div>
+    <footer id="footer" class="clearfix">
+    
+        <div class="social-wrapper">
+          
+              
+                  <a href="mailto:me@xaoxuu.com" class="social fa fa-envelope flat-box" target="_blank" rel="external"></a>
+              
+          
+              
+                  <a href="https://github.com/xaoxuu" class="social fa fa-github flat-box" target="_blank" rel="external"></a>
+              
+          
+        </div>
+    
+    <br>
+    <div>博客内容遵循 <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="licenses">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></div>
+    <div>本站使用 <a href="https://github.com/xaoxuu/hexo-theme-material-x" target="_blank" class="codename">Material X</a> 作为主题，
+		总访问量为 <span id="busuanzi_value_site_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span> 次。
+    </div>
+</footer>
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+    <script>setLoadingBarProgress(80);</script>
+    <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src='//cdn.bootcss.com/node-waves/0.7.5/waves.min.js'></script>
+<script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script>
+<!-- 访问统计 -->
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<script src="/js/jquery.fitvids.js"></script>
+
+    <script>
+        var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+        var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+        var ALGOLIA_API_KEY = "";
+        var ALGOLIA_APP_ID = "";
+        var ALGOLIA_INDEX_NAME = "";
+        var AZURE_SERVICE_NAME = "";
+        var AZURE_INDEX_NAME = "";
+        var AZURE_QUERY_KEY = "";
+        var BAIDU_API_ID = "";
+        var SEARCH_SERVICE = "hexo" || "hexo";
+        var ROOT = "/"||"/";
+        if(!ROOT.endsWith('/'))ROOT += '/';
+    </script>
+
+<script src="/js/search.js"></script>
+<script src="/js/app.js"></script>
+
+
+    
+    
+    
+
+
+    <script>setLoadingBarProgress(100);</script>
+</body>
