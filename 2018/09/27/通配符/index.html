@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>通配符 | xin&#39;s Blog</title>
+  <meta name="description" content="专注于linux运维" />
+  <meta name="keywords" content="" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" href="/">
+  <link rel="alternate" href="/atom.xml" title="xin's Blog">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <link rel="shortcut icon" href="" />
+  <link rel="icon" href="" />
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+  <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href='//cdn.bootcss.com/node-waves/0.7.5/waves.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="/style.css">
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+</head>
+
+<body>
+    <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+
+
+    <script>setLoadingBarProgress(20)</script>
+    <header class="l_header">
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+			<a class="logo flat-box" href='/' >
+				<!-- <i class="fa fa-home"></i> -->
+				xin's Blog
+			</a>
+
+				<div class='menu'>
+					<ul class='h-list'>
+                        
+    						
+    							<li>
+    								<a class='nav-about flat-box' href='/'>
+    									<i class='fa fa-home fa-'></i>&nbsp;主页
+    								</a>
+    							</li>
+    						
+    							<li>
+    								<a class='nav-category flat-box' href='/categories/shell/'>
+    									<i class='fa fa-cube fa-'></i>&nbsp;shell编程
+    								</a>
+    							</li>
+    						
+    							<li>
+    								<a class='nav-category flat-box' href='/categories/linux'>
+    									<i class='fa fa-rss fa-'></i>&nbsp;Linux基本功
+    								</a>
+    							</li>
+    						
+    							<li>
+    								<a class='nav-category flat-box' href='/categories/linuxservice'>
+    									<i class='fa fa-rss fa-'></i>&nbsp;Linux服务
+    								</a>
+    							</li>
+    						
+    							<li>
+    								<a class='nav-category flat-box' href='/categories/itauto'>
+    									<i class='fa fa-rss fa-'></i>&nbsp;运维自动化
+    								</a>
+    							</li>
+    						
+    							<li>
+    								<a class='nav-archives flat-box' href='/archives'>
+    									<i class='fa fa-archive fa-'></i>&nbsp;归档
+    								</a>
+    							</li>
+    						
+        			 
+					</ul>
+					<div class='underline'></div>
+				</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search" />
+						<span class="icon"><i class="fa fa-search fa-fw"></i></span>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a class="fa fa-search fa-fw" href='javascript:void(0)'></span></a></li>
+				
+				<li class='s-menu'><a class="fa fa-navicon fa-fw" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo" class="flat-box" href='javascript:void(0)'>
+				xaoxuu
+			</a>
+
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a class="fa fa-comments fa-fw flat-box" href='javascript:void(0)'></a></li>
+				<li class='s-top'><a class="fa fa-arrow-up fa-fw flat-box" href='javascript:void(0)'></a></li>
+				<li class='s-toc'><a class="fa fa-list-ul fa-fw flat-box" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+        <div class="header">xin&#39;s Blog</div>
+		<nav>
+            <ul>
+                
+                    
+                        <li>
+                            <a class='nav-about flat-box nav flat-box' href='/'><i class='fa fa-home fa-fw'></i>&nbsp;主页</a>
+                        </li>
+                    
+                        <li>
+                            <a class='nav-category flat-box nav flat-box' href='/categories/shell/'><i class='fa fa-cube fa-fw'></i>&nbsp;shell编程</a>
+                        </li>
+                    
+                        <li>
+                            <a class='nav-category flat-box nav flat-box' href='/categories/linux'><i class='fa fa-rss fa-fw'></i>&nbsp;Linux基本功</a>
+                        </li>
+                    
+                        <li>
+                            <a class='nav-category flat-box nav flat-box' href='/categories/linuxservice'><i class='fa fa-rss fa-fw'></i>&nbsp;Linux服务</a>
+                        </li>
+                    
+                        <li>
+                            <a class='nav-category flat-box nav flat-box' href='/categories/itauto'><i class='fa fa-rss fa-fw'></i>&nbsp;运维自动化</a>
+                        </li>
+                    
+                        <li>
+                            <a class='nav-archives flat-box nav flat-box' href='/archives'><i class='fa fa-archive fa-fw'></i>&nbsp;归档</a>
+                        </li>
+                    
+             
+            </ul>
+		</nav>
+	</aside>
+
+    <script>setLoadingBarProgress(40);</script>
+    <div class="l_body">
+    <div class='container clearfix'>
+        <div class='l_main'>
+            <article id="post-通配符" class="post white-box article-type-post" itemscope itemprop="blogPost">
+    <section class='meta'>
+        <h1 class="title">
+            
+                通配符
+            
+        </h1>
+        <time>
+            2018-09-27&nbsp;&nbsp;
+            <i class="fa fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+        </time>
+        
+    
+    <div class='cats'>
+        <a href="/categories/linux/">linux</a>
+    </div>
+
+
+    </section>
+
+    <section class="article typo">
+
+        <div class="article-entry" itemprop="articleBody">
+            <blockquote>
+<p>这篇文章主要用来介绍通配符，由于自己经常和正则表达式搞混，所以特地写了这篇文章，来梳理一下。</p>
+</blockquote>
+<h3 id="通配符和正则的区别"><a href="#通配符和正则的区别" class="headerlink" title="通配符和正则的区别"></a>通配符和正则的区别</h3><p>通配符主要匹配文件名，而正则主要匹配文件中的内容；</p>
+<h3 id="常用的通配符介绍"><a href="#常用的通配符介绍" class="headerlink" title="常用的通配符介绍"></a>常用的通配符介绍</h3><p>主要有* 、？、[]这三种；<a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1. *  匹配零个或多个字符</span><br><span class="line">如a*b，与之匹配的可以是aab，ab，a123b，abc.....</span><br></pre></td></tr></table></figure></p>
+<ol start="2">
+<li><p>？ 匹配任意单个字符<br>如a?b，与之匹配的可以是aab，abb，a1b，a2b……</p>
+</li>
+<li><p>[] 匹配指定范围内的任意单个字符<br>如[wang] 即匹配w、a、n、g等任意一个字符；</p>
+</li>
+<li><p>[^] 匹配指定范围以外的任意单个字符<br>如[^wang] 排除列表中的所有字符,i与[]相反，即取反；</p>
+</li>
+<li><p>字符集的表示</p>
+<blockquote>
+<p>注意：对于下面的字符集，如果想要表示其中任意一个字符，需要在外面再加一个[]才可以；</p>
+</blockquote>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[0-9]:     任意数字</span><br><span class="line">[a-z]:     注意，这里不仅仅是小写字母，而是a,A ,b,B,c,C...z这样的顺序，即：小写、大写</span><br><span class="line">[A-Z]:     注意，这里不仅仅表示大写字母，而是A,b,B,c,C...z,Z的 顺序</span><br><span class="line">[:digit:]：任意数字，相当于0-9</span><br><span class="line">[:lower:]：任意小写字母  </span><br><span class="line">[:upper:]: 任意大写字母</span><br><span class="line">[:alpha:]: 任意大小写字母</span><br><span class="line">[:alnum:]：任意数字或字母</span><br><span class="line">[:blank:]：水平空白字符</span><br><span class="line">[:space:]：水平或垂直空白字符，包含空格</span><br><span class="line">[:punct:]：标点符号</span><br><span class="line">更多内容，可以man 7 glob查看</span><br></pre></td></tr></table></figure>
+<h3 id="练习："><a href="#练习：" class="headerlink" title="练习："></a>练习：</h3><h4 id="1-显示-var目录下所有以l开头，以一个小写字母结尾，且中间出现至少一位数字的文件或目录"><a href="#1-显示-var目录下所有以l开头，以一个小写字母结尾，且中间出现至少一位数字的文件或目录" class="headerlink" title="1. 显示/var目录下所有以l开头，以一个小写字母结尾，且中间出现至少一位数字的文件或目录"></a>1. 显示/var目录下所有以l开头，以一个小写字母结尾，且中间出现至少一位数字的文件或目录</h4><p>(1)环境准备：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@CentOS6 var ]#touch l2223343434a</span><br><span class="line">[root@CentOS6 var ]#touch l22233sddfd34a</span><br><span class="line">[root@CentOS6 var ]#touch l22dfdf34a</span><br></pre></td></tr></table></figure></p>
+<p>(2)解答：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@CentOS6 var ]#ls   /var/l*[[:digit:]]*[[:lower:]]</span><br><span class="line">/var/l2223343434a  /var/l22233sddfd34a  /var/l22dfdf34a</span><br><span class="line">或</span><br><span class="line">[root@CentOS6 var ]#ls -d /var/l*[0-9]*[[:lower:]]</span><br><span class="line">/var/l2223343434a  /var/l22233sddfd34a  /var/l22dfdf34a</span><br></pre></td></tr></table></figure></p>
+<h4 id="2-显示-etc目录下以任意一位数字开头，且以非数字结尾的文件或目录"><a href="#2-显示-etc目录下以任意一位数字开头，且以非数字结尾的文件或目录" class="headerlink" title="2. 显示/etc目录下以任意一位数字开头，且以非数字结尾的文件或目录"></a>2. 显示/etc目录下以任意一位数字开头，且以非数字结尾的文件或目录</h4><p>(1)准备环境：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@CentOS6 var ]#touch /etc/133rdfdf</span><br><span class="line">[root@CentOS6 var ]#touch /etc/123xin</span><br><span class="line">[root@CentOS6 var ]#touch /etc/123yuanhonli</span><br><span class="line">[root@CentOS6 var ]#touch /etc/abc_xn</span><br><span class="line">[root@CentOS6 var ]#touch /etc/1axc_xn</span><br></pre></td></tr></table></figure></p>
+<p>(2)解答：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@CentOS6 var ]#ls /etc/[0-9]*[^0-9]</span><br><span class="line">/etc/123xin  /etc/123yuanhonli  /etc/133rdfdf  /etc/1axc_xn</span><br><span class="line">或</span><br><span class="line">[root@CentOS6 var ]#ls /etc/[0-9]*[^[:digit:]]</span><br><span class="line">/etc/123xin  /etc/123yuanhonli  /etc/133rdfdf  /etc/1axc_xn</span><br></pre></td></tr></table></figure></p>
+<h4 id="3-显示-etc-目录下以非字母开头，后面跟了一个字母及其它任意长度任意字符的文件或目录"><a href="#3-显示-etc-目录下以非字母开头，后面跟了一个字母及其它任意长度任意字符的文件或目录" class="headerlink" title="3. 显示/etc/目录下以非字母开头，后面跟了一个字母及其它任意长度任意字符的文件或目录"></a>3. 显示/etc/目录下以非字母开头，后面跟了一个字母及其它任意长度任意字符的文件或目录</h4><p>(1准备环境：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@CentOS6 var ]#touch /etc/1axc_xn</span><br><span class="line">[root@CentOS6 var ]#touch /etc/_222b</span><br><span class="line">[root@CentOS6 var ]#touch /etc/*b22b</span><br><span class="line">[root@CentOS6 var ]#touch /etc/xinb22b</span><br></pre></td></tr></table></figure></p>
+<p>(2)解答：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@CentOS6 var ]#ls /etc/[^[:alpha:]][[:alpha:]]*</span><br><span class="line">/etc/1axc_xn  /etc/*b22b</span><br></pre></td></tr></table></figure></p>
+<h4 id="4-显示-etc-目录下所有以rc开头，并后面是0-6之间的数字，其它为任意字符的文件或目录"><a href="#4-显示-etc-目录下所有以rc开头，并后面是0-6之间的数字，其它为任意字符的文件或目录" class="headerlink" title="4. 显示/etc/目录下所有以rc开头，并后面是0-6之间的数字，其它为任意字符的文件或目录"></a>4. 显示/etc/目录下所有以rc开头，并后面是0-6之间的数字，其它为任意字符的文件或目录</h4><p>解答：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@CentOS6 var ]#ls -d  /etc/rc[0-6]*                      ##注意添加-d选项，否则显示所有目录下的文件</span><br><span class="line">/etc/rc0.d  /etc/rc1.d  /etc/rc2.d  /etc/rc3.d  /etc/rc4.d  /etc/rc5.d  /etc/rc6.d</span><br></pre></td></tr></table></figure></p>
+<h4 id="5-显示-etc目录下，所有以-d结尾的文件或目录"><a href="#5-显示-etc目录下，所有以-d结尾的文件或目录" class="headerlink" title="5. 显示/etc目录下，所有以.d结尾的文件或目录"></a>5. 显示/etc目录下，所有以.d结尾的文件或目录</h4><p>解答：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[root@CentOS6 var ]#ls -d /etc/*.d</span><br><span class="line">/etc/bash_completion.d  /etc/logrotate.d     /etc/rc0.d          /etc/rsyslog.d</span><br><span class="line">/etc/chkconfig.d        /etc/lsb-release.d   /etc/rc1.d          /etc/rwtab.d</span><br><span class="line">/etc/cron.d             /etc/makedev.d       /etc/rc2.d          /etc/sane.d</span><br><span class="line">/etc/depmod.d           /etc/modprobe.d      /etc/rc3.d          /etc/setuptool.d</span><br><span class="line">/etc/dnsmasq.d          /etc/oddjobd.conf.d  /etc/rc4.d          /etc/statetab.d</span><br><span class="line">/etc/dracut.conf.d      /etc/pam.d           /etc/rc5.d          /etc/sudoers.d</span><br><span class="line">/etc/init.d             /etc/popt.d          /etc/rc6.d          /etc/sysctl.d</span><br><span class="line">/etc/latrace.d          /etc/prelink.conf.d  /etc/rc.d           /etc/xinetd.d</span><br><span class="line">/etc/ld.so.conf.d       /etc/profile.d       /etc/request-key.d  /etc/yum.repos.d</span><br><span class="line">[root@CentOS6 var ]#</span><br></pre></td></tr></table></figure></p>
+<h4 id="6-显示-etc目录下，所有-conf结尾，且以m-n-r-p开头的文件或目录"><a href="#6-显示-etc目录下，所有-conf结尾，且以m-n-r-p开头的文件或目录" class="headerlink" title="6. 显示/etc目录下，所有.conf结尾，且以m,n,r,p开头的文件或目录"></a>6. 显示/etc目录下，所有.conf结尾，且以m,n,r,p开头的文件或目录</h4><p>解答：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@CentOS6 var ]#ls -d /etc/[mnrp]*.conf</span><br><span class="line">/etc/mke2fs.conf    /etc/ntp.conf                      /etc/prelink.conf      /etc/rsyslog.conf</span><br><span class="line">/etc/mtools.conf    /etc/pbm2ppa.conf                  /etc/readahead.conf</span><br><span class="line">/etc/nfsmount.conf  /etc/pm-utils-hd-apm-restore.conf  /etc/request-key.conf</span><br><span class="line">/etc/nsswitch.conf  /etc/pnm2ppa.conf                  /etc/resolv.conf</span><br></pre></td></tr></table></figure></p>
+<h4 id="7-只显示-root下的隐藏文件和目录"><a href="#7-只显示-root下的隐藏文件和目录" class="headerlink" title="7. 只显示/root下的隐藏文件和目录"></a>7. 只显示/root下的隐藏文件和目录</h4><p>解答：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@CentOS6 var ]#ls -d /root/.*</span><br><span class="line">/root/.              /root/.cache     /root/.gnote           /root/.local         /root/.thumbnails</span><br><span class="line">/root/..             /root/.config    /root/.gnupg           /root/.nautilus      /root/.viminfo</span><br><span class="line">/root/.abrt          /root/.cshrc     /root/.gtk-bookmarks   /root/.pulse         /root/.Xauthority</span><br><span class="line">/root/.bash_history  /root/.dbus      /root/.gvfs            /root/.pulse-cookie</span><br><span class="line">/root/.bash_logout   /root/.esd_auth  /root/.ICEauthority    /root/.ssh</span><br><span class="line">/root/.bash_profile  /root/.gconf     /root/.icons           /root/.tcshrc</span><br><span class="line">/root/.bashrc        /root/.gnome2    /root/.imsettings.log  /root/.themes</span><br><span class="line">[root@CentOS6 var ]#</span><br></pre></td></tr></table></figure></p>
+<h4 id="8-只显示-etc下的非隐藏目录"><a href="#8-只显示-etc下的非隐藏目录" class="headerlink" title="8. 只显示/etc下的非隐藏目录"></a>8. 只显示/etc下的非隐藏目录</h4><p>解答：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@CentOS6 var ]#ls -d /etc/[^.]*</span><br><span class="line">/etc/123xin                   /etc/host.conf                     /etc/prelink.cache</span><br><span class="line">/etc/123yuanhonli             /etc/hosts                         /etc/prelink.conf</span><br><span class="line">/etc/133rdfdf                 /etc/hosts.allow                   /etc/prelink.conf.d</span><br><span class="line">/etc/1axc_xn                  /etc/hosts.deny                    /etc/printcap</span><br><span class="line">/etc/_222b                    /etc/hp                            /etc/profile</span><br><span class="line">/etc/abc_xn                   /etc/httpd                         /etc/profile.d</span><br><span class="line">/etc/abrt                     /etc/idmapd.conf                   /etc/protocols</span><br></pre></td></tr></table></figure></p>
+
+        </div>
+
+        
+            <div class="article-tags tags">
+                
+                    <a href="/tags/通配符/"><i class="fa fa-tag fa-fw" aria-hidden="true"></i>&nbsp;通配符</a>
+                
+            </div>
+        
+
+        
+            <div class="prev-next">
+                
+                
+                    <section class="next">
+                        <span class="art-item-right" aria-hidden="true">
+                            <h6>下一篇&nbsp;<i class="fa fa-chevron-right" aria-hidden="true"></i></h6>
+                            <h4>
+                                <a href="/2018/09/27/grep介绍/" rel="prev" title="grep介绍">
+                                    
+                                        grep介绍
+                                    
+                                </a>
+                            </h4>
+                            
+                                <h6 class="tags">
+                                    
+                                        <i class="fa fa-tag fa-fw"></i>linux三剑客
+                                    
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+            </div>
+        
+
+    </section>
+
+</article>
+
+<br>
+
+<!-- 显示推荐文章和评论 -->
+
+
+<script>
+    window.subData = {
+        title: '通配符',
+        tools: true
+    }
+</script>
+
+
+        </div>
+        <aside class='l_side'>
+            
+    
+        
+    <section class='m_widget author'>
+        
+        <div class='content'>
+            
+                <h2>xin</h2>
+            
+            
+                <div>
+                    <i class="fa fa-quote-left fa-3x fa-pull-left" aria-hidden="true"></i>
+                    喜欢就去追啊，反正也追不到
+                </div>
+            
+        </div>
+        
+            <div class="social-wrapper">
+              
+                
+                    <a href="mailto:me@xaoxuu.com" class="social flat-box" target="_blank" rel="external"><i class="social fa fa-envelope" aria-hidden="true"></i></a>
+                
+              
+                
+                    <a href="https://github.com/xaoxuu" class="social flat-box" target="_blank" rel="external"><i class="social fa fa-github" aria-hidden="true"></i></a>
+                
+              
+            </div>
+        
+    </section>
+
+
+    
+    
+    
+        
+    <section class='m_widget tagcloud'>
+        <div class="header"><i class="fa fa-tags fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;标签</div>
+        <div class='content'>
+            <a href="/tags/linux/" style="font-size: 24px; color: #555">linux</a> <a href="/tags/linux三剑客/" style="font-size: 14px; color: #999">linux三剑客</a> <a href="/tags/文本处理工具/" style="font-size: 14px; color: #999">文本处理工具</a> <a href="/tags/通配符/" style="font-size: 14px; color: #999">通配符</a>
+        </div>
+    </section>
+
+
+    
+    
+        <section class='m_widget music'>
+    <div class='header'><i class="fa fa-headphones fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;音乐</div>
+    <div class='content'>
+        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=100% height=450 src="//music.163.com/outchain/player?type=0&id=746319661&auto=0&height=450"></iframe>
+    </div>
+</section>
+
+    
+    
+        <section class='m_widget links'>
+    <div class='header'><i class="fa fa-handshake-o fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;友链</div>
+    <div class='content'>
+        <ul class="entry" id="links">
+            
+                <li><a class="flat-box" target="_blank" rel="external nofollow noopener noreferrer" href="http://www.cnblogs.com/clsn/">
+                    <div class='name'>
+                        <i class="fa fa-user-circle-o fa-fw" aria-hidden="true"></i>
+                        &nbsp;&nbsp;惨绿少年
+                    </div>
+                </a></li>
+            
+            
+
+        </ul>
+
+    </div>
+</section>
+
+    
+    
+        
+    <section class='m_widget toc-wrapper'>
+        <div class="header"><i class="fa fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;目录</div>
+        <div class='content'>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#通配符和正则的区别"><span class="toc-text">通配符和正则的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常用的通配符介绍"><span class="toc-text">常用的通配符介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#练习："><span class="toc-text">练习：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-显示-var目录下所有以l开头，以一个小写字母结尾，且中间出现至少一位数字的文件或目录"><span class="toc-text">1. 显示/var目录下所有以l开头，以一个小写字母结尾，且中间出现至少一位数字的文件或目录</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-显示-etc目录下以任意一位数字开头，且以非数字结尾的文件或目录"><span class="toc-text">2. 显示/etc目录下以任意一位数字开头，且以非数字结尾的文件或目录</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-显示-etc-目录下以非字母开头，后面跟了一个字母及其它任意长度任意字符的文件或目录"><span class="toc-text">3. 显示/etc/目录下以非字母开头，后面跟了一个字母及其它任意长度任意字符的文件或目录</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-显示-etc-目录下所有以rc开头，并后面是0-6之间的数字，其它为任意字符的文件或目录"><span class="toc-text">4. 显示/etc/目录下所有以rc开头，并后面是0-6之间的数字，其它为任意字符的文件或目录</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-显示-etc目录下，所有以-d结尾的文件或目录"><span class="toc-text">5. 显示/etc目录下，所有以.d结尾的文件或目录</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-显示-etc目录下，所有-conf结尾，且以m-n-r-p开头的文件或目录"><span class="toc-text">6. 显示/etc目录下，所有.conf结尾，且以m,n,r,p开头的文件或目录</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-只显示-root下的隐藏文件和目录"><span class="toc-text">7. 只显示/root下的隐藏文件和目录</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-只显示-etc下的非隐藏目录"><span class="toc-text">8. 只显示/etc下的非隐藏目录</span></a></li></ol></li></ol>
+        </div>
+    </section>
+
+
+    
+
+
+        </aside>
+        <script>setLoadingBarProgress(60);</script>
+    </div>
+    </div>
+    <footer id="footer" class="clearfix">
+    
+        <div class="social-wrapper">
+          
+              
+                  <a href="mailto:me@xaoxuu.com" class="social fa fa-envelope flat-box" target="_blank" rel="external"></a>
+              
+          
+              
+                  <a href="https://github.com/xaoxuu" class="social fa fa-github flat-box" target="_blank" rel="external"></a>
+              
+          
+        </div>
+    
+    <br>
+    <div>博客内容遵循 <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="licenses">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></div>
+    <div>本站使用 <a href="https://github.com/xaoxuu/hexo-theme-material-x" target="_blank" class="codename">Material X</a> 作为主题，
+		总访问量为 <span id="busuanzi_value_site_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span> 次。
+    </div>
+</footer>
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+    <script>setLoadingBarProgress(80);</script>
+    <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src='//cdn.bootcss.com/node-waves/0.7.5/waves.min.js'></script>
+<script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script>
+<!-- 访问统计 -->
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<script src="/js/jquery.fitvids.js"></script>
+
+    <script>
+        var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+        var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+        var ALGOLIA_API_KEY = "";
+        var ALGOLIA_APP_ID = "";
+        var ALGOLIA_INDEX_NAME = "";
+        var AZURE_SERVICE_NAME = "";
+        var AZURE_INDEX_NAME = "";
+        var AZURE_QUERY_KEY = "";
+        var BAIDU_API_ID = "";
+        var SEARCH_SERVICE = "hexo" || "hexo";
+        var ROOT = "/"||"/";
+        if(!ROOT.endsWith('/'))ROOT += '/';
+    </script>
+
+<script src="/js/search.js"></script>
+<script src="/js/app.js"></script>
+
+
+    
+    
+    
+
+
+    <script>setLoadingBarProgress(100);</script>
+</body>

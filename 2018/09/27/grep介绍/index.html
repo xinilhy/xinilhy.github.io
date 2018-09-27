@@ -178,21 +178,19 @@
 
         <div class="article-entry" itemprop="articleBody">
             <blockquote>
-<p>这篇文章 ，主要介绍grep的基本使用</p>
+<p>这篇文章 ，主要介绍linux三剑客中的老三grep的基本使用</p>
 </blockquote>
-<p>grep (Global search REgular expression and Print out the line)),是一个文本过滤工具；<br><a id="more"></a></p>
-<ol>
-<li><p>作用<br>根据特定的模式，对文件逐行进行匹配检查，打印匹配到的行<br>模式：即过滤的条件，可以由变量、命令、双引号字符等组成；</p>
-</li>
-<li><p>选项</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">--color=auto：对匹配到的文本着色显示，Centos7默认已经定义为别名</span><br><span class="line">-v:           显示不被模式所匹配到的行，即反选</span><br><span class="line">-i:           忽略大小写</span><br><span class="line">-n:           显示匹配的行号</span><br><span class="line">-c:           统计匹配的行数</span><br><span class="line">-o:           仅显示匹配到的字符串，而不是整行，默认显示整行</span><br><span class="line">-q:           静默模式，不输出任何信息</span><br><span class="line">-e:           实现多个选项之间的逻辑or关系</span><br><span class="line">-w:           匹配整个单词</span><br><span class="line">-A #(数字):   同after，即把匹配到的行以及后#行显示出来</span><br><span class="line">-B #:         同before，即把匹配到的行以及前#行显示出来</span><br><span class="line">-C #:         把匹配到的行以及前后各#行都显示出来</span><br><span class="line">-E：          相当于egrep，扩展正则表达式，默认grep仅支持标准正则表达式</span><br><span class="line">-F:           相当于fgrep，不支持正则表达式</span><br><span class="line">-f:           可以匹配两个文件中的公共行</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>示例如下：</p>
-</li>
-</ol>
-<ul>
+<h2 id="linux文本处理三剑客"><a href="#linux文本处理三剑客" class="headerlink" title="linux文本处理三剑客"></a>linux文本处理三剑客</h2><ul>
+<li>grep：文本过滤(模式：pattern)工具<br>  grep, egrep, fgrep（不支持正则表达式搜索）</li>
+<li>sed：stream editor，文本编辑工具</li>
+<li>awk：Linux上的实现gawk，文本报告生成器</li>
+</ul>
+<h2 id="grep介绍"><a href="#grep介绍" class="headerlink" title="grep介绍"></a>grep介绍</h2><p>grep (Global search REgular expression and Print out the line)),是一个文本过滤工具；<br><a id="more"></a></p>
+<h3 id="1-作用"><a href="#1-作用" class="headerlink" title="1. 作用"></a>1. 作用</h3><p>根据特定的模式，对文件逐行进行匹配检查，打印匹配到的行<br>模式：即过滤的条件，可以由变量、命令、双引号字符等组成；</p>
+<h3 id="2-选项"><a href="#2-选项" class="headerlink" title="2. 选项"></a>2. 选项</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">--color=auto：对匹配到的文本着色显示，Centos7默认已经定义为别名</span><br><span class="line">-v:           显示不被模式所匹配到的行，即反选</span><br><span class="line">-i:           忽略大小写</span><br><span class="line">-n:           显示匹配的行号</span><br><span class="line">-c:           统计匹配的行数</span><br><span class="line">-o:           仅显示匹配到的字符串，而不是整行，默认显示整行</span><br><span class="line">-q:           静默模式，不输出任何信息</span><br><span class="line">-e:           实现多个选项之间的逻辑or关系</span><br><span class="line">-w:           匹配整个单词</span><br><span class="line">-A #(数字):   同after，即把匹配到的行以及后#行显示出来</span><br><span class="line">-B #:         同before，即把匹配到的行以及前#行显示出来</span><br><span class="line">-C #:         把匹配到的行以及前后各#行都显示出来</span><br><span class="line">-E：          相当于egrep，扩展正则表达式，默认grep仅支持标准正则表达式</span><br><span class="line">-F:           相当于fgrep，不支持正则表达式</span><br><span class="line">-f:           可以匹配两个文件中的公共行</span><br></pre></td></tr></table></figure>
+<h3 id="3-示例如下："><a href="#3-示例如下：" class="headerlink" title="3. 示例如下："></a>3. 示例如下：</h3><ul>
 <li><p>-v </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">环境准备</span><br><span class="line">[root@CentOS6 data ]#cat test </span><br><span class="line">aaa</span><br><span class="line">bbb</span><br><span class="line">ccc</span><br><span class="line">ddd</span><br><span class="line">xin</span><br><span class="line">xin</span><br><span class="line">yuanhohl</span><br><span class="line">[root@CentOS6 data ]#grep &apos;a&apos; test </span><br><span class="line">aaa</span><br><span class="line">yuanhohl</span><br><span class="line">[root@CentOS6 data ]#grep -v &apos;a&apos; test </span><br><span class="line">bbb</span><br><span class="line">ccc</span><br><span class="line">ddd</span><br><span class="line">xin</span><br><span class="line">xin</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">环境准备</span><br><span class="line">[root@CentOS6 data ]#cat test </span><br><span class="line">aaa</span><br><span class="line">bbb</span><br><span class="line">ccc</span><br><span class="line">ddd</span><br><span class="line">xin</span><br><span class="line">xin</span><br><span class="line">yuanhohl</span><br><span class="line"></span><br><span class="line">[root@CentOS6 data ]#grep &apos;a&apos; test </span><br><span class="line">aaa</span><br><span class="line">yuanhohl</span><br><span class="line"></span><br><span class="line">[root@CentOS6 data ]#grep -v &apos;a&apos; test </span><br><span class="line">bbb</span><br><span class="line">ccc</span><br><span class="line">ddd</span><br><span class="line">xin</span><br><span class="line">xin</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>-n</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@CentOS6 var ]#grep  -n &quot;UUID&quot; /etc/fstab </span><br><span class="line">9:UUID=91054f47-59f0-4c0f-9136-d1a824233866 /                       ext4    defaults        1 1</span><br><span class="line">10:UUID=38fafd9a-a99a-48e2-8112-2016e04db828 /boot                   ext4    defaults        1 2</span><br><span class="line">11:UUID=ec1e0b78-b7c4-44b4-90f7-63bd23ed129e /data                   ext4    defaults        1 2</span><br><span class="line">12:UUID=a8fd9779-45d3-449b-aa16-12532df94d4b swap                    swap    defaults        0 0</span><br></pre></td></tr></table></figure>
@@ -209,7 +207,7 @@
 <li><p>-A 、-B、-C</p>
 </li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">[root@CentOS6 var ]#grep  -A 2 &quot;UUID&quot; /etc/fstab </span><br><span class="line">UUID=91054f47-59f0-4c0f-9136-d1a824233866 /                       ext4    defaults        1 1</span><br><span class="line">UUID=38fafd9a-a99a-48e2-8112-2016e04db828 /boot                   ext4    defaults        1 2</span><br><span class="line">UUID=ec1e0b78-b7c4-44b4-90f7-63bd23ed129e /data                   ext4    defaults        1 2</span><br><span class="line">UUID=a8fd9779-45d3-449b-aa16-12532df94d4b swap                    swap    defaults        0 0</span><br><span class="line">tmpfs                   /dev/shm                tmpfs   defaults        0 0</span><br><span class="line">devpts                  /dev/pts                devpts  gid=5,mode=620  0 0</span><br><span class="line">[root@CentOS6 var ]#</span><br><span class="line">[root@CentOS6 var ]#grep  -B 2 &quot;UUID&quot; /etc/fstab </span><br><span class="line"> See man pages fstab(5), findfs(8), mount(8) and/or blkid(8) for more info</span><br><span class="line">#</span><br><span class="line">UUID=91054f47-59f0-4c0f-9136-d1a824233866 /                       ext4    defaults        1 1</span><br><span class="line">UUID=38fafd9a-a99a-48e2-8112-2016e04db828 /boot                   ext4    defaults        1 2</span><br><span class="line">UUID=ec1e0b78-b7c4-44b4-90f7-63bd23ed129e /data                   ext4    defaults        1 2</span><br><span class="line">UUID=a8fd9779-45d3-449b-aa16-12532df94d4b swap                    swap    defaults        0 0</span><br><span class="line">[root@CentOS6 var ]#grep  -C 2 &quot;UUID&quot; /etc/fstab </span><br><span class="line"> See man pages fstab(5), findfs(8), mount(8) and/or blkid(8) for more info</span><br><span class="line">#</span><br><span class="line">UUID=91054f47-59f0-4c0f-9136-d1a824233866 /                       ext4    defaults        1 1</span><br><span class="line">UUID=38fafd9a-a99a-48e2-8112-2016e04db828 /boot                   ext4    defaults        1 2</span><br><span class="line">UUID=ec1e0b78-b7c4-44b4-90f7-63bd23ed129e /data                   ext4    defaults        1 2</span><br><span class="line">UUID=a8fd9779-45d3-449b-aa16-12532df94d4b swap                    swap    defaults        0 0</span><br><span class="line">tmpfs                   /dev/shm                tmpfs   defaults        0 0</span><br><span class="line">devpts                  /dev/pts                devpts  gid=5,mode=620  0 0</span><br><span class="line">[root@CentOS6 var ]#</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">[root@CentOS6 var ]#grep  -A 2 &quot;UUID&quot; /etc/fstab </span><br><span class="line">UUID=91054f47-59f0-4c0f-9136-d1a824233866 /                       ext4    defaults        1 1</span><br><span class="line">UUID=38fafd9a-a99a-48e2-8112-2016e04db828 /boot                   ext4    defaults        1 2</span><br><span class="line">UUID=ec1e0b78-b7c4-44b4-90f7-63bd23ed129e /data                   ext4    defaults        1 2</span><br><span class="line">UUID=a8fd9779-45d3-449b-aa16-12532df94d4b swap                    swap    defaults        0 0</span><br><span class="line">tmpfs                   /dev/shm                tmpfs   defaults        0 0</span><br><span class="line">devpts                  /dev/pts                devpts  gid=5,mode=620  0 0</span><br><span class="line">[root@CentOS6 var ]#</span><br><span class="line"></span><br><span class="line">[root@CentOS6 var ]#grep  -B 2 &quot;UUID&quot; /etc/fstab </span><br><span class="line"> See man pages fstab(5), findfs(8), mount(8) and/or blkid(8) for more info</span><br><span class="line">#</span><br><span class="line">UUID=91054f47-59f0-4c0f-9136-d1a824233866 /                       ext4    defaults        1 1</span><br><span class="line">UUID=38fafd9a-a99a-48e2-8112-2016e04db828 /boot                   ext4    defaults        1 2</span><br><span class="line">UUID=ec1e0b78-b7c4-44b4-90f7-63bd23ed129e /data                   ext4    defaults        1 2</span><br><span class="line">UUID=a8fd9779-45d3-449b-aa16-12532df94d4b swap                    swap    defaults        0 0</span><br><span class="line"></span><br><span class="line">[root@CentOS6 var ]#grep  -C 2 &quot;UUID&quot; /etc/fstab </span><br><span class="line"> See man pages fstab(5), findfs(8), mount(8) and/or blkid(8) for more info</span><br><span class="line">#</span><br><span class="line">UUID=91054f47-59f0-4c0f-9136-d1a824233866 /                       ext4    defaults        1 1</span><br><span class="line">UUID=38fafd9a-a99a-48e2-8112-2016e04db828 /boot                   ext4    defaults        1 2</span><br><span class="line">UUID=ec1e0b78-b7c4-44b4-90f7-63bd23ed129e /data                   ext4    defaults        1 2</span><br><span class="line">UUID=a8fd9779-45d3-449b-aa16-12532df94d4b swap                    swap    defaults        0 0</span><br><span class="line">tmpfs                   /dev/shm                tmpfs   defaults        0 0</span><br><span class="line">devpts                  /dev/pts                devpts  gid=5,mode=620  0 0</span><br><span class="line">[root@CentOS6 var ]#</span><br></pre></td></tr></table></figure>
 <ul>
 <li>-e</li>
 </ul>
@@ -217,7 +215,9 @@
 <ul>
 <li>-w</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">环境准备：</span><br><span class="line">##默认会将包含root的字符串全部打印；</span><br><span class="line">[root@CentOS6 var ]#useradd rooter</span><br><span class="line">[root@CentOS6 var ]#grep &quot;root&quot; /etc/passwd</span><br><span class="line">root:x:0:0:root:/root:/bin/bash</span><br><span class="line">operator:x:11:0:operator:/root:/sbin/nologin</span><br><span class="line">rooter:x:501:501::/home/rooter:/bin/bash                </span><br><span class="line">使用-w，仅答应root的行</span><br><span class="line">[root@CentOS6 var ]#grep -w &quot;root&quot; /etc/passwd          </span><br><span class="line">root:x:0:0:root:/root:/bin/bash</span><br><span class="line">operator:x:11:0:operator:/root:/sbin/nologin</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">环境准备：</span><br><span class="line">##默认会将包含root的字符串全部打印；</span><br><span class="line">[root@CentOS6 var ]#useradd rooter</span><br><span class="line"></span><br><span class="line">[root@CentOS6 var ]#grep &quot;root&quot; /etc/passwd</span><br><span class="line">root:x:0:0:root:/root:/bin/bash</span><br><span class="line">operator:x:11:0:operator:/root:/sbin/nologin</span><br><span class="line">rooter:x:501:501::/home/rooter:/bin/bash                </span><br><span class="line">使用-w，仅答应root的行</span><br><span class="line"></span><br><span class="line">[root@CentOS6 var ]#grep -w &quot;root&quot; /etc/passwd          </span><br><span class="line">root:x:0:0:root:/root:/bin/bash</span><br><span class="line">operator:x:11:0:operator:/root:/sbin/nologin</span><br></pre></td></tr></table></figure>
+<p>好了，grep的基本用法就介绍到这里，后期会介绍grep搭配正则表达式，功能更加强大。</p>
+
         </div>
 
         
@@ -230,6 +230,26 @@
 
         
             <div class="prev-next">
+                
+                    <section class="prev" >
+                        <span class="art-item-left">
+                            <h6><i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;上一篇</h6>
+                            <h4>
+                                <a href="/2018/09/27/通配符/" rel="prev" title="通配符">
+                                  
+                                      通配符
+                                  
+                                </a>
+                            </h4>
+                            
+                                <h6 class="tags">
+                                    
+                                        <i class="fa fa-tag fa-fw"></i>通配符
+                                    
+                                </h6>
+                            
+                        </span>
+                    </section>
                 
                 
                     <section class="next">
@@ -313,7 +333,7 @@
     <section class='m_widget tagcloud'>
         <div class="header"><i class="fa fa-tags fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;标签</div>
         <div class='content'>
-            <a href="/tags/linux/" style="font-size: 24px; color: #555">linux</a> <a href="/tags/linux三剑客/" style="font-size: 14px; color: #999">linux三剑客</a> <a href="/tags/文本处理工具/" style="font-size: 14px; color: #999">文本处理工具</a>
+            <a href="/tags/linux/" style="font-size: 24px; color: #555">linux</a> <a href="/tags/linux三剑客/" style="font-size: 14px; color: #999">linux三剑客</a> <a href="/tags/文本处理工具/" style="font-size: 14px; color: #999">文本处理工具</a> <a href="/tags/通配符/" style="font-size: 14px; color: #999">通配符</a>
         </div>
     </section>
 
@@ -351,6 +371,13 @@
     
     
         
+    <section class='m_widget toc-wrapper'>
+        <div class="header"><i class="fa fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;目录</div>
+        <div class='content'>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#linux文本处理三剑客"><span class="toc-text">linux文本处理三剑客</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#grep介绍"><span class="toc-text">grep介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-作用"><span class="toc-text">1. 作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-选项"><span class="toc-text">2. 选项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-示例如下："><span class="toc-text">3. 示例如下：</span></a></li></ol></li></ol>
+        </div>
+    </section>
+
 
     
 
