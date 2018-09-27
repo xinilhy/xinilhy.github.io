@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>grep介绍 | xin&#39;s Blog</title>
+  <meta name="description" content="专注于linux运维" />
+  <meta name="keywords" content="" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" href="/">
+  <link rel="alternate" href="/atom.xml" title="xin's Blog">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <link rel="shortcut icon" href="" />
+  <link rel="icon" href="" />
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+  <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href='//cdn.bootcss.com/node-waves/0.7.5/waves.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="/style.css">
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+</head>
+
+<body>
+    <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+
+
+    <script>setLoadingBarProgress(20)</script>
+    <header class="l_header">
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+			<a class="logo flat-box" href='/' >
+				<!-- <i class="fa fa-home"></i> -->
+				xin's Blog
+			</a>
+
+				<div class='menu'>
+					<ul class='h-list'>
+                        
+    						
+    							<li>
+    								<a class='nav-about flat-box' href='/'>
+    									<i class='fa fa-home fa-'></i>&nbsp;主页
+    								</a>
+    							</li>
+    						
+    							<li>
+    								<a class='nav-category flat-box' href='/categories/shell/'>
+    									<i class='fa fa-cube fa-'></i>&nbsp;shell编程
+    								</a>
+    							</li>
+    						
+    							<li>
+    								<a class='nav-category flat-box' href='/categories/linux'>
+    									<i class='fa fa-rss fa-'></i>&nbsp;Linux基本功
+    								</a>
+    							</li>
+    						
+    							<li>
+    								<a class='nav-category flat-box' href='/categories/linuxservice'>
+    									<i class='fa fa-rss fa-'></i>&nbsp;Linux服务
+    								</a>
+    							</li>
+    						
+    							<li>
+    								<a class='nav-category flat-box' href='/categories/itauto'>
+    									<i class='fa fa-rss fa-'></i>&nbsp;运维自动化
+    								</a>
+    							</li>
+    						
+    							<li>
+    								<a class='nav-archives flat-box' href='/archives'>
+    									<i class='fa fa-archive fa-'></i>&nbsp;归档
+    								</a>
+    							</li>
+    						
+        			 
+					</ul>
+					<div class='underline'></div>
+				</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search" />
+						<span class="icon"><i class="fa fa-search fa-fw"></i></span>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a class="fa fa-search fa-fw" href='javascript:void(0)'></span></a></li>
+				
+				<li class='s-menu'><a class="fa fa-navicon fa-fw" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo" class="flat-box" href='javascript:void(0)'>
+				xaoxuu
+			</a>
+
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a class="fa fa-comments fa-fw flat-box" href='javascript:void(0)'></a></li>
+				<li class='s-top'><a class="fa fa-arrow-up fa-fw flat-box" href='javascript:void(0)'></a></li>
+				<li class='s-toc'><a class="fa fa-list-ul fa-fw flat-box" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+        <div class="header">xin&#39;s Blog</div>
+		<nav>
+            <ul>
+                
+                    
+                        <li>
+                            <a class='nav-about flat-box nav flat-box' href='/'><i class='fa fa-home fa-fw'></i>&nbsp;主页</a>
+                        </li>
+                    
+                        <li>
+                            <a class='nav-category flat-box nav flat-box' href='/categories/shell/'><i class='fa fa-cube fa-fw'></i>&nbsp;shell编程</a>
+                        </li>
+                    
+                        <li>
+                            <a class='nav-category flat-box nav flat-box' href='/categories/linux'><i class='fa fa-rss fa-fw'></i>&nbsp;Linux基本功</a>
+                        </li>
+                    
+                        <li>
+                            <a class='nav-category flat-box nav flat-box' href='/categories/linuxservice'><i class='fa fa-rss fa-fw'></i>&nbsp;Linux服务</a>
+                        </li>
+                    
+                        <li>
+                            <a class='nav-category flat-box nav flat-box' href='/categories/itauto'><i class='fa fa-rss fa-fw'></i>&nbsp;运维自动化</a>
+                        </li>
+                    
+                        <li>
+                            <a class='nav-archives flat-box nav flat-box' href='/archives'><i class='fa fa-archive fa-fw'></i>&nbsp;归档</a>
+                        </li>
+                    
+             
+            </ul>
+		</nav>
+	</aside>
+
+    <script>setLoadingBarProgress(40);</script>
+    <div class="l_body">
+    <div class='container clearfix'>
+        <div class='l_main'>
+            <article id="post-grep介绍" class="post white-box article-type-post" itemscope itemprop="blogPost">
+    <section class='meta'>
+        <h1 class="title">
+            
+                grep介绍
+            
+        </h1>
+        <time>
+            2018-09-27&nbsp;&nbsp;
+            <i class="fa fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+        </time>
+        
+    
+    <div class='cats'>
+        <a href="/categories/linux/">linux</a>
+    </div>
+
+
+    </section>
+
+    <section class="article typo">
+
+        <div class="article-entry" itemprop="articleBody">
+            <blockquote>
+<p>这篇文章 ，主要介绍grep的基本使用</p>
+</blockquote>
+<p>grep (Global search REgular expression and Print out the line)),是一个文本过滤工具；<br><a id="more"></a></p>
+<ol>
+<li><p>作用<br>根据特定的模式，对文件逐行进行匹配检查，打印匹配到的行<br>模式：即过滤的条件，可以由变量、命令、双引号字符等组成；</p>
+</li>
+<li><p>选项</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">--color=auto：对匹配到的文本着色显示，Centos7默认已经定义为别名</span><br><span class="line">-v:           显示不被模式所匹配到的行，即反选</span><br><span class="line">-i:           忽略大小写</span><br><span class="line">-n:           显示匹配的行号</span><br><span class="line">-c:           统计匹配的行数</span><br><span class="line">-o:           仅显示匹配到的字符串，而不是整行，默认显示整行</span><br><span class="line">-q:           静默模式，不输出任何信息</span><br><span class="line">-e:           实现多个选项之间的逻辑or关系</span><br><span class="line">-w:           匹配整个单词</span><br><span class="line">-A #(数字):   同after，即把匹配到的行以及后#行显示出来</span><br><span class="line">-B #:         同before，即把匹配到的行以及前#行显示出来</span><br><span class="line">-C #:         把匹配到的行以及前后各#行都显示出来</span><br><span class="line">-E：          相当于egrep，扩展正则表达式，默认grep仅支持标准正则表达式</span><br><span class="line">-F:           相当于fgrep，不支持正则表达式</span><br><span class="line">-f:           可以匹配两个文件中的公共行</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>示例如下：</p>
+</li>
+</ol>
+<ul>
+<li><p>-v </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">环境准备</span><br><span class="line">[root@CentOS6 data ]#cat test </span><br><span class="line">aaa</span><br><span class="line">bbb</span><br><span class="line">ccc</span><br><span class="line">ddd</span><br><span class="line">xin</span><br><span class="line">xin</span><br><span class="line">yuanhohl</span><br><span class="line">[root@CentOS6 data ]#grep &apos;a&apos; test </span><br><span class="line">aaa</span><br><span class="line">yuanhohl</span><br><span class="line">[root@CentOS6 data ]#grep -v &apos;a&apos; test </span><br><span class="line">bbb</span><br><span class="line">ccc</span><br><span class="line">ddd</span><br><span class="line">xin</span><br><span class="line">xin</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>-n</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@CentOS6 var ]#grep  -n &quot;UUID&quot; /etc/fstab </span><br><span class="line">9:UUID=91054f47-59f0-4c0f-9136-d1a824233866 /                       ext4    defaults        1 1</span><br><span class="line">10:UUID=38fafd9a-a99a-48e2-8112-2016e04db828 /boot                   ext4    defaults        1 2</span><br><span class="line">11:UUID=ec1e0b78-b7c4-44b4-90f7-63bd23ed129e /data                   ext4    defaults        1 2</span><br><span class="line">12:UUID=a8fd9779-45d3-449b-aa16-12532df94d4b swap                    swap    defaults        0 0</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>-c</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@CentOS6 var ]#grep  -c &quot;UUID&quot; /etc/fstab </span><br><span class="line">4</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>-o</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@CentOS6 var ]#grep  -o &quot;UUID&quot; /etc/fstab </span><br><span class="line">UUID</span><br><span class="line">UUID</span><br><span class="line">UUID</span><br><span class="line">UUID</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>-q</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@CentOS6 var ]#grep  -q &quot;UUID&quot; /etc/fstab </span><br><span class="line">[root@CentOS6 var ]#echo $?</span><br><span class="line">0</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>-A 、-B、-C</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">[root@CentOS6 var ]#grep  -A 2 &quot;UUID&quot; /etc/fstab </span><br><span class="line">UUID=91054f47-59f0-4c0f-9136-d1a824233866 /                       ext4    defaults        1 1</span><br><span class="line">UUID=38fafd9a-a99a-48e2-8112-2016e04db828 /boot                   ext4    defaults        1 2</span><br><span class="line">UUID=ec1e0b78-b7c4-44b4-90f7-63bd23ed129e /data                   ext4    defaults        1 2</span><br><span class="line">UUID=a8fd9779-45d3-449b-aa16-12532df94d4b swap                    swap    defaults        0 0</span><br><span class="line">tmpfs                   /dev/shm                tmpfs   defaults        0 0</span><br><span class="line">devpts                  /dev/pts                devpts  gid=5,mode=620  0 0</span><br><span class="line">[root@CentOS6 var ]#</span><br><span class="line">[root@CentOS6 var ]#grep  -B 2 &quot;UUID&quot; /etc/fstab </span><br><span class="line"> See man pages fstab(5), findfs(8), mount(8) and/or blkid(8) for more info</span><br><span class="line">#</span><br><span class="line">UUID=91054f47-59f0-4c0f-9136-d1a824233866 /                       ext4    defaults        1 1</span><br><span class="line">UUID=38fafd9a-a99a-48e2-8112-2016e04db828 /boot                   ext4    defaults        1 2</span><br><span class="line">UUID=ec1e0b78-b7c4-44b4-90f7-63bd23ed129e /data                   ext4    defaults        1 2</span><br><span class="line">UUID=a8fd9779-45d3-449b-aa16-12532df94d4b swap                    swap    defaults        0 0</span><br><span class="line">[root@CentOS6 var ]#grep  -C 2 &quot;UUID&quot; /etc/fstab </span><br><span class="line"> See man pages fstab(5), findfs(8), mount(8) and/or blkid(8) for more info</span><br><span class="line">#</span><br><span class="line">UUID=91054f47-59f0-4c0f-9136-d1a824233866 /                       ext4    defaults        1 1</span><br><span class="line">UUID=38fafd9a-a99a-48e2-8112-2016e04db828 /boot                   ext4    defaults        1 2</span><br><span class="line">UUID=ec1e0b78-b7c4-44b4-90f7-63bd23ed129e /data                   ext4    defaults        1 2</span><br><span class="line">UUID=a8fd9779-45d3-449b-aa16-12532df94d4b swap                    swap    defaults        0 0</span><br><span class="line">tmpfs                   /dev/shm                tmpfs   defaults        0 0</span><br><span class="line">devpts                  /dev/pts                devpts  gid=5,mode=620  0 0</span><br><span class="line">[root@CentOS6 var ]#</span><br></pre></td></tr></table></figure>
+<ul>
+<li>-e</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">[root@CentOS6 var ]#grep -e root -e nologin /etc/passwd     ##注意每个条件之前都要加-e</span><br><span class="line">root:x:0:0:root:/root:/bin/bash</span><br><span class="line">bin:x:1:1:bin:/bin:/sbin/nologin</span><br><span class="line">daemon:x:2:2:daemon:/sbin:/sbin/nologin</span><br><span class="line">adm:x:3:4:adm:/var/adm:/sbin/nologin</span><br><span class="line">lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin</span><br><span class="line">mail:x:8:12:mail:/var/spool/mail:/sbin/nologin</span><br><span class="line">uucp:x:10:14:uucp:/var/spool/uucp:/sbin/nologin</span><br><span class="line">operator:x:11:0:operator:/root:/sbin/nologin</span><br><span class="line">games:x:12:100:games:/usr/games:/sbin/nologin</span><br><span class="line">gopher:x:13:30:gopher:/var/gopher:/sbin/nologin</span><br><span class="line">ftp:x:14:50:FTP User:/var/ftp:/sbin/nologin</span><br><span class="line">nobody:x:99:99:Nobody:/:/sbin/nologin</span><br><span class="line">dbus:x:81:81:System message bus:/:/sbin/nologin</span><br><span class="line">usbmuxd:x:113:113:usbmuxd user:/:/sbin/nologin</span><br><span class="line">rpc:x:32:32:Rpcbind Daemon:/var/lib/rpcbind:/sbin/nologin</span><br><span class="line">rtkit:x:499:499:RealtimeKit:/proc:/sbin/nologin</span><br><span class="line">avahi-autoipd:x:170:170:Avahi IPv4LL Stack:/var/lib/avahi-autoipd:/sbin/nologin</span><br><span class="line">vcsa:x:69:69:virtual console memory owner:/dev:/sbin/nologin</span><br><span class="line">abrt:x:173:173::/etc/abrt:/sbin/nologin</span><br><span class="line">rpcuser:x:29:29:RPC Service User:/var/lib/nfs:/sbin/nologin</span><br></pre></td></tr></table></figure>
+<ul>
+<li>-w</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">环境准备：</span><br><span class="line">##默认会将包含root的字符串全部打印；</span><br><span class="line">[root@CentOS6 var ]#useradd rooter</span><br><span class="line">[root@CentOS6 var ]#grep &quot;root&quot; /etc/passwd</span><br><span class="line">root:x:0:0:root:/root:/bin/bash</span><br><span class="line">operator:x:11:0:operator:/root:/sbin/nologin</span><br><span class="line">rooter:x:501:501::/home/rooter:/bin/bash                </span><br><span class="line">使用-w，仅答应root的行</span><br><span class="line">[root@CentOS6 var ]#grep -w &quot;root&quot; /etc/passwd          </span><br><span class="line">root:x:0:0:root:/root:/bin/bash</span><br><span class="line">operator:x:11:0:operator:/root:/sbin/nologin</span><br></pre></td></tr></table></figure>
+        </div>
+
+        
+            <div class="article-tags tags">
+                
+                    <a href="/tags/linux三剑客/"><i class="fa fa-tag fa-fw" aria-hidden="true"></i>&nbsp;linux三剑客</a>
+                
+            </div>
+        
+
+        
+            <div class="prev-next">
+                
+                
+                    <section class="next">
+                        <span class="art-item-right" aria-hidden="true">
+                            <h6>下一篇&nbsp;<i class="fa fa-chevron-right" aria-hidden="true"></i></h6>
+                            <h4>
+                                <a href="/2018/09/27/文本处理工具/" rel="prev" title="文本处理工具">
+                                    
+                                        文本处理工具
+                                    
+                                </a>
+                            </h4>
+                            
+                                <h6 class="tags">
+                                    
+                                        <i class="fa fa-tag fa-fw"></i>文本处理工具
+                                    
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+            </div>
+        
+
+    </section>
+
+</article>
+
+<br>
+
+<!-- 显示推荐文章和评论 -->
+
+
+<script>
+    window.subData = {
+        title: 'grep介绍',
+        tools: true
+    }
+</script>
+
+
+        </div>
+        <aside class='l_side'>
+            
+    
+        
+    <section class='m_widget author'>
+        
+        <div class='content'>
+            
+                <h2>xin</h2>
+            
+            
+                <div>
+                    <i class="fa fa-quote-left fa-3x fa-pull-left" aria-hidden="true"></i>
+                    喜欢就去追啊，反正也追不到
+                </div>
+            
+        </div>
+        
+            <div class="social-wrapper">
+              
+                
+                    <a href="mailto:me@xaoxuu.com" class="social flat-box" target="_blank" rel="external"><i class="social fa fa-envelope" aria-hidden="true"></i></a>
+                
+              
+                
+                    <a href="https://github.com/xaoxuu" class="social flat-box" target="_blank" rel="external"><i class="social fa fa-github" aria-hidden="true"></i></a>
+                
+              
+            </div>
+        
+    </section>
+
+
+    
+    
+    
+        
+    <section class='m_widget tagcloud'>
+        <div class="header"><i class="fa fa-tags fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;标签</div>
+        <div class='content'>
+            <a href="/tags/linux/" style="font-size: 24px; color: #555">linux</a> <a href="/tags/linux三剑客/" style="font-size: 14px; color: #999">linux三剑客</a> <a href="/tags/文本处理工具/" style="font-size: 14px; color: #999">文本处理工具</a>
+        </div>
+    </section>
+
+
+    
+    
+        <section class='m_widget music'>
+    <div class='header'><i class="fa fa-headphones fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;音乐</div>
+    <div class='content'>
+        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=100% height=450 src="//music.163.com/outchain/player?type=0&id=746319661&auto=0&height=450"></iframe>
+    </div>
+</section>
+
+    
+    
+        <section class='m_widget links'>
+    <div class='header'><i class="fa fa-handshake-o fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;友链</div>
+    <div class='content'>
+        <ul class="entry" id="links">
+            
+                <li><a class="flat-box" target="_blank" rel="external nofollow noopener noreferrer" href="http://www.cnblogs.com/clsn/">
+                    <div class='name'>
+                        <i class="fa fa-user-circle-o fa-fw" aria-hidden="true"></i>
+                        &nbsp;&nbsp;惨绿少年
+                    </div>
+                </a></li>
+            
+            
+
+        </ul>
+
+    </div>
+</section>
+
+    
+    
+        
+
+    
+
+
+        </aside>
+        <script>setLoadingBarProgress(60);</script>
+    </div>
+    </div>
+    <footer id="footer" class="clearfix">
+    
+        <div class="social-wrapper">
+          
+              
+                  <a href="mailto:me@xaoxuu.com" class="social fa fa-envelope flat-box" target="_blank" rel="external"></a>
+              
+          
+              
+                  <a href="https://github.com/xaoxuu" class="social fa fa-github flat-box" target="_blank" rel="external"></a>
+              
+          
+        </div>
+    
+    <br>
+    <div>博客内容遵循 <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="licenses">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></div>
+    <div>本站使用 <a href="https://github.com/xaoxuu/hexo-theme-material-x" target="_blank" class="codename">Material X</a> 作为主题，
+		总访问量为 <span id="busuanzi_value_site_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span> 次。
+    </div>
+</footer>
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+    <script>setLoadingBarProgress(80);</script>
+    <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src='//cdn.bootcss.com/node-waves/0.7.5/waves.min.js'></script>
+<script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script>
+<!-- 访问统计 -->
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<script src="/js/jquery.fitvids.js"></script>
+
+    <script>
+        var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+        var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+        var ALGOLIA_API_KEY = "";
+        var ALGOLIA_APP_ID = "";
+        var ALGOLIA_INDEX_NAME = "";
+        var AZURE_SERVICE_NAME = "";
+        var AZURE_INDEX_NAME = "";
+        var AZURE_QUERY_KEY = "";
+        var BAIDU_API_ID = "";
+        var SEARCH_SERVICE = "hexo" || "hexo";
+        var ROOT = "/"||"/";
+        if(!ROOT.endsWith('/'))ROOT += '/';
+    </script>
+
+<script src="/js/search.js"></script>
+<script src="/js/app.js"></script>
+
+
+    
+    
+    
+
+
+    <script>setLoadingBarProgress(100);</script>
+</body>
