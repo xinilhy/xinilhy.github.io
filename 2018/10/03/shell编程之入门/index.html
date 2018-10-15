@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="shell编程," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Xin's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="shell编程结构：各种系统命令的组合 数据存储：变量、数组 表达式: a + b 语句:if 、case、for、while、until等">
+<meta name="keywords" content="shell编程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="shell编程之入门">
+<meta property="og:url" content="http://xinilhy.github.io/2018/10/03/shell编程之入门/index.html">
+<meta property="og:site_name" content="Xin&#39;s Blog">
+<meta property="og:description" content="shell编程结构：各种系统命令的组合 数据存储：变量、数组 表达式: a + b 语句:if 、case、for、while、until等">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-10-15T06:25:44.153Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="shell编程之入门">
+<meta name="twitter:description" content="shell编程结构：各种系统命令的组合 数据存储：变量、数组 表达式: a + b 语句:if 、case、for、while、until等">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://xinilhy.github.io/2018/10/03/shell编程之入门/"/>
+
+
+
+
+
+  <title>shell编程之入门 | Xin's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Xin's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Xin's Blog</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://xinilhy.github.io/2018/10/03/shell编程之入门/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Xin's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">shell编程之入门</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-03T21:03:54+08:00">
+                2018-10-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/shell/" itemprop="url" rel="index">
+                    <span itemprop="name">shell</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="shell编程结构："><a href="#shell编程结构：" class="headerlink" title="shell编程结构："></a>shell编程结构：</h2><p>各种系统命令的组合<br> 数据存储：变量、数组<br> 表达式: a + b<br> 语句:if 、case、for、while、until等<br>  <a id="more"></a></p>
+<h1 id="shell脚本"><a href="#shell脚本" class="headerlink" title="shell脚本"></a>shell脚本</h1><h2 id="创建："><a href="#创建：" class="headerlink" title="创建："></a>创建：</h2><hr>
+<p>第一行必须声明shell：#!/bin/bash<br>可以添加注释，以#开头</p>
+<blockquote>
+<p>规范：<br>1、第一行一般为调用使用的语言<br>2、程序名，避免更改文件名为无法找到正确的文件<br>3、版本号<br>4、更改后的时间<br>5、作者相关信息<br>6、该程序的作用，及注意事项<br>7、最后是各版本的更新简要说明  </p>
+</blockquote>
+<h2 id="执行："><a href="#执行：" class="headerlink" title="执行："></a>执行：</h2><hr>
+<ul>
+<li>给x权限，然后使用绝对、相对路径执行；或者添加到PATH变量中，直接文件名执行。</li>
+<li>直接调用bash执行；</li>
+<li>source或.</li>
+<li>echo … | bash  （后期可以下载互联网上的脚本给bash）</li>
+</ul>
+<h2 id="脚本调试"><a href="#脚本调试" class="headerlink" title="脚本调试"></a>脚本调试</h2><hr>
+<p>检测语法：sh -n<br>调试执行：sh -x</p>
+<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><hr>
+<pre><code>就是一段命名的内存空间
+</code></pre><p>支持的类型：字符型、数值型：整型、浮点型</p>
+<blockquote>
+<p>由于shell是弱类型语言，不需要指定类型；并且<br>bash 不支持浮点数</p>
+</blockquote>
+<h4 id="命名"><a href="#命名" class="headerlink" title="命名"></a>命名</h4><ul>
+<li>不能使用程序中的保留字，如if、for</li>
+<li>只能使用数字、字母及下划线，且不能以数字开头</li>
+<li>命名需要人性化，见名知义</li>
+<li>使用驼峰命名法，如studentName</li>
+</ul>
+<h4 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h4><ul>
+<li>局部：生效范围为当前shell进程；对当前shell之外的其它shell进程，包括 当前shell的子shell进程均无效  </li>
+<li>环境：生效范围为当前shell进程及其子进程  </li>
+<li>只读:</li>
+<li>位置变量：$1, $2, …来表示，用于在shell脚本中引用命令行传入的参数；  </li>
+<li>特殊变量：$?, $0, $*, $@, $#,$$</li>
+</ul>
+<h5 id="局部变量"><a href="#局部变量" class="headerlink" title="局部变量"></a>局部变量</h5><blockquote>
+<p>赋值：</p>
+<ul>
+<li>普通字符串：name=”value“</li>
+<li>变量引用：name=”$USER”</li>
+<li>命令：name=<code>cmd</code> name=$(cmd)</li>
+<li>文件路径：filename=/etc/fstab  </li>
+</ul>
+</blockquote>
+<blockquote>
+<p>变量引用：   </p>
+<ul>
+<li>“” ：直接引用变量值   </li>
+<li>‘’ ：保持原字符串<br>显示所有已定义的变量————set<br>删除变量——————————unset name</li>
+</ul>
+</blockquote>
+<h4 id="练习："><a href="#练习：" class="headerlink" title="练习："></a>练习：</h4><ol>
+<li>编写脚本/root/bin/systeminfo.sh,显示当前主机系统信息，包括主机名，</li>
+</ol>
+<p>IPv4地址，操作系统版本，内核版本，CPU型号，内存大小，硬盘大小<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">[root@centos7 test]#cat systeminfo.sh </span><br><span class="line">#!/bin/bash</span><br><span class="line">echo &quot;My hostname is ` hostname`&quot;</span><br><span class="line">echo &quot;os version is:`cat /etc/centos-release`&quot;</span><br><span class="line">echo &quot;kernel version is `uname -r`&quot;</span><br><span class="line">echo &quot;CPU type:`lscpu | grep &quot;Model name&quot; | tr -s &quot; &quot; | cut -d: -f2`&quot;</span><br><span class="line">echo &quot;meminfo:`cat /proc/meminfo|head -1|tr -s &quot; &quot;|cut -d: -f2 `&quot;</span><br><span class="line">echo &quot;Disk:`lsblk|grep &quot;^sd&quot;|tr -s &quot; &quot;|cut -d&quot; &quot; -f1,4`&quot;</span><br><span class="line">echo &quot;My username is $USER&quot;</span><br><span class="line">[root@centos7 test]#sh systeminfo.sh </span><br><span class="line">My hostname is centos7.localdomain</span><br><span class="line">os version is:CentOS Linux release 7.5.1804 (Core) </span><br><span class="line">kernel version is 3.10.0-862.el7.x86_64</span><br><span class="line">CPU type: Intel(R) Core(TM) i5-4210U CPU @ 1.70GHz</span><br><span class="line">meminfo: 1258076 kB</span><br><span class="line">Disk:sda 200G</span><br><span class="line">My username is root</span><br></pre></td></tr></table></figure></p>
+<ol start="2">
+<li><p>编写脚本/root/bin/backup.sh，可实现每日将/etc/目录备份到<br>/root/etcYYYY-mm-dd中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@centos7 test]#cat backup.sh </span><br><span class="line">#!/bin/bash</span><br><span class="line">cp -a /etc/ /root/etc`date +%F` &amp;&amp; echo &quot;backup is ok&quot; || echo &quot;backup is err&quot;</span><br><span class="line">[root@centos7 test]#sh backup.sh </span><br><span class="line">backup is ok</span><br><span class="line">[root@centos7 test]#</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>编写脚本/root/bin/disk.sh,显示当前硬盘分区中空间利用率最大的值</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@centos7 test]#cat disk.sh </span><br><span class="line">#!/bin/bash</span><br><span class="line">echo &quot;Disk is `df -h|tr -s &quot; &quot; %|cut -d% -f5|sort -nr|head -1`&quot;</span><br><span class="line">[root@centos7 test]#sh disk.sh </span><br><span class="line">Disk is 16</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>编写脚本/root/bin/links.sh,显示正连接本主机的每个远程主机的IPv4地址和连接数，并按连接数从大到小排序</li>
+</ol>
+<h5 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h5><p>声明和赋值：  </p>
+<pre><code>export name=VALUE
+declare -x name=VALUE
+</code></pre><p>引用：</p>
+<pre><code>$name 或 ${name}
+其中，${name}用于区分变量和后面的字符，如：$(name)01
+</code></pre><p>显示所有环境变量：</p>
+<pre><code>    env
+export
+</code></pre><p>删除：</p>
+<pre><code>unset name
+</code></pre><h5 id="只读变量"><a href="#只读变量" class="headerlink" title="只读变量"></a>只读变量</h5><p>特点：只能声明，但是不能修改和删除</p>
+<blockquote>
+<p>声明：</p>
+</blockquote>
+<pre><code>readonly  name
+declare  -r  name
+</code></pre><blockquote>
+<p>查看：</p>
+</blockquote>
+<pre><code>readonly  -p
+</code></pre><h5 id="位置变量"><a href="#位置变量" class="headerlink" title="位置变量"></a>位置变量</h5><p>在脚本中调用命令行传入的参数  </p>
+<ul>
+<li>$1, $2, …：对应第1、第2等参数，shift [n]换位置<h5 id="特殊变量"><a href="#特殊变量" class="headerlink" title="特殊变量"></a>特殊变量</h5></li>
+<li>$0: 命令本身</li>
+<li>$*: 传递给脚本的所有参数，全部参数合为一个字符串</li>
+<li>$@: 传递给脚本的所有参数，每个参数为独立字符串<blockquote>
+<p>注意： ZHY$@ $* 只在被双引号包起来的时候才会有差异</p>
+</blockquote>
+</li>
+<li>$#: 传递给脚本的参数的个数</li>
+<li>$?：保存上一条命令的执行状态（0 代表成功，1－255代表失败）</li>
+<li>set – 清空所有位置变量</li>
+</ul>
+<h5 id="退出状态码"><a href="#退出状态码" class="headerlink" title="退出状态码"></a>退出状态码</h5><pre><code>exit [n]：自定义退出状态码
+</code></pre><blockquote>
+<p>注意：如果在脚本中指定状态码，脚本在执行过程中一旦遇到exit命令，立即终止；退出状态由exit后的数字决定。    </p>
+</blockquote>
+<blockquote>
+<p>如果未给脚本指定退出状态码，整个脚本的退出状态码取决于脚本中执行的最后一条命令的状态码（即：如果前面有错误的命令，但是最后是执行成功的，那么状态码依然是0）</p>
+</blockquote>
+<h2 id="算术运算："><a href="#算术运算：" class="headerlink" title="算术运算："></a>算术运算：</h2><hr>
+<pre><code>+, -, *, /, %取模（取余）, **（乘方）
+</code></pre><h4 id="实现方法："><a href="#实现方法：" class="headerlink" title="实现方法："></a>实现方法：</h4><ul>
+<li>let var=算术表达式</li>
+<li>var=$ [算术表达式]</li>
+<li>var=$((算术表达式))</li>
+<li>((a=1+3));echo $a</li>
+<li>echo “算术表达式” |bc</li>
+<li>var=$(expr arg1 arg2 arg3 …)  (注意空格)<blockquote>
+<p>注意：乘法符号在有些场景下需要转义,如*</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> 方法一：</span><br><span class="line">[root@centos7 ~]#x=1</span><br><span class="line">[root@centos7 ~]#y=2</span><br><span class="line">[root@centos7 ~]#let sum=x+y</span><br><span class="line">[root@centos7 ~]#echo $sum</span><br><span class="line">3</span><br><span class="line">方法二：</span><br><span class="line">[root@centos7 ~]#echo $[x*y]</span><br><span class="line">2</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+</ul>
+<h4 id="赋值："><a href="#赋值：" class="headerlink" title="赋值："></a>赋值：</h4><p> +=，-=,*=,/=,%=<br> 例如：let count+=3,即自加3后赋值给自己。<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> [root@centos7 data 19:58:15]$count=10</span><br><span class="line">[root@centos7 data 20:45:31]$let count+=3</span><br><span class="line">[root@centos7 data 20:45:38]$echo $count</span><br><span class="line">13</span><br></pre></td></tr></table></figure></p>
+<h4 id="自增、自减："><a href="#自增、自减：" class="headerlink" title="自增、自减："></a>自增、自减：</h4>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let var+=1=====let var++</span><br><span class="line">let var-=1=====let var--</span><br></pre></td></tr></table></figure>
+<h2 id="练习：-1"><a href="#练习：-1" class="headerlink" title="练习："></a>练习：</h2><hr>
+<ol>
+<li><p>编写脚本/root/bin/sumid.sh，计算/etc/passwd文件中的第10个用户和第20用户的ID之和</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">uid10=`head /etc/passwd|tail -n1|cut -d: -f3`</span><br><span class="line">uid20=`head -20 /etc/passwd|tail -n1|cut -d: -f3`</span><br><span class="line">echo &quot;sumid is $[uid10+uid20]&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>编写脚本/root/bin/sumspace.sh，传递两个文件路径作为参数给脚本，计算这两个文件中所有空白行之和</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">space1=`grep  &quot;^$&quot; $1|wc -l `</span><br><span class="line">echo &quot;$1 is $space1&quot;</span><br><span class="line">space2=`grep &quot;^$&quot;  $2|wc -l `</span><br><span class="line">echo &quot;$2 is $space2&quot;</span><br><span class="line">echo &quot;$[space1+space2]&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>编写脚本/root/bin/sumfile.sh,统计/etc,/var, /usr目录中共有多少个一级子目录和文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">dirsum1=`ls -l $1|wc -l`</span><br><span class="line">echo &quot;$1 dirnum is $dirsum1&quot;</span><br><span class="line">dirsum2=`ls -l $2|wc -l`</span><br><span class="line">echo &quot;$2 dirnum is $dirsum2&quot;</span><br><span class="line">dirsum3=`ls -l $3|wc -l`</span><br><span class="line">echo &quot;$3 dirnum is $dirsum3&quot;</span><br><span class="line">echo &quot;is $[dirsum1+dirsum2+dirsum3]&quot;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="逻辑运算："><a href="#逻辑运算：" class="headerlink" title="逻辑运算："></a>逻辑运算：</h2><hr>
+<p>true —-1  （总是成功）<br>false—-0  （总是失败）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@centos7 mnt]# true </span><br><span class="line">[root@centos7 mnt]# echo $?</span><br><span class="line">0</span><br><span class="line">[root@centos7 mnt]# false</span><br><span class="line">[root@centos7 mnt]# echo $?</span><br><span class="line">1</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>注意：这里的1和0和前面的$?不一样，不要混淆。</p>
+</blockquote>
+<h4 id="与："><a href="#与：" class="headerlink" title="与："></a>与：</h4><pre><code>1 与 1 = 1
+1 与 0 = 0
+0 与 1 = 0
+0 与 0 = 0 
+即：和1与的保留原值；  和0与的都为0
+</code></pre><p>例如：十进制12&amp;8在与的时候需要转换成二进制，分别为1100和1000，想与即1000；<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@centos7 ~]#((a=12&amp;8))</span><br><span class="line">[root@centos7 ~]#echo $a</span><br><span class="line">8</span><br></pre></td></tr></table></figure></p>
+<h4 id="或："><a href="#或：" class="headerlink" title="或："></a>或：</h4> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1 或 1 = 1</span><br><span class="line">1 或 0 = 1</span><br><span class="line">0 或 1 = 1</span><br><span class="line">0 或 0 = 0</span><br><span class="line">即：和1或的都为1，和0或的保持原值不变。</span><br></pre></td></tr></table></figure>
+<h4 id="非："><a href="#非：" class="headerlink" title="非："></a>非：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">非：！  </span><br><span class="line">! 1 = 0   </span><br><span class="line">! 0 = 1</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@centos7 mnt]# ! true</span><br><span class="line">[root@centos7 mnt]# echo $?</span><br><span class="line">1</span><br><span class="line">[root@centos7 mnt]# ! false</span><br><span class="line">[root@centos7 mnt]# echo $?</span><br><span class="line">0</span><br></pre></td></tr></table></figure>
+<h4 id="短路运算："><a href="#短路运算：" class="headerlink" title="短路运算："></a>短路运算：</h4><h5 id="短路与："><a href="#短路与：" class="headerlink" title="短路与："></a>短路与：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">表达式：cmd1 &amp;&amp; cmd2</span><br><span class="line"></span><br><span class="line">如果cmd1成功，则执行cmd2</span><br><span class="line"></span><br><span class="line">如果cmd1失败，则不执行cmd2</span><br></pre></td></tr></table></figure>
+<p>原理：<br>    当cmd1为真，则整体的真假由后面的cmd2判断；<br>    当cmd2为假，整体为假；</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">测试：</span><br><span class="line">如果文件存在，则添加x权限；</span><br><span class="line">ls anaconda-ks.cfg &amp;&gt;  /dev/null &amp;&amp; chmod +x anaconda-ks.cfg</span><br></pre></td></tr></table></figure>
+<h5 id="短路或："><a href="#短路或：" class="headerlink" title="短路或："></a>短路或：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">表达式：cmd1 || cmd2</span><br><span class="line"></span><br><span class="line">如果cmd1成功，则不执行cmd2</span><br><span class="line"></span><br><span class="line">如果cmd1失败，则执行cmd2</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">测试：</span><br><span class="line"></span><br><span class="line">案例1：如果用户不存在，则创建该用户：</span><br><span class="line">[root@centos7 mnt]# id wan &amp;&gt; /dev/null || useradd wan</span><br><span class="line">案例2：如果用户不存在，则创建该用户，并输出创建提示；</span><br><span class="line">[root@centos7 mnt]# id wan &amp;&gt; /dev/null || ( useradd wan &amp;&gt; /dev/null ; echo wan is created )</span><br><span class="line">wan is created </span><br><span class="line">案例3：如果用户不存在，则创建该用户，并输出创建提示；否则当用户存在时，提示；</span><br><span class="line">[root@centos7 mnt]# name=mage; id $name &amp;&gt; /dev/null &amp;&amp; echo $name is exist || ( useradd $name &amp;&gt; /dev/null ; echo $name is created )</span><br><span class="line">mage is created  </span><br><span class="line">[root@centos7 mnt]# name=mage; id $name &amp;&gt; /dev/null &amp;&amp; echo $name is exist || ( useradd $name &amp;&gt; /dev/null ; echo $name is created )</span><br><span class="line">mage is exist</span><br></pre></td></tr></table></figure>
+<h5 id="异或："><a href="#异或：" class="headerlink" title="异或：^"></a>异或：^</h5><p>异或：相同为0，不同为1； （1为真）<br>同或：相同为1，不同为0；<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">12^8=?</span><br><span class="line"></span><br><span class="line">1100</span><br><span class="line">1000</span><br><span class="line">0100=4</span><br><span class="line"></span><br><span class="line">案例：</span><br><span class="line">[root@centos7 test]$ echo $[ 12^8 ]</span><br><span class="line">4</span><br><span class="line"></span><br><span class="line">用途：对调数字</span><br><span class="line">a^b=c;a^c=b;b^c=a</span><br><span class="line">可以通过异或来对调数字，但是不支持字母</span><br></pre></td></tr></table></figure></p>
+<h2 id="条件测试："><a href="#条件测试：" class="headerlink" title="条件测试："></a>条件测试：</h2><hr>
+<h4 id="测试命令："><a href="#测试命令：" class="headerlink" title="测试命令："></a>测试命令：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">test EXPRESSION</span><br><span class="line">[ EXPRESSION ]</span><br><span class="line">[[ EXPRESSION ]]</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>note:EXPRESSION前后必须有空白字符！</p>
+<ul>
+<li>若真，则返回0</li>
+<li>若假，则返回1</li>
+</ul>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">1.判断centos版本号，然后使用相关命令启动服务；</span><br><span class="line">[root@centos7 ~]#grep -oE &quot;[[:digit:]]+&quot; /etc/centos-release|head -n1</span><br><span class="line">7</span><br><span class="line">[root@centos7 ~]#version=&apos;grep -oE &quot;[[:digit:]]+&quot; /etc/centos-release|head -n1&apos;</span><br><span class="line">[root@centos7 ~]#[ $version -eq 6 ] &amp;&amp; service network restart</span><br><span class="line"></span><br><span class="line">[root@centos7 ~]#[ $version -eq 7 ] &amp;&amp; systemctl restart network</span><br><span class="line"></span><br><span class="line">2.测试主机是否存活？</span><br><span class="line">[root@centos7 ~]#ip=192.168.1.1</span><br><span class="line">[root@centos7 ~]#ping -c1 $ip &amp;&gt; /dev/null &amp;&amp; echo &amp;ip is up || echo &amp;ip is down</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">3.如果cmd1成功，就执行cmd2，如果cmd2失败，就执行cmd3</span><br><span class="line">——————————cmd1 &amp;&amp; cmd2 || cmd3——————————</span><br><span class="line">[root@centos7 ~]#name=xin</span><br><span class="line">[root@centos7 ~]#id -u name &amp;&gt; /dev/null &amp;&amp; echo name is exist || echo name is not exist</span><br><span class="line">name is not exist</span><br></pre></td></tr></table></figure>
+<p>注意:下面这个逻辑关系不常用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">——————————cmd1 || cmd2 &amp;&amp; cmd3——————————————</span><br><span class="line">即：如果cmd1成功，就不执行cmd2，————cmd3执行；</span><br><span class="line">    如果cmd1失败，就会执行cmd2，————cmd3执行；</span><br><span class="line">    由于cmd3总执行，所以一般不用这种逻辑关系；</span><br></pre></td></tr></table></figure></p>
+<h4 id="测试类型："><a href="#测试类型：" class="headerlink" title="测试类型："></a>测试类型：</h4><blockquote>
+<p> 数值测试<br> 字符串测试<br> 文件测试   </p>
+</blockquote>
+<h5 id="数值型"><a href="#数值型" class="headerlink" title="数值型"></a>数值型</h5><blockquote>
+<p>-gt 是否大于<br> -ge 是否大于等于<br> -eq 是否等于<br> -ne 是否不等于<br> -lt 是否小于<br> -le 是否小于等于   </p>
+</blockquote>
+<h5 id="字符串类型"><a href="#字符串类型" class="headerlink" title="字符串类型"></a>字符串类型</h5><ul>
+<li>==：是否等于，不加“”，支持通配符</li>
+<li>>: 是否大于</li>
+<li>&lt; : 是否小于</li>
+<li>!=：是否不等于</li>
+<li>=~：匹配字符串，不加“”， 【一般用于[[]]中，支持扩展的正则表达式】</li>
+<li>-z “string”：测试字符串是否为空，空则为真，不空则为假；</li>
+<li>-n “string”：测试字符串是否不空，不空则为真，空则为假；</li>
+</ul>
+<blockquote>
+<p>注意：字符串比较时加引号；</p>
+</blockquote>
+<h4 id="练习"><a href="#练习" class="headerlink" title="练习:"></a>练习:</h4><p>1、编写脚本/root/bin/argsnum.sh，接受一个文件路径作为参数；如果参数<br>个数小于1，则提示用户“至少应该给一个参数”，并立即退出；如果参数个数<br>不小于1，则显示第一个参数所指向的文件中的空白行数<br>2、编写脚本/root/bin/hostping.sh，接受一个主机的IPv4地址做为参数，测<br>试是否可连通。如果能ping通，则提示用户“该IP地址可访问”；如果不可<br>ping通，则提示用户“该IP地址不可访问”<br>3、编写脚本/root/bin/checkdisk.sh，检查磁盘分区空间和inode使用率，如<br>果超过80%，就发广播警告空间将满  </p>
+<h4 id="文件测试："><a href="#文件测试：" class="headerlink" title="文件测试："></a>文件测试：</h4><h5 id="存在性测试"><a href="#存在性测试" class="headerlink" title="存在性测试"></a>存在性测试</h5><p>-a FILE：同-e<br>-e FILE: 文件存在性测试，存在为真，否则为假  </p>
+<h5 id="存在性及类别测试"><a href="#存在性及类别测试" class="headerlink" title="存在性及类别测试"></a>存在性及类别测试</h5><p>-b FILE：是否存在且为块设备文件<br>-c FILE：是否存在且为字符设备文件<br>-d FILE：是否存在且为目录文件<br>-f FILE：是否存在且为普通文件<br>-h FILE 或 -L FILE：存在且为符号链接文件<br>-p FILE：是否存在且为命名管道文件<br>-S FILE：是否存在且为套接字文件  </p>
+<h5 id="文件权限测试"><a href="#文件权限测试" class="headerlink" title="文件权限测试"></a>文件权限测试</h5><p>-r FILE：是否存在且可读<br>-w FILE: 是否存在且可写<br>-x FILE: 是否存在且可执行  </p>
+<h5 id="文件特殊权限测试"><a href="#文件特殊权限测试" class="headerlink" title="文件特殊权限测试"></a>文件特殊权限测试</h5><p>-u FILE：是否存在且拥有suid权限<br>-g FILE：是否存在且拥有sgid权限<br>-k FILE：是否存在且拥有sticky权限  </p>
+<h5 id="文件大小测试"><a href="#文件大小测试" class="headerlink" title="文件大小测试"></a>文件大小测试</h5><p>-s FILE: 是否存在且非空</p>
+<h5 id="文件是否打开"><a href="#文件是否打开" class="headerlink" title="文件是否打开"></a>文件是否打开</h5><p>-t fd: fd 文件描述符是否在某终端已经打开<br>-N FILE：文件自从上一次被读取之后是否被修改过<br>-O FILE：当前有效用户是否为文件属主<br>-G FILE：当前有效用户是否为文件属组  </p>
+<h5 id="双目测试"><a href="#双目测试" class="headerlink" title="双目测试"></a>双目测试</h5><p>FILE1 -ef FILE2: FILE1是否是FILE2的硬链接<br>FILE1 -nt FILE2: FILE1是否新于FILE2（mtime）<br>FILE1 -ot FILE2: FILE1是否旧于FILE2</p>
+<h5 id="组合测试："><a href="#组合测试：" class="headerlink" title="组合测试："></a>组合测试：</h5><ul>
+<li><p>方式一：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">COMMAND1 &amp;&amp; COMMAND2 并且  </span><br><span class="line">COMMAND1 || COMMAND2 或者  </span><br><span class="line">! COMMAND 非  </span><br><span class="line">如：[[ -r FILE ]] &amp;&amp; [[ -w FILE ]]</span><br><span class="line"></span><br><span class="line">注意：&amp;&amp; ||等放在[]外</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>方式二：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">EXPRESSION1 -a EXPRESSION2 并且  </span><br><span class="line">EXPRESSION1 -o EXPRESSION2 或者  </span><br><span class="line">! EXPRESSION</span><br><span class="line"></span><br><span class="line">注意：-a..放在[]中</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="练习：-2"><a href="#练习：-2" class="headerlink" title="练习："></a>练习：</h4><p>1、编写脚本/bin/per.sh,判断当前用户对指定参数文件，是否不可读并且不可写<br>2、编写脚本/root/bin/excute.sh ，判断参数文件是否为sh后缀的普通文件，如果是，添加所有人可执行权限，否则提示用户非脚本文件<br>3、编写脚本/root/bin/nologin.sh和login.sh,实现禁止和充许普通用户登录系统  </p>
+<h2 id="read命令——————接受用户输入"><a href="#read命令——————接受用户输入" class="headerlink" title="read命令——————接受用户输入"></a>read命令——————接受用户输入</h2><blockquote>
+<p>常见选项：  </p>
+<p>-p 指定要显示的提示<br>-s 静默输入，一般用于密码<br>-n N 指定输入的字符长度N<br>-d ‘字符’ 输入结束符<br>t N TIMEOUT为N秒  </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">read -p “Enter a filename: “ FILE</span><br></pre></td></tr></table></figure>
+<h2 id="防止扩展："><a href="#防止扩展：" class="headerlink" title="防止扩展："></a>防止扩展：</h2><ul>
+<li>反斜线（\）会使随后的字符按原意解释  </li>
+<li>加引号来防止扩展  <ul>
+<li>单引号（’）防止所有扩展  </li>
+<li>双引号（”）也防止所有扩展，但是以下情况例外： <ul>
+<li>$（美元符号） － 变量扩展  </li>
+<li>`（反引号） － 命令替换  </li>
+<li>\（反斜线） － 禁止单个字符扩展  </li>
+<li>!（叹号） － 历史命令替换   </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="bash的配置文件："><a href="#bash的配置文件：" class="headerlink" title="bash的配置文件："></a>bash的配置文件：</h2><h3 id="分类一：按范围"><a href="#分类一：按范围" class="headerlink" title="分类一：按范围"></a>分类一：按范围</h3><ul>
+<li><p>全局配置：<br>/etc/profile<br>/etc/profile.d/*.sh<br>/etc/bashrc    </p>
+</li>
+<li><p>个人配置：<br>~/.bash_profile<br>~/.bashrc  </p>
+</li>
+</ul>
+<h3 id="分类二：按功能"><a href="#分类二：按功能" class="headerlink" title="分类二：按功能"></a>分类二：按功能</h3><h4 id="profile类："><a href="#profile类：" class="headerlink" title="profile类："></a>profile类：</h4><p>为交互式登录的shell提供配置 </p>
+<p>全局：/etc/profile, /etc/profile.d/*.sh<br>个人：~/.bash_profile<br>功能：<br>(1) 用于定义环境变量<br>(2) 运行命令或脚本</p>
+<h4 id="bashrc类："><a href="#bashrc类：" class="headerlink" title="bashrc类："></a>bashrc类：</h4><p>为非交互式和交互式登录的shell提供配置<br>全局：/etc/bashrc<br>个人：~/.bashrc<br>功用：<br>(1) 定义命令别名和函数<br>(2) 定义本地变量  </p>
+<h3 id="配置文件生效"><a href="#配置文件生效" class="headerlink" title="配置文件生效"></a>配置文件生效</h3><p>方法一：重新启动shell进程<br>方法二：<br>. 或source  例:. ~/.bashrc</p>
+<h3 id="bash-logout文件："><a href="#bash-logout文件：" class="headerlink" title="bash_logout文件："></a>bash_logout文件：</h3><p>bash退出任务保存在~/.bash_logout文件中（用户） </p>
+<p>在退出登录shell时运行  </p>
+<p> 用于<br>• 创建自动备份<br>• 清除临时文件  </p>
+<h2 id="补充————-变量"><a href="#补充————-变量" class="headerlink" title="补充————$-变量"></a>补充————$-变量</h2><ul>
+<li><p>h：hashall，打开这个选项后，Shell 会将命令所在的路径hash下来，避免每次都要查询。通过set +h将h选项关闭</p>
+</li>
+<li><p>i：interactive-comments，包含这个选项说明当前的 shell 是一个交互式的shell。所谓的交互shell,在脚本中，i选项是关闭的。 </p>
+</li>
+<li><p>m：monitor，打开监控模式，就可以通过Job control来控制进程的停止、继续，后台或者前台执行等。</p>
+</li>
+<li><p>B：braceexpand，大括号扩展</p>
+</li>
+<li><p>H：history，H选项打开，可以展开历史列表中的命令，可以通过!感叹号来完成，例如“!!”返回上最近的一个历史命令，“!n”返回第 n 个历史命令</p>
+</li>
+</ul>
+<h2 id="练习-1"><a href="#练习-1" class="headerlink" title="练习"></a>练习</h2><p>1、让所有用户的PATH环境变量的值多出一个路径，例如：<br>/usr/local/apache/bin  </p>
+<p>2、用户root登录时，将命令指示符变成红色，并自动启用如下别名：<br>rm=‘rm –i’<br>cdnet=‘cd /etc/sysconfig/network-scripts/’<br>editnet=‘vim /etc/sysconfig/network-scripts/ifcfg-eth0’<br>editnet=‘vim /etc/sysconfig/network-scripts/ifcfg-eno16777736 或 ifcfg-ens33 ’ (如果系<br>统是CentOS7)  </p>
+<p>3、任意用户登录系统时，显示红色字体的警示提醒信息“Hi,dangerous！”  </p>
+<p>4、编写生成脚本基本格式的脚本，包括作者，联系方式，版本，时间，描述等  </p>
+<p>5、编写用户的环境初始化脚本reset.sh，包括别名，登录提示符，vim的设置，<br>环境变量等</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/shell编程/" rel="tag"># shell编程</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/02/vim基础用法/" rel="next" title="vim基础用法">
+                <i class="fa fa-chevron-left"></i> vim基础用法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/04/shell编程之流程控制/" rel="prev" title="shelll编程之流程控制">
+                shelll编程之流程控制 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">xin</p>
+              <p class="site-description motion-element" itemprop="description">专注于linux运维</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="undefined" target="_blank" title="0">
+                      
+                        <i class="fa fa-fw fa-globe"></i>0</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="undefined" target="_blank" title="1">
+                      
+                        <i class="fa fa-fw fa-globe"></i>1</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#shell编程结构："><span class="nav-number">1.</span> <span class="nav-text">shell编程结构：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#shell脚本"><span class="nav-number"></span> <span class="nav-text">shell脚本</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建："><span class="nav-number">1.</span> <span class="nav-text">创建：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#执行："><span class="nav-number">2.</span> <span class="nav-text">执行：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#脚本调试"><span class="nav-number">3.</span> <span class="nav-text">脚本调试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量"><span class="nav-number">4.</span> <span class="nav-text">变量</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#命名"><span class="nav-number">4.0.1.</span> <span class="nav-text">命名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分类"><span class="nav-number">4.0.2.</span> <span class="nav-text">分类</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#局部变量"><span class="nav-number">4.0.2.1.</span> <span class="nav-text">局部变量</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#练习："><span class="nav-number">4.0.3.</span> <span class="nav-text">练习：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#环境变量"><span class="nav-number">4.0.3.1.</span> <span class="nav-text">环境变量</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#只读变量"><span class="nav-number">4.0.3.2.</span> <span class="nav-text">只读变量</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#位置变量"><span class="nav-number">4.0.3.3.</span> <span class="nav-text">位置变量</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#特殊变量"><span class="nav-number">4.0.3.4.</span> <span class="nav-text">特殊变量</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#退出状态码"><span class="nav-number">4.0.3.5.</span> <span class="nav-text">退出状态码</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算术运算："><span class="nav-number">5.</span> <span class="nav-text">算术运算：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#实现方法："><span class="nav-number">5.0.1.</span> <span class="nav-text">实现方法：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#赋值："><span class="nav-number">5.0.2.</span> <span class="nav-text">赋值：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自增、自减："><span class="nav-number">5.0.3.</span> <span class="nav-text">自增、自减：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#练习：-1"><span class="nav-number">6.</span> <span class="nav-text">练习：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#逻辑运算："><span class="nav-number">7.</span> <span class="nav-text">逻辑运算：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#与："><span class="nav-number">7.0.1.</span> <span class="nav-text">与：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#或："><span class="nav-number">7.0.2.</span> <span class="nav-text">或：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#非："><span class="nav-number">7.0.3.</span> <span class="nav-text">非：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#短路运算："><span class="nav-number">7.0.4.</span> <span class="nav-text">短路运算：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#短路与："><span class="nav-number">7.0.4.1.</span> <span class="nav-text">短路与：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#短路或："><span class="nav-number">7.0.4.2.</span> <span class="nav-text">短路或：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#异或："><span class="nav-number">7.0.4.3.</span> <span class="nav-text">异或：^</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#条件测试："><span class="nav-number">8.</span> <span class="nav-text">条件测试：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#测试命令："><span class="nav-number">8.0.1.</span> <span class="nav-text">测试命令：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#测试类型："><span class="nav-number">8.0.2.</span> <span class="nav-text">测试类型：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#数值型"><span class="nav-number">8.0.2.1.</span> <span class="nav-text">数值型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#字符串类型"><span class="nav-number">8.0.2.2.</span> <span class="nav-text">字符串类型</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#练习"><span class="nav-number">8.0.3.</span> <span class="nav-text">练习:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文件测试："><span class="nav-number">8.0.4.</span> <span class="nav-text">文件测试：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#存在性测试"><span class="nav-number">8.0.4.1.</span> <span class="nav-text">存在性测试</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#存在性及类别测试"><span class="nav-number">8.0.4.2.</span> <span class="nav-text">存在性及类别测试</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#文件权限测试"><span class="nav-number">8.0.4.3.</span> <span class="nav-text">文件权限测试</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#文件特殊权限测试"><span class="nav-number">8.0.4.4.</span> <span class="nav-text">文件特殊权限测试</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#文件大小测试"><span class="nav-number">8.0.4.5.</span> <span class="nav-text">文件大小测试</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#文件是否打开"><span class="nav-number">8.0.4.6.</span> <span class="nav-text">文件是否打开</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#双目测试"><span class="nav-number">8.0.4.7.</span> <span class="nav-text">双目测试</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#组合测试："><span class="nav-number">8.0.4.8.</span> <span class="nav-text">组合测试：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#练习：-2"><span class="nav-number">8.0.5.</span> <span class="nav-text">练习：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#read命令——————接受用户输入"><span class="nav-number">9.</span> <span class="nav-text">read命令——————接受用户输入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#防止扩展："><span class="nav-number">10.</span> <span class="nav-text">防止扩展：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bash的配置文件："><span class="nav-number">11.</span> <span class="nav-text">bash的配置文件：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#分类一：按范围"><span class="nav-number">11.1.</span> <span class="nav-text">分类一：按范围</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分类二：按功能"><span class="nav-number">11.2.</span> <span class="nav-text">分类二：按功能</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#profile类："><span class="nav-number">11.2.1.</span> <span class="nav-text">profile类：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bashrc类："><span class="nav-number">11.2.2.</span> <span class="nav-text">bashrc类：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置文件生效"><span class="nav-number">11.3.</span> <span class="nav-text">配置文件生效</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bash-logout文件："><span class="nav-number">11.4.</span> <span class="nav-text">bash_logout文件：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#补充————-变量"><span class="nav-number">12.</span> <span class="nav-text">补充————$-变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#练习-1"><span class="nav-number">13.</span> <span class="nav-text">练习</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xin</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,183 +1,330 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  
-  <title>文本处理工具 | xin&#39;s Blog</title>
-  <meta name="description" content="专注于linux运维" />
-  <meta name="keywords" content="" />
-  <meta name="HandheldFriendly" content="True" />
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <link rel="shortcut icon" href="/">
-  <link rel="alternate" href="/atom.xml" title="xin's Blog">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <link rel="shortcut icon" href="" />
-  <link rel="icon" href="" />
-  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
-  <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-  <link href='//cdn.bootcss.com/node-waves/0.7.5/waves.min.css' rel='stylesheet'>
-  <link rel="stylesheet" href="/style.css">
-  <script>
-    function setLoadingBarProgress(num) {
-      document.getElementById('loading-bar').style.width=num+"%";
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="文本处理工具," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Xin's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="这篇文章主要介绍一些文本处理工具，包括less、cat、head、tail、cut基础不牢，地动山摇">
+<meta name="keywords" content="文本处理工具">
+<meta property="og:type" content="article">
+<meta property="og:title" content="文本处理工具">
+<meta property="og:url" content="http://xinilhy.github.io/2018/09/27/文本处理工具/index.html">
+<meta property="og:site_name" content="Xin&#39;s Blog">
+<meta property="og:description" content="这篇文章主要介绍一些文本处理工具，包括less、cat、head、tail、cut基础不牢，地动山摇">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-10-14T15:10:24.722Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="文本处理工具">
+<meta name="twitter:description" content="这篇文章主要介绍一些文本处理工具，包括less、cat、head、tail、cut基础不牢，地动山摇">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     }
-  </script>
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://xinilhy.github.io/2018/09/27/文本处理工具/"/>
+
+
+
+
+
+  <title>文本处理工具 | Xin's Blog</title>
+  
+
+
+
+
+
+
+
+
 </head>
 
-<body>
-    <div id="loading-bar-wrapper">
-  <div id="loading-bar"></div>
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Xin's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Xin's Blog</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
 </div>
 
+<nav class="site-nav">
+  
 
-    <script>setLoadingBarProgress(20)</script>
-    <header class="l_header">
-	<div class='wrapper'>
-		<div class="nav-main container container--flex">
-			<a class="logo flat-box" href='/' >
-				<!-- <i class="fa fa-home"></i> -->
-				xin's Blog
-			</a>
-
-				<div class='menu'>
-					<ul class='h-list'>
-                        
-    						
-    							<li>
-    								<a class='nav-about flat-box' href='/'>
-    									<i class='fa fa-home fa-'></i>&nbsp;主页
-    								</a>
-    							</li>
-    						
-    							<li>
-    								<a class='nav-category flat-box' href='/categories/shell/'>
-    									<i class='fa fa-cube fa-'></i>&nbsp;shell编程
-    								</a>
-    							</li>
-    						
-    							<li>
-    								<a class='nav-category flat-box' href='/categories/linux'>
-    									<i class='fa fa-rss fa-'></i>&nbsp;Linux基本功
-    								</a>
-    							</li>
-    						
-    							<li>
-    								<a class='nav-category flat-box' href='/categories/linuxservice'>
-    									<i class='fa fa-rss fa-'></i>&nbsp;Linux服务
-    								</a>
-    							</li>
-    						
-    							<li>
-    								<a class='nav-category flat-box' href='/categories/itauto'>
-    									<i class='fa fa-rss fa-'></i>&nbsp;运维自动化
-    								</a>
-    							</li>
-    						
-    							<li>
-    								<a class='nav-archives flat-box' href='/archives'>
-    									<i class='fa fa-archive fa-'></i>&nbsp;归档
-    								</a>
-    							</li>
-    						
-        			 
-					</ul>
-					<div class='underline'></div>
-				</div>
-
-			
-				<div class="m_search">
-					<form name="searchform" class="form u-search-form">
-						<input type="text" class="input u-search-input" placeholder="Search" />
-						<span class="icon"><i class="fa fa-search fa-fw"></i></span>
-					</form>
-				</div>
-			
-			<ul class='switcher h-list'>
-				
-					<li class='s-search'><a class="fa fa-search fa-fw" href='javascript:void(0)'></span></a></li>
-				
-				<li class='s-menu'><a class="fa fa-navicon fa-fw" href='javascript:void(0)'></a></li>
-			</ul>
-		</div>
-
-		<div class='nav-sub container container--flex'>
-			<a class="logo" class="flat-box" href='javascript:void(0)'>
-				xaoxuu
-			</a>
-
-			<ul class='switcher h-list'>
-				<li class='s-comment'><a class="fa fa-comments fa-fw flat-box" href='javascript:void(0)'></a></li>
-				<li class='s-top'><a class="fa fa-arrow-up fa-fw flat-box" href='javascript:void(0)'></a></li>
-				<li class='s-toc'><a class="fa fa-list-ul fa-fw flat-box" href='javascript:void(0)'></a></li>
-			</ul>
-		</div>
-	</div>
-</header>
-	<aside class="menu-phone">
-        <div class="header">xin&#39;s Blog</div>
-		<nav>
-            <ul>
-                
-                    
-                        <li>
-                            <a class='nav-about flat-box nav flat-box' href='/'><i class='fa fa-home fa-fw'></i>&nbsp;主页</a>
-                        </li>
-                    
-                        <li>
-                            <a class='nav-category flat-box nav flat-box' href='/categories/shell/'><i class='fa fa-cube fa-fw'></i>&nbsp;shell编程</a>
-                        </li>
-                    
-                        <li>
-                            <a class='nav-category flat-box nav flat-box' href='/categories/linux'><i class='fa fa-rss fa-fw'></i>&nbsp;Linux基本功</a>
-                        </li>
-                    
-                        <li>
-                            <a class='nav-category flat-box nav flat-box' href='/categories/linuxservice'><i class='fa fa-rss fa-fw'></i>&nbsp;Linux服务</a>
-                        </li>
-                    
-                        <li>
-                            <a class='nav-category flat-box nav flat-box' href='/categories/itauto'><i class='fa fa-rss fa-fw'></i>&nbsp;运维自动化</a>
-                        </li>
-                    
-                        <li>
-                            <a class='nav-archives flat-box nav flat-box' href='/archives'><i class='fa fa-archive fa-fw'></i>&nbsp;归档</a>
-                        </li>
-                    
-             
-            </ul>
-		</nav>
-	</aside>
-
-    <script>setLoadingBarProgress(40);</script>
-    <div class="l_body">
-    <div class='container clearfix'>
-        <div class='l_main'>
-            <article id="post-文本处理工具" class="post white-box article-type-post" itemscope itemprop="blogPost">
-    <section class='meta'>
-        <h1 class="title">
-            
-                文本处理工具
-            
-        </h1>
-        <time>
-            2018-09-27&nbsp;&nbsp;
-            <i class="fa fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
-        </time>
+  
+    <ul id="menu" class="menu">
+      
         
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
     
-    <div class='cats'>
-        <a href="/categories/linux/">linux</a>
-    </div>
 
+  
 
-    </section>
+  
+  
+  
 
-    <section class="article typo">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://xinilhy.github.io/2018/09/27/文本处理工具/">
 
-        <div class="article-entry" itemprop="articleBody">
-            <blockquote>
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Xin's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">文本处理工具</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-27T09:52:26+08:00">
+                2018-09-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/linux/" itemprop="url" rel="index">
+                    <span itemprop="name">linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
 <p>这篇文章主要介绍一些文本处理工具，包括less、cat、head、tail、cut<br>基础不牢，地动山摇<br><a id="more"></a></p>
 </blockquote>
 <h2 id="cat"><a href="#cat" class="headerlink" title="cat"></a>cat</h2><p> 作用：显示文本内容</p>
@@ -244,7 +391,7 @@
 </ul>
 </li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><span class="line">在/etc/passwd文件中取出所有用户的UID？</span><br><span class="line">[root@centos7 data ]#cut -d: -f3 /etc/passwd</span><br><span class="line">0</span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line"></span><br><span class="line">取出磁盘利用率</span><br><span class="line">[root@centos7 data ]#df |tr -s &apos; &apos; |cut -d &quot; &quot; -f5|cut -d% -f1      ##因为空格不只一个，所以使用tr -s压缩为一个空格，然后再取</span><br><span class="line">Use</span><br><span class="line">7</span><br><span class="line">0</span><br><span class="line">0</span><br><span class="line">2</span><br><span class="line">0</span><br><span class="line">1</span><br><span class="line">16</span><br><span class="line">1</span><br><span class="line">100</span><br><span class="line">或者直接使用tr压缩时替换分隔符为%，直接取</span><br><span class="line">[root@centos7 data ]#df |tr -s &apos; &apos; % |cut -d% -f5</span><br><span class="line">Use</span><br><span class="line">7</span><br><span class="line">0</span><br><span class="line">0</span><br><span class="line">2</span><br><span class="line">0</span><br><span class="line">1</span><br><span class="line">16</span><br><span class="line">1</span><br><span class="line">100</span><br><span class="line"></span><br><span class="line">自定义分隔符</span><br><span class="line">[root@centos7 data ]#cut -d: -f1,3 --output-delimiter=+  /etc/passwd</span><br><span class="line">root+0</span><br><span class="line">bin+1</span><br><span class="line">daemon+2</span><br><span class="line">adm+3</span><br><span class="line"></span><br><span class="line">[root@centos7 data ]#cut -d: -f1,3 --output-delimiter===  /etc/passwd</span><br><span class="line">root==0</span><br><span class="line">bin==1</span><br><span class="line">daemon==2</span><br><span class="line">adm==3</span><br><span class="line">lp==4</span><br><span class="line">sync==5</span><br><span class="line">shutdown==6</span><br><span class="line"></span><br><span class="line">按字符数取列</span><br><span class="line">[root@centos7 data ]#cut -c1-3 /etc/passwd</span><br><span class="line">roo</span><br><span class="line">bin</span><br><span class="line">dae</span><br><span class="line">adm</span><br><span class="line">lp:</span><br><span class="line">syn</span><br><span class="line">shu</span><br><span class="line">hal</span><br><span class="line">mai</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">取ip地址:  先取第二行，然后取列</span><br><span class="line">CentOS6</span><br><span class="line">[root@CentOS6 ~ ]#ifconfig eth0 |grep -w &quot;inet&quot;|tr -s &quot; &quot; :|cut -d: -f4   ##Centos6以：作为分隔符</span><br><span class="line">192.168.64.128</span><br><span class="line"></span><br><span class="line">CentOS7:</span><br><span class="line">[root@centos7 data ]#ifconfig ens33 |grep -w &quot;inet&quot; |tr -s &quot; &quot; |cut -d&quot; &quot; -f3</span><br><span class="line">192.168.64.134</span><br><span class="line"></span><br><span class="line">取Centos系统的主版本号：</span><br><span class="line">[root@centos7 data ]#cat /etc/centos-release</span><br><span class="line">CentOS Linux release 7.5.1804 (Core)</span><br><span class="line">[root@CentOS6 ~ ]#cat /etc/centos-release </span><br><span class="line">CentOS release 6.10 (Final)</span><br><span class="line"></span><br><span class="line">[root@CentOS6 ~ ]#tr -dc &quot;[:digit:].&quot; &lt; /etc/centos-release |cut -d. -f1        ##除了数字和点不删，其他全部删除</span><br><span class="line">6</span><br><span class="line">[root@centos7 data ]#tr -dc &quot;[:digit:].&quot; &lt; /etc/centos-release |cut -d. -f1</span><br><span class="line">7</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><span class="line">在/etc/passwd文件中取出所有用户的UID？</span><br><span class="line">[root@centos7 data ]#cut -d: -f3 /etc/passwd</span><br><span class="line">0</span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line"></span><br><span class="line">取出磁盘利用率</span><br><span class="line">[root@centos7 data ]#df |tr -s &apos; &apos; |cut -d &quot; &quot; -f5|cut -d% -f1      ##因为空格不只一个，所以使用tr -s压缩为一个空格，然后再取</span><br><span class="line">Use</span><br><span class="line">7</span><br><span class="line">0</span><br><span class="line">0</span><br><span class="line">2</span><br><span class="line">0</span><br><span class="line">1</span><br><span class="line">16</span><br><span class="line">1</span><br><span class="line">100</span><br><span class="line">或者直接使用tr压缩时替换分隔符为%，直接取</span><br><span class="line">[root@centos7 data ]#df |tr -s &apos; &apos; % |cut -d% -f5</span><br><span class="line">Use</span><br><span class="line">7</span><br><span class="line">0</span><br><span class="line">0</span><br><span class="line">2</span><br><span class="line">0</span><br><span class="line">1</span><br><span class="line">16</span><br><span class="line">1</span><br><span class="line">100</span><br><span class="line"></span><br><span class="line">自定义分隔符</span><br><span class="line">[root@centos7 data ]#cut -d: -f1,3 --output-delimiter=+  /etc/passwd</span><br><span class="line">root+0</span><br><span class="line">bin+1</span><br><span class="line">daemon+2</span><br><span class="line">adm+3</span><br><span class="line"></span><br><span class="line">[root@centos7 data ]#cut -d: -f1,3 --output-delimiter===  /etc/passwd</span><br><span class="line">root==0</span><br><span class="line">bin==1</span><br><span class="line">daemon==2</span><br><span class="line">adm==3</span><br><span class="line">lp==4</span><br><span class="line">sync==5</span><br><span class="line">shutdown==6</span><br><span class="line"></span><br><span class="line">按字符数取列</span><br><span class="line">[root@centos7 data ]#cut -c1-3 /etc/passwd</span><br><span class="line">roo</span><br><span class="line">bin</span><br><span class="line">dae</span><br><span class="line">adm</span><br><span class="line">lp:</span><br><span class="line">syn</span><br><span class="line">shu</span><br><span class="line">hal</span><br><span class="line">mai</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">取ip地址:  先取第二行，然后取列</span><br><span class="line">CentOS6</span><br><span class="line">[root@CentOS6 ~ ]#ifconfig eth0 |grep -w &quot;inet&quot;|tr -s &quot; &quot; :|cut -d: -f4   ##Centos6以：作为分隔符</span><br><span class="line">192.168.64.128</span><br><span class="line"></span><br><span class="line">CentOS7:</span><br><span class="line">[root@centos7 data ]#ifconfig ens33 |grep -w &quot;inet&quot; |tr -s &quot; &quot; |cut -d&quot; &quot; -f3</span><br><span class="line">192.168.64.134</span><br><span class="line"></span><br><span class="line">取Centos系统的主版本号：使用与CentOS和CentOS</span><br><span class="line">[root@centos7 data ]#cat /etc/centos-release</span><br><span class="line">CentOS Linux release 7.5.1804 (Core)</span><br><span class="line">[root@CentOS6 ~ ]#cat /etc/centos-release </span><br><span class="line">CentOS release 6.10 (Final)</span><br><span class="line"></span><br><span class="line">[root@CentOS6 ~ ]#tr -dc &quot;[:digit:].&quot; &lt; /etc/centos-release |cut -d. -f1        ##除了数字和点不删，其他全部删除</span><br><span class="line">6</span><br><span class="line">[root@centos7 data ]#tr -dc &quot;[:digit:].&quot; &lt; /etc/centos-release |cut -d. -f1</span><br><span class="line">7</span><br></pre></td></tr></table></figure>
 <h2 id="wc"><a href="#wc" class="headerlink" title="wc"></a>wc</h2><p>word count的简写，<br>作用：统计一个文件有多少行，多少单词、多少字节、多少字符（注意：字节和字符不一样）</p>
 <ul>
 <li>选项：<ul>
@@ -289,236 +436,413 @@
 <li>选项:<br>  -u<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">[root@centos7 data ]#cat f1 </span><br><span class="line">aa</span><br><span class="line">bb yy</span><br><span class="line">a www</span><br><span class="line">bb</span><br><span class="line">bb  zzz</span><br><span class="line">cc  yy</span><br><span class="line">dd  ww</span><br><span class="line">dd</span><br><span class="line">[root@centos7 data ]#cat f2</span><br><span class="line">aa</span><br><span class="line">bb yy</span><br><span class="line">bb</span><br><span class="line">cc  yy</span><br><span class="line">zz</span><br><span class="line">sss</span><br><span class="line">[root@centos7 data ]#diff -u f1 f2</span><br><span class="line">--- f1	2018-08-18 16:45:43.484986457 +0800   ## -开头表示第一个文件</span><br><span class="line">+++ f2	2018-08-18 16:31:53.353991142 +0800   ## +开头表示第二个文件</span><br><span class="line">@@ -1,8 +1,6 @@                               ## 比较的范围：f1的1-8行；f2的1-6行</span><br><span class="line"> aa                                           ## 前面为空表示两个文件的交集</span><br><span class="line"> bb yy</span><br><span class="line">-a www                                        ## 即f1多出a www,删除后两个文件相同</span><br><span class="line"> bb</span><br><span class="line">-bb  zzz</span><br><span class="line"> cc  yy</span><br><span class="line">-dd  ww</span><br><span class="line">-dd</span><br><span class="line">+zz                                           ## 即f2多出zz,删除后两个文件相同</span><br><span class="line">+sss</span><br><span class="line"></span><br><span class="line">建议：vimdiff f1 f2</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
+<h2 id="paste"><a href="#paste" class="headerlink" title="paste"></a>paste</h2><p>作用：横向合并文件<br>      -s：将文件的所有列以一行显示<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">## 环境准备：</span><br><span class="line">[root@centos7 test ]#cat f1</span><br><span class="line">aaa bbb</span><br><span class="line">cc dd</span><br><span class="line">ee ff</span><br><span class="line">[root@centos7 test ]#cat f2</span><br><span class="line">hello world</span><br><span class="line">hostname</span><br><span class="line">ifconfig</span><br><span class="line"></span><br><span class="line">## 合并文件</span><br><span class="line">[root@centos7 test ]#paste f1 f2</span><br><span class="line">aaa bbb	hello world</span><br><span class="line">cc dd	hostname</span><br><span class="line">ee ff	ifconfig</span><br><span class="line"></span><br><span class="line">## 将f1的内容全部以一行进行显示：</span><br><span class="line">[root@centos7 test ]#paste -s f1</span><br><span class="line">aaa bbb  cc dd	ee ff</span><br></pre></td></tr></table></figure></p>
 <h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><p> 找出ifconfig “网卡名”结果中本机的ipv4地址？<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">CentOS6</span><br><span class="line">[root@CentOS6 ~ ]#ifconfig eth0 | grep -w &quot;inet&quot; |tr -s &quot; &quot; :|cut -d: -f4   ##Centos6以：作为分隔符</span><br><span class="line">192.168.64.128</span><br><span class="line"></span><br><span class="line">CentOS7:</span><br><span class="line">[root@centos7 data ]#ifconfig ens33 | grep -w &quot;inet&quot; |tr -s &quot; &quot; |cut -d&quot; &quot; -f3</span><br><span class="line">192.168.64.134</span><br></pre></td></tr></table></figure></p>
 <p> 查出分区空间使用率的最大百分比值？<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@centos7 data ]#df|grep &quot;/dev/sd&quot; |tr -s &quot; &quot; %|cut -d% -f5|sort -nr|head -1</span><br><span class="line">16</span><br></pre></td></tr></table></figure></p>
 <p> 查出用户UID最大值的用户名、UID及shel类型？<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@centos7 data ]#cut -d: -f1,3,7 /etc/passwd|sort -t: -k2 -nr|head -1</span><br><span class="line">nfsnobody:65534:/sbin/nologin</span><br><span class="line"></span><br><span class="line">或</span><br><span class="line">[root@centos7 data ]#sort -t: -k3 -nr /etc/passwd|head -1|cut -d: -f1,3,7</span><br><span class="line">nfsnobody:65534:/sbin/nologin</span><br></pre></td></tr></table></figure></p>
 <p> 查出/tmp的权限，以数字方式显示<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@centos7 data ]#stat /tmp |grep &quot;Access: (&quot; |cut -d&quot;(&quot; -f2 |cut -d&quot;/&quot; -f1</span><br><span class="line">1777</span><br><span class="line">[root@centos7 data ]#stat /tmp |grep &quot;Access: (&quot; |cut -d&quot;(&quot; -f2 |head -c 4</span><br><span class="line">1777[root@centos7 data ]#</span><br></pre></td></tr></table></figure></p>
 <p> 统计当前连接本机的每个远程主机ip的连接数？并按照从大到小排序？<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@centos7 data ]#netstat -nt |tr -s &quot; &quot; : |cut -d: -f6|sort|uniq -c|sort -nr</span><br></pre></td></tr></table></figure></p>
 
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/文本处理工具/" rel="tag"># 文本处理工具</a>
+          
         </div>
+      
 
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/26/文件权限/" rel="next" title="文件权限">
+                <i class="fa fa-chevron-left"></i> 文件权限
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/27/grep介绍/" rel="prev" title="grep介绍">
+                grep介绍 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
         
-            <div class="article-tags tags">
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">xin</p>
+              <p class="site-description motion-element" itemprop="description">专注于linux运维</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
                 
-                    <a href="/tags/文本处理工具/"><i class="fa fa-tag fa-fw" aria-hidden="true"></i>&nbsp;文本处理工具</a>
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="undefined" target="_blank" title="0">
+                      
+                        <i class="fa fa-fw fa-globe"></i>0</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="undefined" target="_blank" title="1">
+                      
+                        <i class="fa fa-fw fa-globe"></i>1</a>
+                  </span>
                 
             </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#cat"><span class="nav-number">1.</span> <span class="nav-text">cat</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tac"><span class="nav-number">2.</span> <span class="nav-text">tac</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rev"><span class="nav-number">3.</span> <span class="nav-text">rev</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#head"><span class="nav-number">4.</span> <span class="nav-text">head</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tail"><span class="nav-number">5.</span> <span class="nav-text">tail</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cut"><span class="nav-number">6.</span> <span class="nav-text">cut</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#wc"><span class="nav-number">7.</span> <span class="nav-text">wc</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sort"><span class="nav-number">8.</span> <span class="nav-text">sort</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#uniq"><span class="nav-number">9.</span> <span class="nav-text">uniq</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#diff"><span class="nav-number">10.</span> <span class="nav-text">diff</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#paste"><span class="nav-number">11.</span> <span class="nav-text">paste</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#练习"><span class="nav-number">12.</span> <span class="nav-text">练习</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xin</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
         
 
+
+
+
+
+
+
         
-            <div class="prev-next">
-                
-                    <section class="prev" >
-                        <span class="art-item-left">
-                            <h6><i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;上一篇</h6>
-                            <h4>
-                                <a href="/2018/09/27/grep介绍/" rel="prev" title="grep介绍">
-                                  
-                                      grep介绍
-                                  
-                                </a>
-                            </h4>
-                            
-                                <h6 class="tags">
-                                    
-                                        <i class="fa fa-tag fa-fw"></i>linux三剑客
-                                    
-                                </h6>
-                            
-                        </span>
-                    </section>
-                
-                
-                    <section class="next">
-                        <span class="art-item-right" aria-hidden="true">
-                            <h6>下一篇&nbsp;<i class="fa fa-chevron-right" aria-hidden="true"></i></h6>
-                            <h4>
-                                <a href="/2018/09/26/文件权限/" rel="prev" title="文件权限">
-                                    
-                                        文件权限
-                                    
-                                </a>
-                            </h4>
-                            
-                                <h6 class="tags">
-                                    
-                                        <i class="fa fa-tag fa-fw"></i>linux
-                                    
-                                </h6>
-                            
-                        </span>
-                    </section>
-                
-            </div>
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
         
+      </div>
+    
 
-    </section>
+    
 
-</article>
+  </div>
 
-<br>
+  
 
-<!-- 显示推荐文章和评论 -->
-
-
-<script>
-    window.subData = {
-        title: '文本处理工具',
-        tools: true
-    }
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
 </script>
 
 
-        </div>
-        <aside class='l_side'>
-            
-    
-        
-    <section class='m_widget author'>
-        
-        <div class='content'>
-            
-                <h2>xin</h2>
-            
-            
-                <div>
-                    <i class="fa fa-quote-left fa-3x fa-pull-left" aria-hidden="true"></i>
-                    喜欢就去追啊，反正也追不到
-                </div>
-            
-        </div>
-        
-            <div class="social-wrapper">
-              
-                
-                    <a href="mailto:me@xaoxuu.com" class="social flat-box" target="_blank" rel="external"><i class="social fa fa-envelope" aria-hidden="true"></i></a>
-                
-              
-                
-                    <a href="https://github.com/xaoxuu" class="social flat-box" target="_blank" rel="external"><i class="social fa fa-github" aria-hidden="true"></i></a>
-                
-              
-            </div>
-        
-    </section>
 
 
-    
-    
-    
-        
-    <section class='m_widget tagcloud'>
-        <div class="header"><i class="fa fa-tags fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;标签</div>
-        <div class='content'>
-            <a href="/tags/linux/" style="font-size: 24px; color: #555">linux</a> <a href="/tags/linux三剑客/" style="font-size: 14px; color: #999">linux三剑客</a> <a href="/tags/文本处理工具/" style="font-size: 14px; color: #999">文本处理工具</a> <a href="/tags/通配符/" style="font-size: 14px; color: #999">通配符</a>
-        </div>
-    </section>
 
 
-    
-    
-        <section class='m_widget music'>
-    <div class='header'><i class="fa fa-headphones fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;音乐</div>
-    <div class='content'>
-        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=100% height=450 src="//music.163.com/outchain/player?type=0&id=746319661&auto=0&height=450"></iframe>
-    </div>
-</section>
-
-    
-    
-        <section class='m_widget links'>
-    <div class='header'><i class="fa fa-handshake-o fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;友链</div>
-    <div class='content'>
-        <ul class="entry" id="links">
-            
-                <li><a class="flat-box" target="_blank" rel="external nofollow noopener noreferrer" href="http://www.cnblogs.com/clsn/">
-                    <div class='name'>
-                        <i class="fa fa-user-circle-o fa-fw" aria-hidden="true"></i>
-                        &nbsp;&nbsp;惨绿少年
-                    </div>
-                </a></li>
-            
-            
-
-        </ul>
-
-    </div>
-</section>
-
-    
-    
-        
-    <section class='m_widget toc-wrapper'>
-        <div class="header"><i class="fa fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;目录</div>
-        <div class='content'>
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#cat"><span class="toc-text">cat</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tac"><span class="toc-text">tac</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#rev"><span class="toc-text">rev</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#head"><span class="toc-text">head</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tail"><span class="toc-text">tail</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cut"><span class="toc-text">cut</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#wc"><span class="toc-text">wc</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sort"><span class="toc-text">sort</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#uniq"><span class="toc-text">uniq</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#diff"><span class="toc-text">diff</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#练习"><span class="toc-text">练习</span></a></li></ol>
-        </div>
-    </section>
 
 
-    
+
+  
 
 
-        </aside>
-        <script>setLoadingBarProgress(60);</script>
-    </div>
-    </div>
-    <footer id="footer" class="clearfix">
-    
-        <div class="social-wrapper">
-          
-              
-                  <a href="mailto:me@xaoxuu.com" class="social fa fa-envelope flat-box" target="_blank" rel="external"></a>
-              
-          
-              
-                  <a href="https://github.com/xaoxuu" class="social fa fa-github flat-box" target="_blank" rel="external"></a>
-              
-          
-        </div>
-    
-    <br>
-    <div>博客内容遵循 <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="licenses">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></div>
-    <div>本站使用 <a href="https://github.com/xaoxuu/hexo-theme-material-x" target="_blank" class="codename">Material X</a> 作为主题，
-		总访问量为 <span id="busuanzi_value_site_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span> 次。
-    </div>
-</footer>
-<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
 
 
-    <script>setLoadingBarProgress(80);</script>
-    <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-<script src='//cdn.bootcss.com/node-waves/0.7.5/waves.min.js'></script>
-<script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script>
-<!-- 访问统计 -->
-<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
-<script src="/js/jquery.fitvids.js"></script>
-
-    <script>
-        var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
-        var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
-        var ALGOLIA_API_KEY = "";
-        var ALGOLIA_APP_ID = "";
-        var ALGOLIA_INDEX_NAME = "";
-        var AZURE_SERVICE_NAME = "";
-        var AZURE_INDEX_NAME = "";
-        var AZURE_QUERY_KEY = "";
-        var BAIDU_API_ID = "";
-        var SEARCH_SERVICE = "hexo" || "hexo";
-        var ROOT = "/"||"/";
-        if(!ROOT.endsWith('/'))ROOT += '/';
-    </script>
-
-<script src="/js/search.js"></script>
-<script src="/js/app.js"></script>
 
 
-    
-    
-    
 
 
-    <script>setLoadingBarProgress(100);</script>
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
 </body>
+</html>
